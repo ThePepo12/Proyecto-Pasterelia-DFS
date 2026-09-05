@@ -247,6 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
   inicializarDetalleProducto();
   inicializarFiltrosCatalogo();
   inicializarCarrito(); // Carga los items del carrito en carrito.html
+  inicializarFormularioContacto(); // Maneja el envío del formulario en contacto.html
 });
 
 // -----------------------------------------------------------------------------
@@ -752,4 +753,29 @@ function inicializarCarrito() {
 
   // Dibujamos el carrito al cargar la página
   renderizarCarrito();
+}
+
+// -----------------------------------------------------------------------------
+// 12. FUNCIÓN: FORMULARIO DE CONTACTO (CONTACTO.HTML)
+// Simula el envío de consultas con validación y confirmación simple
+// -----------------------------------------------------------------------------
+function inicializarFormularioContacto() {
+  const formulario = document.getElementById('form-contacto');
+  if (!formulario) return;
+
+  formulario.addEventListener('submit', (evento) => {
+    evento.preventDefault(); // Evitamos recargar la página
+
+    const nombre = document.getElementById('contacto-nombre').value.trim();
+    const email = document.getElementById('contacto-email').value.trim();
+
+    if (!nombre || !email) {
+      alert('Por favor completa todos los campos requeridos (*)');
+      return;
+    }
+
+    // Mensaje de éxito comprensible
+    alert(`🧁 ¡Muchas gracias ${nombre}! Tu consulta ha sido enviada con éxito. Te responderemos pronto a ${email}.`);
+    formulario.reset();
+  });
 }

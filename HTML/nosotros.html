@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Revisa y confirma los productos en tu carrito de compras. Pastelería Mil Sabores.">
+  <meta name="description" content="Conoce la historia, misión, visión y valores de Pastelería Mil Sabores. 50 años endulzando momentos en Chile.">
   <meta name="author" content="Estudiantes Duoc UC - Desarrollo Full Stack II">
-  <title>Carrito de Compras | Pastelería Mil Sabores</title>
+  <title>Sobre Nosotros | Pastelería Mil Sabores</title>
 
   <!-- Hojas de Estilos Externas (Rubro IE1.1.2) -->
   <link rel="stylesheet" href="css/estilos.css">
-  <link rel="stylesheet" href="css/carrito.css">
+  <link rel="stylesheet" href="css/nosotros.css">
 
   <!-- Script Principal Diferido -->
   <script src="js/main.js" defer></script>
@@ -48,13 +48,13 @@
         <span class="badge-50">50 AÑOS</span>
       </a>
 
-      <!-- Menú de Navegación -->
+      <!-- Menú de Navegación con 'Nosotros' activo -->
       <nav aria-label="Navegación principal del sitio">
         <ul>
           <li><a href="index.html">Inicio</a></li>
           <li><a href="categoria.html">Catálogo</a></li>
           <li><a href="producto.html">Producto</a></li>
-          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="nosotros.html" class="active">Nosotros</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -80,104 +80,115 @@
       <div style="font-size: 0.88rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
         <a href="index.html" style="color: var(--accent-gold);">Inicio</a>
         <span style="color: var(--text-muted);">/</span>
-        <span style="color: var(--text-main); font-weight: 600;">Carrito de Compras</span>
+        <span style="color: var(--text-main); font-weight: 600;">Sobre Nosotros</span>
       </div>
     </div>
   </nav>
 
   <!-- ======================================================================= -->
-  <!-- 4. CONTENIDO PRINCIPAL: CARRITO DE COMPRAS                              -->
-  <!-- ETIQUETA: <main> nucleo central de la pagina                            -->
+  <!-- 4. CONTENIDO PRINCIPAL: SOBRE NOSOTROS                                  -->
+  <!-- ETIQUETA: <main> núcleo central de la página                            -->
   <!-- ======================================================================= -->
   <main>
     <div class="container">
-      <h1 class="cart-title">Tu <span>Carrito</span></h1>
 
-      <!-- Layout de dos columnas: lista de productos + resumen -->
-      <div class="cart-layout">
+      <!-- Encabezado de la página -->
+      <section class="nosotros-header">
+        <h1 class="nosotros-title">Nuestra <span>Historia y Pasión</span></h1>
+        <p class="nosotros-subtitle">
+          Medio siglo horneando con amor, dedicación y las mejores recetas tradicionales de Chile.
+        </p>
+      </section>
 
-        <!-- ============================================================ -->
-        <!-- COLUMNA IZQUIERDA: Lista de productos en el carrito          -->
-        <!-- ============================================================ -->
-        <div class="cart-items-col">
-
-          <!-- Mensaje cuando el carrito esta vacio -->
-          <div id="carrito-vacio" class="cart-empty" style="display: none;">
-            <p class="empty-icon">🛒</p>
-            <p class="empty-title">Tu carrito está vacío</p>
-            <p class="empty-desc">Aún no has agregado ningún producto. ¡Visita nuestro catálogo y elige tu delicia favorita!</p>
-            <a href="categoria.html" class="btn-primary">Ver Catálogo</a>
-          </div>
-
-          <!-- Contenedor donde el JS inyectara las filas de productos -->
-          <div id="lista-items-carrito">
-            <!-- Los productos se agregan aqui dinamicamente desde main.js -->
-          </div>
-
-        </div>
-
-        <!-- ============================================================ -->
-        <!-- COLUMNA DERECHA: Resumen y opciones de pago                  -->
-        <!-- ============================================================ -->
-        <aside class="cart-summary-col" aria-label="Resumen del pedido">
-          <div class="summary-card">
-            <h2 class="summary-title">Resumen del Pedido</h2>
-
-            <!-- Subtotal (actualizado dinamicamente) -->
-            <div class="summary-row">
-              <span>Subtotal</span>
-              <span id="resumen-subtotal">$0 CLP</span>
-            </div>
-
-            <!-- Descuento (aparece solo si se aplica cupon) -->
-            <div class="summary-row descuento-row" id="fila-descuento" style="display: none;">
-              <span id="label-descuento">Descuento</span>
-              <span id="resumen-descuento" style="color: #6fcf6f;">-$0 CLP</span>
-            </div>
-
-            <!-- Envio fijo -->
-            <div class="summary-row">
-              <span>Envío (Santiago)</span>
-              <span>$3.500 CLP</span>
-            </div>
-
-            <!-- Total final -->
-            <div class="summary-row total-row">
-              <span>Total</span>
-              <span id="resumen-total">$3.500 CLP</span>
-            </div>
-
-            <!-- Campo de codigo de descuento -->
-            <div class="promo-section">
-              <label for="input-codigo" class="promo-label">¿Tienes un código de descuento?</label>
-              <div class="promo-input-row">
-                <input type="text"
-                       id="input-codigo"
-                       class="promo-input"
-                       placeholder="Ej: FELICES50"
-                       aria-label="Código de descuento">
-                <button type="button" id="btn-aplicar-codigo" class="btn-promo">Aplicar</button>
-              </div>
-              <!-- Mensaje de resultado del codigo (OK o error) -->
-              <p id="msg-codigo" class="promo-msg" style="display: none;"></p>
-            </div>
-
-            <!-- Nota de descuentos especiales -->
-            <p class="summary-note">
-              🎂 Adultos mayores (+60 años) acceden a 50% de descuento automático al identificarse en tienda.
+      <!-- Sección 1: Historia y Récord Guinness (2 columnas sencillas) -->
+      <section class="nosotros-historia">
+        <div class="historia-grid">
+          <div class="historia-texto">
+            <h2>50 Años de Tradición Pastelera</h2>
+            <p>
+              Pastelería Mil Sabores nació en 1974 como un pequeño taller familiar en Santiago de Chile. Con recetas heredadas de generación en generación, fuimos conquistando los paladares de nuestros vecinos gracias a la calidad de los ingredientes y el cariño puesto en cada preparación.
+            </p>
+            <p>
+              A lo largo de cinco décadas, hemos sido parte de los cumpleaños, matrimonios y celebraciones más importantes de miles de familias chilenas, manteniendo siempre intacto nuestro sello artesanal.
             </p>
 
-            <!-- Boton de confirmar pedido -->
-            <button type="button" id="btn-confirmar" class="btn-checkout">
-              Confirmar Pedido &rarr;
-            </button>
-
-            <!-- Enlace para seguir comprando -->
-            <a href="categoria.html" class="link-seguir">&larr; Seguir comprando</a>
+            <!-- Destacado del Récord Guinness 1995 (Caso Duoc UC) -->
+            <div class="guinness-box">
+              <span class="guinness-icon">🏆</span>
+              <div>
+                <h3>Récord Guinness 1995</h3>
+                <p>
+                  Orgullosos poseedores del récord a la torta de frutas más grande del mundo, elaborada en conjunto con la comunidad en nuestro 21° aniversario.
+                </p>
+              </div>
+            </div>
           </div>
-        </aside>
 
-      </div>
+          <div class="historia-imagen">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" 
+                 alt="Taller de repostería artesanal de Pastelería Mil Sabores" 
+                 loading="lazy">
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 2: Misión y Visión (Tarjetas explicativas) -->
+      <section class="mision-vision-section">
+        <div class="mv-grid">
+          <!-- Tarjeta Misión -->
+          <article class="mv-card">
+            <div class="mv-icon">🎯</div>
+            <h2>Nuestra Misión</h2>
+            <p>
+              Elaborar productos de pastelería y repostería artesanal con los más altos estándares de calidad, higiene y sabor, ofreciendo alternativas para todos: tradicionales, sin azúcar, sin gluten y veganas, creando momentos dulces inolvidables para cada cliente.
+            </p>
+          </article>
+
+          <!-- Tarjeta Visión -->
+          <article class="mv-card">
+            <div class="mv-icon">🌟</div>
+            <h2>Nuestra Visión</h2>
+            <p>
+              Ser la pastelería artesanal líder y más querida de la Región Metropolitana, reconocida por nuestra constante innovación culinaria, el respeto a las tradiciones chilenas y nuestro compromiso social con la comunidad y los estudiantes.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Sección 3: Nuestros Valores Clave -->
+      <section class="valores-section">
+        <h2 class="valores-title">Nuestros <span>Valores</span></h2>
+        <div class="valores-grid">
+          <div class="valor-card">
+            <span class="valor-emoji">🌾</span>
+            <h3>Ingredientes Naturales</h3>
+            <p>Seleccionamos materias primas frescas de productores locales de nuestro país.</p>
+          </div>
+          <div class="valor-card">
+            <span class="valor-emoji">🤝</span>
+            <h3>Compromiso Social</h3>
+            <p>Descuento del 50% para adultos mayores y apoyo constante a estudiantes de Duoc UC.</p>
+          </div>
+          <div class="valor-card">
+            <span class="valor-emoji">🎂</span>
+            <h3>Inclusión Pastelera</h3>
+            <p>Opciones aptas para celíacos, diabéticos y personas veganas con recetas balanceadas.</p>
+          </div>
+          <div class="valor-card">
+            <span class="valor-emoji">❤️</span>
+            <h3>Cariño Artesanal</h3>
+            <p>Cada torta y pastel se decora a mano por maestros pasteleros con amplia experiencia.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 4: Llamado a la acción (Catálogo) -->
+      <section class="nosotros-cta">
+        <h2>¿Quieres celebrar con nosotros?</h2>
+        <p>Explora nuestras 8 categorías de pastelería y encuentra tu sabor ideal.</p>
+        <a href="categoria.html" class="btn-primary">Ver Catálogo de Productos</a>
+      </section>
+
     </div>
   </main>
 
@@ -195,7 +206,7 @@
           </p>
         </div>
 
-        <!-- Columna 2: Navegación Rapida -->
+        <!-- Columna 2: Navegación Rápida -->
         <div class="footer-col">
           <h4>Navegación</h4>
           <ul>
@@ -208,7 +219,7 @@
           </ul>
         </div>
 
-        <!-- Columna 3: Categorias Rapidas -->
+        <!-- Columna 3: Categorías Rápidas -->
         <div class="footer-col">
           <h4>Especialidades</h4>
           <ul>
@@ -221,7 +232,7 @@
           </ul>
         </div>
 
-        <!-- Columna 4: Atencion y Horarios -->
+        <!-- Columna 4: Atención y Horarios -->
         <div class="footer-col">
           <h4>Horarios y Atención</h4>
           <p>📍 Av. Concha y Toro #1234, Santiago, Chile</p>
