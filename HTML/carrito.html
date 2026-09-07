@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/carrito.css">
 
-  <!-- Script Principal Diferido -->
+  <!-- Scripts Modulares Diferidos -->
+  <script src="js/productos.js" defer></script>
+  <script src="js/usuarios.js" defer></script>
+  <script src="js/carrito.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -48,16 +51,19 @@
         <span class="badge-50">50 AÑOS</span>
       </a>
 
-      <!-- Menú de Navegación -->
+      <!-- Menú de Navegación con 'Carrito' activo -->
       <nav aria-label="Navegación principal del sitio">
         <ul>
           <li><a href="index.html">Inicio</a></li>
           <li><a href="categoria.html">Catálogo</a></li>
           <li><a href="producto.html">Producto</a></li>
+          <li><a href="carrito.html" class="active">Carrito</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
+
 
       <!-- Botón del Carrito con su contador -->
       <div class="header-actions">

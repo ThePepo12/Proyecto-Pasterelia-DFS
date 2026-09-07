@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/categoria.css">
 
-  <!-- Script Principal Diferido -->
+  <!-- Scripts Modulares Diferidos -->
+  <script src="js/productos.js" defer></script>
+  <script src="js/usuarios.js" defer></script>
+  <script src="js/carrito.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -48,16 +51,18 @@
         <span class="badge-50">50 AÑOS</span>
       </a>
 
-      <!-- Menú de Navegación con 'Catálogo' activo -->
       <nav aria-label="Navegación principal del sitio">
         <ul>
           <li><a href="index.html">Inicio</a></li>
           <li><a href="categoria.html" class="active">Catálogo</a></li>
           <li><a href="producto.html">Producto</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
+
 
       <!-- Botón del Carrito con su contador -->
       <div class="header-actions">
@@ -417,17 +422,7 @@
 
       </section>
 
-      <!-- Sección para compartir el catálogo en redes sociales -->
-      <section style="margin: 3rem 0; padding: 2rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; text-align: center;">
-        <h3 style="font-family: var(--font-serif); color: var(--color-chocolate); margin-bottom: 0.5rem; font-size: 1.4rem;">¿Te gustaron nuestras creaciones?</h3>
-        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">¡Comparte nuestro catálogo de 50 aniversario con tus amigos y familiares!</p>
-        <div class="social-btn-group" style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
-          <button type="button" class="social-btn social-btn-ws" onclick="window.compartirEnRedes('whatsapp')" aria-label="Compartir en WhatsApp">💬 Compartir por WhatsApp</button>
-          <button type="button" class="social-btn social-btn-fb" onclick="window.compartirEnRedes('facebook')" aria-label="Compartir en Facebook">f Compartir en Facebook</button>
-          <button type="button" class="social-btn social-btn-tw" onclick="window.compartirEnRedes('twitter')" aria-label="Compartir en X">𝕏 Compartir en X</button>
-          <button type="button" class="social-btn social-btn-copy" onclick="window.compartirEnRedes('copiar')" aria-label="Copiar Enlace">🔗 Copiar enlace del catálogo</button>
-        </div>
-      </section>
+
 
     </div>
   </main>

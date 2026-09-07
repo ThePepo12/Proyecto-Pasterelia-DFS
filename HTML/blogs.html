@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/cabecera.css">
 
-  <!-- Script Principal Diferido -->
+  <!-- Scripts Modulares Diferidos -->
+  <script src="js/productos.js" defer></script>
+  <script src="js/usuarios.js" defer></script>
+  <script src="js/carrito.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -114,9 +117,8 @@
             <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem; flex: 1;">
               La hojarasca crujiente requiere un amasado exacto, reposo en frío y un toque sutil de pisco chileno. Conoce cómo Doña Elena perfeccionó esta masa en 1974 para que no se humedezca con el manjar artesanal.
             </p>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
               <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-main);">Por: Maestro Manuel Valenzuela</span>
-              <button type="button" class="btn btn-outline btn-sm" onclick="window.compartirEnRedes('whatsapp', '¡Mira este secreto para la hojarasca perfecta de Pastelería Mil Sabores!')">Compartir</button>
             </div>
           </div>
         </article>
@@ -137,9 +139,8 @@
             <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem; flex: 1;">
               La estudiante en práctica Camila Soto (Duoc UC) comparte cómo la combinación de harina de almendras y almidón de tapioca logra un volumen idéntico al bizcocho tradicional sin comprometer la digestibilidad.
             </p>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
               <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-main);">Por: Camila Soto (Duoc UC)</span>
-              <button type="button" class="btn btn-outline btn-sm" onclick="window.compartirEnRedes('whatsapp', '¡Excelente tip de repostería sin gluten de Duoc UC y Mil Sabores!')">Compartir</button>
             </div>
           </div>
         </article>
@@ -160,9 +161,8 @@
             <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem; flex: 1;">
               ¿Cómo se hornean 20 metros de torta sin que se desmorone? Recordamos las 72 horas ininterrumpidas de horneado, los 40 pasteleros voluntarios y el júbilo de compartir con Santiago entero en el Parque O'Higgins.
             </p>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
               <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-main);">Por: Archivo Histórico Mil Sabores</span>
-              <button type="button" class="btn btn-outline btn-sm" onclick="window.compartirEnRedes('whatsapp', '¡Impresionante la historia de la torta récord de 12 toneladas en Chile!')">Compartir</button>
             </div>
           </div>
         </article>
@@ -183,14 +183,63 @@
             <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.2rem; flex: 1;">
               Descubre qué temperatura de servicio y qué intensidad de tueste realzan el ganache oscuro y el bizcocho húmedo de nuestra Torta de Chocolate TC001 para tu sobremesa ideal.
             </p>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 1rem;">
               <span style="font-size: 0.82rem; font-weight: 600; color: var(--text-main);">Por: Chef Sommelier Invitado</span>
-              <button type="button" class="btn btn-outline btn-sm" onclick="window.compartirEnRedes('whatsapp', '¡Aprende cómo acompañar tu torta de chocolate con esta guía de Mil Sabores!')">Compartir</button>
             </div>
           </div>
         </article>
 
       </div>
+
+      <!-- ===================================================================== -->
+      <!-- SECCIÓN: INGRESAR RECETAS Y CONSEJOS (Requisito pizarra profesor)      -->
+      <!-- Puntuación / Comentarios / Historia                                   -->
+      <!-- ===================================================================== -->
+      <section style="margin-top: 4rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 2.2rem; box-shadow: 0 4px 15px rgba(93, 64, 55, 0.04);">
+        <h2 style="font-family: var(--font-serif); color: var(--color-chocolate); font-size: 1.5rem; margin-bottom: 0.6rem;">
+          👩‍🍳 Comparte tu Receta o Consejo Pastelero
+        </h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">
+          Espacio abierto para estudiantes de Gastronomía Duoc UC y amantes de la repostería. Comparte tu historia, receta o tip culinario.
+        </p>
+
+        <!-- Lista de recetas aportadas por la comunidad -->
+        <div id="lista-recetas-comunidad" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+          <!-- Inyectado por main.js -->
+        </div>
+
+        <form id="form-receta-blog" style="background: var(--bg-card-soft); border: 1px dashed var(--border-color); border-radius: 12px; padding: 1.5rem;">
+          <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--color-chocolate); margin-bottom: 1rem;">
+            📝 Nueva Publicación
+          </h3>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+            <div>
+              <label for="rec-autor" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem;">Tu Nombre / Estudiante Duoc</label>
+              <input type="text" id="rec-autor" required placeholder="Ej: Matías Silva" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-main);">
+            </div>
+            <div>
+              <label for="rec-titulo" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem;">Título de la Receta o Consejo</label>
+              <input type="text" id="rec-titulo" required placeholder="Ej: Glaseado espejo sin grumos" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-main);">
+            </div>
+            <div>
+              <label for="rec-puntuacion" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem;">Dificultad / Puntuación</label>
+              <select id="rec-puntuacion" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-main);">
+                <option value="⭐ Fácil (Principiantes)">⭐ Fácil (Principiantes)</option>
+                <option value="⭐⭐ Media (Aficionados)">⭐⭐ Media (Aficionados)</option>
+                <option value="⭐⭐⭐ Avanzada (Técnica Duoc)">⭐⭐⭐ Avanzada (Técnica Duoc)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.2rem;">
+            <label for="rec-contenido" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem;">Historia, ingredientes o consejo detallado</label>
+            <textarea id="rec-contenido" rows="4" required placeholder="Cuéntanos el secreto de tu preparación, historia familiar o tip para que quede perfecto..." style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-main);"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Publicar en el Blog 🚀</button>
+        </form>
+      </section>
 
     </div>
   </main>

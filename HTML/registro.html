@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/cabecera.css">
 
-  <!-- Script Principal Diferido -->
+  <!-- Scripts Modulares Diferidos -->
+  <script src="js/productos.js" defer></script>
+  <script src="js/usuarios.js" defer></script>
+  <script src="js/carrito.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -154,15 +157,22 @@
           </div>
 
           <!-- 8. Contraseña -->
-          <div style="margin-bottom: 1.8rem;">
+          <div style="margin-bottom: 1.2rem;">
             <label for="reg-pass" style="display: block; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem; font-size: 0.9rem;">Contraseña de Acceso *</label>
             <input type="password" id="reg-pass" required placeholder="Mínimo 6 caracteres" minlength="6" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-subtle); border-radius: 8px; font-size: 0.95rem; background: var(--bg-card-soft); color: var(--text-main);">
+          </div>
+
+          <!-- 9. Confirmar Contraseña -->
+          <div style="margin-bottom: 1.8rem;">
+            <label for="reg-pass2" style="display: block; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem; font-size: 0.9rem;">Confirmar Contraseña *</label>
+            <input type="password" id="reg-pass2" required placeholder="Repite tu contraseña" minlength="6" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-subtle); border-radius: 8px; font-size: 0.95rem; background: var(--bg-card-soft); color: var(--text-main);">
           </div>
 
           <!-- Botón de Envío -->
           <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem; font-size: 1.05rem; font-weight: 700;">
             🧁 Registrarme y Crear Cuenta
           </button>
+
 
           <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">
             ¿Ya tienes una cuenta creada? <a href="login.html" style="color: var(--color-chocolate); font-weight: 700; text-decoration: underline;">Inicia sesión aquí</a>

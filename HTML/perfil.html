@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/cabecera.css">
 
-  <!-- Script Principal Diferido -->
+  <!-- Scripts Modulares Diferidos -->
+  <script src="js/productos.js" defer></script>
+  <script src="js/usuarios.js" defer></script>
+  <script src="js/carrito.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -210,6 +213,25 @@
             <div id="historial-pedidos-lista">
               <!-- Inyectado por main.js -->
             </div>
+          </div>
+
+          <!-- Tarjeta de Sugerencias (Requisito pizarra profesor: Cuenta de Usuario -> Sugerir) -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 2rem; box-shadow: 0 4px 15px rgba(93, 64, 55, 0.04);">
+            <h2 style="font-family: var(--font-serif); color: var(--color-chocolate); font-size: 1.35rem; margin-bottom: 0.8rem; border-bottom: 2px solid var(--border-subtle); padding-bottom: 0.6rem;">
+              💡 Sugerir Nueva Torta o Sabor
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem;">
+              ¿Tienes una idea para nuestro menú de aniversario? ¡Cuéntanos qué sabor o combinación te gustaría ver!
+            </p>
+            <form id="form-sugerencia-perfil">
+              <div style="margin-bottom: 0.8rem;">
+                <input type="text" id="sug-titulo" required placeholder="Nombre de tu idea (Ej: Torta de lúcuma y nuez)" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card-soft); color: var(--text-main); font-size: 0.9rem;">
+              </div>
+              <div style="margin-bottom: 0.8rem;">
+                <textarea id="sug-detalle" rows="2" required placeholder="Describe qué ingredientes o decoración te gustaría..." style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card-soft); color: var(--text-main); font-size: 0.9rem;"></textarea>
+              </div>
+              <button type="submit" class="btn btn-outline btn-sm" style="width: 100%;">Enviar Sugerencia</button>
+            </form>
           </div>
 
         </div>

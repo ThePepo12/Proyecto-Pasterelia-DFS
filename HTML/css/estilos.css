@@ -175,50 +175,6 @@ a {
   color: var(--accent-gold);
 }
 
-/* Estilos de botones para compartir en redes sociales */
-.social-share-container {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.social-share-label {
-  font-weight: 700;
-  color: var(--text-main);
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.social-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-pill);
-  font-size: 0.82rem;
-  font-weight: 700;
-  cursor: pointer;
-  border: none;
-  transition: var(--transition);
-  text-decoration: none;
-  color: #fff;
-}
-
-.social-btn-ws { background-color: #25D366; }
-.social-btn-ws:hover { background-color: #1eb956; transform: translateY(-2px); }
-
-.social-btn-fb { background-color: #1877F2; }
-.social-btn-fb:hover { background-color: #1464c9; transform: translateY(-2px); }
-
-.social-btn-tw { background-color: #1DA1F2; }
-.social-btn-tw:hover { background-color: #198cd4; transform: translateY(-2px); }
-
-.social-btn-copy { background-color: var(--color-chocolate); }
-.social-btn-copy:hover { background-color: var(--accent-gold-hover); transform: translateY(-2px); }
 
 /* Estilos de títulos comunes */
 .section-title {

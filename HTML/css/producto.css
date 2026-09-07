@@ -47,8 +47,8 @@
 
 .product-detail-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 3.5rem;
+  grid-template-columns: 420px 1fr;
+  gap: 2.8rem;
   align-items: start;
 }
 
@@ -56,13 +56,14 @@
 .product-gallery {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
+  max-width: 420px;
 }
 
 .main-image-box {
   position: relative;
   width: 100%;
-  aspect-ratio: 1;
+  height: 330px;
   background-color: var(--bg-card);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -76,6 +77,39 @@
   object-fit: cover;
   display: block;
 }
+
+/* Fila de Miniaturas (Thumbnails) */
+.thumbnails-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.thumbnail-item {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid var(--border-subtle);
+  cursor: pointer;
+  transition: var(--transition);
+  background-color: var(--bg-card);
+  flex-shrink: 0;
+}
+
+.thumbnail-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbnail-item.active,
+.thumbnail-item:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 0 8px rgba(229, 169, 60, 0.35);
+}
+
 
 /* Columna Derecha: Información y Opciones de Personalización */
 .product-detail-info {
@@ -240,7 +274,7 @@
 }
 
 .related-img-box {
-  aspect-ratio: 1.1;
+  height: 160px;
   background-color: #160e0a;
   overflow: hidden;
 }
@@ -284,6 +318,14 @@
   .product-detail-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+
+  .product-gallery {
+    max-width: 100%;
+  }
+
+  .main-image-box {
+    height: 280px;
   }
 
   .related-grid {

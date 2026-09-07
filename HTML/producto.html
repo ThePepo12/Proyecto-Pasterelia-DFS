@@ -12,7 +12,10 @@
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/producto.css">
 
-  <!-- Script Principal Diferido -->
+  <!-- Scripts Modulares Diferidos -->
+  <script src="js/productos.js" defer></script>
+  <script src="js/usuarios.js" defer></script>
+  <script src="js/carrito.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -54,10 +57,13 @@
           <li><a href="index.html">Inicio</a></li>
           <li><a href="categoria.html">Catálogo</a></li>
           <li><a href="producto.html" class="active">Producto</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
           <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
+
 
       <!-- Botón del Carrito con su contador -->
       <div class="header-actions">
@@ -174,19 +180,54 @@
             </button>
           </div>
 
-          <!-- 5. Compartir en Redes Sociales (Requerimiento de la pauta) -->
-          <div class="social-share-container" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
-            <span class="social-share-title" style="display: block; font-weight: 700; margin-bottom: 0.6rem; color: var(--color-chocolate); font-size: 0.95rem;">📢 Compartir esta delicia:</span>
-            <div class="social-btn-group" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-              <button type="button" class="social-btn social-btn-ws" onclick="window.compartirEnRedes('whatsapp')" aria-label="Compartir en WhatsApp">💬 WhatsApp</button>
-              <button type="button" class="social-btn social-btn-fb" onclick="window.compartirEnRedes('facebook')" aria-label="Compartir en Facebook">f Facebook</button>
-              <button type="button" class="social-btn social-btn-tw" onclick="window.compartirEnRedes('twitter')" aria-label="Compartir en X">𝕏 Twitter</button>
-              <button type="button" class="social-btn social-btn-copy" onclick="window.compartirEnRedes('copiar')" aria-label="Copiar Enlace">🔗 Copiar enlace</button>
-            </div>
-          </div>
 
         </div>
 
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN: COMENTARIOS DEL PRODUCTO (Requisito pizarra profesor)         -->
+    <!-- Ver comentarios e ingresar nuevo comentario                            -->
+    <!-- ===================================================================== -->
+    <section class="container" style="margin-bottom: 3.5rem;">
+      <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 16px; padding: 2.2rem; box-shadow: 0 4px 15px rgba(93, 64, 55, 0.04);">
+        <h2 style="font-family: var(--font-serif); color: var(--color-chocolate); font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border-subtle); padding-bottom: 0.6rem;">
+          ⭐ Opiniones y Comentarios de Clientes
+        </h2>
+
+        <!-- Lista de comentarios -->
+        <div id="lista-comentarios-producto" style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+          <!-- Inyectado dinámicamente por main.js -->
+        </div>
+
+        <!-- Formulario para ingresar comentario -->
+        <div style="background: var(--bg-card-soft); border-radius: 12px; padding: 1.5rem; border: 1px dashed var(--border-color);">
+          <h3 style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--color-chocolate); margin-bottom: 1rem;">
+            ✍️ Deja tu Opinión sobre este Producto
+          </h3>
+          <form id="form-comentario-producto">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <label for="com-nombre" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem;">Tu Nombre</label>
+                <input type="text" id="com-nombre" required placeholder="Ej: Ana María" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-main);">
+              </div>
+              <div>
+                <label for="com-estrellas" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem;">Puntuación</label>
+                <select id="com-estrellas" style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-main);">
+                  <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ (5/5 Excelente)</option>
+                  <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ (4/5 Muy Buena)</option>
+                  <option value="⭐⭐⭐">⭐⭐⭐ (3/5 Buena)</option>
+                </select>
+              </div>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <label for="com-texto" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.3rem;">Tu Comentario</label>
+              <textarea id="com-texto" rows="3" required placeholder="Cuéntanos qué te pareció el sabor, la frescura y la presentación..." style="width: 100%; padding: 0.7rem; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-main);"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Publicar Comentario</button>
+          </form>
+        </div>
       </div>
     </section>
 
