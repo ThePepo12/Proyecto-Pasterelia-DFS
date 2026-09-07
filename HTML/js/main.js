@@ -247,12 +247,17 @@ document.addEventListener('DOMContentLoaded', () => {
   cargarDatosProducto();
   inicializarDetalleProducto();
   inicializarFiltrosCatalogo();
+<<<<<<< HEAD
   inicializarCarrito();
   inicializarRegistro();
   inicializarLogin();
   inicializarPerfil();
   inicializarBoleta();
   inicializarSeguimiento();
+=======
+  inicializarCarrito(); // Carga los items del carrito en carrito.html
+  inicializarFormularioContacto(); // Maneja el envío del formulario en contacto.html
+>>>>>>> be525a812f15679024620d323d3c20bca93441fc
 });
 
 // -----------------------------------------------------------------------------
@@ -957,6 +962,7 @@ function inicializarCarrito() {
 }
 
 // -----------------------------------------------------------------------------
+<<<<<<< HEAD
 // 13. FUNCIÓN: REGISTRO DE USUARIOS (REGISTRO.HTML)
 // Validación de mayores de 50 años (50% desc), FELICES50 y correo Duoc UC
 // -----------------------------------------------------------------------------
@@ -1479,3 +1485,28 @@ window.compartirEnRedes = function(red, tituloPersonalizado, urlPersonalizada) {
       break;
   }
 };
+=======
+// 12. FUNCIÓN: FORMULARIO DE CONTACTO (CONTACTO.HTML)
+// Simula el envío de consultas con validación y confirmación simple
+// -----------------------------------------------------------------------------
+function inicializarFormularioContacto() {
+  const formulario = document.getElementById('form-contacto');
+  if (!formulario) return;
+
+  formulario.addEventListener('submit', (evento) => {
+    evento.preventDefault(); // Evitamos recargar la página
+
+    const nombre = document.getElementById('contacto-nombre').value.trim();
+    const email = document.getElementById('contacto-email').value.trim();
+
+    if (!nombre || !email) {
+      alert('Por favor completa todos los campos requeridos (*)');
+      return;
+    }
+
+    // Mensaje de éxito comprensible
+    alert(`🧁 ¡Muchas gracias ${nombre}! Tu consulta ha sido enviada con éxito. Te responderemos pronto a ${email}.`);
+    formulario.reset();
+  });
+}
+>>>>>>> be525a812f15679024620d323d3c20bca93441fc
