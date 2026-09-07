@@ -1,4 +1,4 @@
-﻿/* =============================================================================
+/* =============================================================================
    ARCHIVO: carrito.css
    PROPÓSITO: Estilos exclusivos de la página carrito.html
    DEPENDE DE: estilos.css (variables globales)
@@ -305,4 +305,54 @@
 
 .link-seguir:hover {
   color: var(--accent-gold);
+}
+
+/* ---------------------------------------------------------------------------
+   8. RESPONSIVE PARA CARRITO
+   --------------------------------------------------------------------------- */
+@media (max-width: 800px) {
+  .cart-summary-col {
+    position: static;
+  }
+}
+
+@media (max-width: 520px) {
+  .cart-item {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    position: relative;
+  }
+
+  .cart-item-img {
+    width: 55px;
+    height: 55px;
+    font-size: 1.6rem;
+  }
+
+  .cart-item-info {
+    flex: 1 1 calc(100% - 100px);
+  }
+
+  .cart-item-precio {
+    width: 100%;
+    text-align: right;
+    font-size: 1.1rem;
+    border-top: 1px dashed var(--border-subtle);
+    padding-top: 0.5rem;
+  }
+
+  .cart-item-eliminar {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+
+  .promo-input-row {
+    flex-direction: column;
+  }
+
+  .btn-promo {
+    width: 100%;
+    padding: 0.65rem;
+  }
 }

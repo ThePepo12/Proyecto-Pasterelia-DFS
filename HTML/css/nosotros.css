@@ -1,4 +1,4 @@
-﻿/* =============================================================================
+/* =============================================================================
    ARCHIVO: nosotros.css
    PROPÓSITO: Estilos exclusivos de la página nosotros.html
    PROYECTO: Pastelería Mil Sabores - Duoc UC
@@ -277,6 +277,11 @@
   }
 
   .nosotros-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .guinness-box {
+    flex-direction: column;
+    text-align: center;
   }
 }

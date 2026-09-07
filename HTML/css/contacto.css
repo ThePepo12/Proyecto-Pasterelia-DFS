@@ -1,4 +1,4 @@
-﻿/* =============================================================================
+/* =============================================================================
    ARCHIVO: contacto.css
    PROPÓSITO: Estilos exclusivos de la página contacto.html
    PROYECTO: Pastelería Mil Sabores - Duoc UC
@@ -243,5 +243,16 @@
 
   .contacto-title {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .contacto-card,
+  .info-card {
+    padding: 1.5rem 1.1rem;
+  }
+
+  .contacto-title {
+    font-size: 1.8rem;
   }
 }
