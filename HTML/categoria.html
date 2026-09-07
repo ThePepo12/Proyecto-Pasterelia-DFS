@@ -75,12 +75,12 @@
   <!-- ======================================================================= -->
   <!-- 3. RUTA DE NAVEGACIÓN (BREADCRUMB)                                      -->
   <!-- ======================================================================= -->
-  <nav class="breadcrumb-section" aria-label="Miga de pan" style="background-color: rgba(22, 14, 10, 0.5); padding: 1rem 0; border-bottom: 1px solid var(--border-subtle);">
+  <nav class="breadcrumb-section" aria-label="Miga de pan" style="background-color: var(--bg-card-soft); padding: 1rem 0; border-bottom: 1px solid var(--border-subtle);">
     <div class="container">
       <div style="font-size: 0.88rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
-        <a href="index.html" style="color: var(--accent-gold);">Inicio</a>
+        <a href="index.html" style="color: var(--color-chocolate); font-weight: 600;">Inicio</a>
         <span style="color: var(--text-muted);">/</span>
-        <span style="color: var(--text-main); font-weight: 600;">Catálogo de Productos</span>
+        <span style="color: var(--text-main); font-weight: 700;">Catálogo de Productos</span>
       </div>
     </div>
   </nav>
@@ -96,16 +96,28 @@
       <section class="catalog-header-section" aria-labelledby="catalog-title">
         <h1 id="catalog-title" class="catalog-title">Nuestro <span>Catálogo Completo</span></h1>
         <p class="catalog-description">
-          Descubre nuestras 8 categorías de pastelería y repostería artesanal chilena. Utiliza los filtros o el buscador para encontrar rápidamente tu delicia favorita.
+          Descubre nuestras 8 categorías de pastelería y repostería artesanal chilena. Utiliza los filtros por categoría, forma de la torta o el buscador para encontrar rápidamente tu delicia favorita.
         </p>
 
-        <!-- Barra de Búsqueda Interactiva -->
-        <div class="search-container">
-          <span class="search-icon">🔍</span>
-          <input type="text" 
-                 id="buscador-productos" 
-                 class="search-input" 
-                 placeholder="Buscar por nombre, código o ingrediente...">
+        <!-- Barra de Búsqueda Interactiva y Filtro por Forma -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: center; margin: 1.5rem 0 1rem;">
+          <div class="search-container" style="margin: 0; flex: 1; min-width: 260px; max-width: 500px;">
+            <span class="search-icon">🔍</span>
+            <input type="text" 
+                   id="buscador-productos" 
+                   class="search-input" 
+                   placeholder="Buscar por nombre, código o ingrediente...">
+          </div>
+
+          <!-- Selector de Forma de la Torta (Requerimiento de la pauta) -->
+          <div class="shape-filter-box" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--bg-card-soft); padding: 0.5rem 0.9rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
+            <label for="filtro-forma" style="font-size: 0.9rem; font-weight: 700; color: var(--color-chocolate);">🎂 Forma:</label>
+            <select id="filtro-forma" style="padding: 0.4rem 0.8rem; border-radius: 6px; border: 1px solid var(--border-subtle); background: var(--bg-card); color: var(--text-main); font-size: 0.9rem; cursor: pointer;">
+              <option value="todas">Todas las Formas</option>
+              <option value="circular">Circulares</option>
+              <option value="cuadrada">Cuadradas</option>
+            </select>
+          </div>
         </div>
 
         <!-- Botones de Filtro por Categoría (Requerimiento de la pauta) -->
@@ -135,7 +147,7 @@
         <article class="catalog-item product-card" data-codigo="TC001" data-categoria="cuadradas" data-nombre="Torta Cuadrada de Chocolate" data-precio="45000">
           <a href="producto.html?id=TC001" class="catalog-img-box" aria-label="Ver detalle de Torta Cuadrada de Chocolate">
             <span class="catalog-code-badge">TC001</span>
-            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Torta Cuadrada de Chocolate" loading="lazy">
+            <img src="img/producto_TC001.avif" alt="Torta Cuadrada de Chocolate" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Tortas Cuadradas</span>
@@ -152,7 +164,7 @@
         <article class="catalog-item product-card" data-codigo="TC002" data-categoria="cuadradas" data-nombre="Torta Cuadrada de Frutas" data-precio="50000">
           <a href="producto.html?id=TC002" class="catalog-img-box" aria-label="Ver detalle de Torta Cuadrada de Frutas">
             <span class="catalog-code-badge">TC002</span>
-            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=600&q=80" alt="Torta Cuadrada de Frutas" loading="lazy">
+            <img src="img/producto_TC002.avif" alt="Torta Cuadrada de Frutas" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Tortas Cuadradas</span>
@@ -169,7 +181,7 @@
         <article class="catalog-item product-card" data-codigo="TT001" data-categoria="circulares" data-nombre="Torta Circular de Vainilla" data-precio="40000">
           <a href="producto.html?id=TT001" class="catalog-img-box" aria-label="Ver detalle de Torta Circular de Vainilla">
             <span class="catalog-code-badge">TT001</span>
-            <img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=600&q=80" alt="Torta Circular de Vainilla" loading="lazy">
+            <img src="img/producto_TT001.avif" alt="Torta Circular de Vainilla" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Tortas Circulares</span>
@@ -186,7 +198,7 @@
         <article class="catalog-item product-card" data-codigo="TT002" data-categoria="circulares" data-nombre="Torta Circular de Manjar" data-precio="42000">
           <a href="producto.html?id=TT002" class="catalog-img-box" aria-label="Ver detalle de Torta Circular de Manjar">
             <span class="catalog-code-badge">TT002</span>
-            <img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?auto=format&fit=crop&w=600&q=80" alt="Torta Circular de Manjar" loading="lazy">
+            <img src="img/producto_TT002.avif" alt="Torta Circular de Manjar" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Tortas Circulares</span>
@@ -203,7 +215,7 @@
         <article class="catalog-item product-card" data-codigo="PI001" data-categoria="individuales" data-nombre="Mousse de Chocolate" data-precio="5000">
           <a href="producto.html?id=PI001" class="catalog-img-box" aria-label="Ver detalle de Mousse de Chocolate">
             <span class="catalog-code-badge">PI001</span>
-            <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80" alt="Mousse de Chocolate" loading="lazy">
+            <img src="img/producto_PI001.jpg" alt="Mousse de Chocolate" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Postres Individuales</span>
@@ -220,7 +232,7 @@
         <article class="catalog-item product-card" data-codigo="PI002" data-categoria="individuales" data-nombre="Tiramisú Clásico" data-precio="5500">
           <a href="producto.html?id=PI002" class="catalog-img-box" aria-label="Ver detalle de Tiramisú Clásico">
             <span class="catalog-code-badge">PI002</span>
-            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80" alt="Tiramisú Clásico" loading="lazy">
+            <img src="img/producto_PI002.avif" alt="Tiramisú Clásico" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Postres Individuales</span>
@@ -237,7 +249,7 @@
         <article class="catalog-item product-card" data-codigo="PSA001" data-categoria="sin-azucar" data-nombre="Torta Sin Azúcar de Naranja" data-precio="48000">
           <a href="producto.html?id=PSA001" class="catalog-img-box" aria-label="Ver detalle de Torta Sin Azúcar de Naranja">
             <span class="catalog-code-badge">PSA001</span>
-            <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80" alt="Torta Sin Azúcar de Naranja" loading="lazy">
+            <img src="img/producto_PSA001.avif" alt="Torta Sin Azúcar de Naranja" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Sin Azúcar</span>
@@ -254,7 +266,7 @@
         <article class="catalog-item product-card" data-codigo="PSA002" data-categoria="sin-azucar" data-nombre="Cheesecake Sin Azúcar" data-precio="47000">
           <a href="producto.html?id=PSA002" class="catalog-img-box" aria-label="Ver detalle de Cheesecake Sin Azúcar">
             <span class="catalog-code-badge">PSA002</span>
-            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" alt="Cheesecake Sin Azúcar" loading="lazy">
+            <img src="img/producto_PSA002.avif" alt="Cheesecake Sin Azúcar" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Sin Azúcar</span>
@@ -271,7 +283,7 @@
         <article class="catalog-item product-card" data-codigo="PT001" data-categoria="tradicional" data-nombre="Empanada de Manzana" data-precio="3000">
           <a href="producto.html?id=PT001" class="catalog-img-box" aria-label="Ver detalle de Empanada de Manzana">
             <span class="catalog-code-badge">PT001</span>
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="Empanada de Manzana" loading="lazy">
+            <img src="img/producto_PT001.avif" alt="Empanada de Manzana" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Pastelería Tradicional</span>
@@ -288,7 +300,7 @@
         <article class="catalog-item product-card" data-codigo="PT002" data-categoria="tradicional" data-nombre="Tarta de Santiago" data-precio="6000">
           <a href="producto.html?id=PT002" class="catalog-img-box" aria-label="Ver detalle de Tarta de Santiago">
             <span class="catalog-code-badge">PT002</span>
-            <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80" alt="Tarta de Santiago" loading="lazy">
+            <img src="img/producto_PT002.avif" alt="Tarta de Santiago" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Pastelería Tradicional</span>
@@ -305,7 +317,7 @@
         <article class="catalog-item product-card" data-codigo="PG001" data-categoria="sin-gluten" data-nombre="Brownie Sin Gluten" data-precio="4000">
           <a href="producto.html?id=PG001" class="catalog-img-box" aria-label="Ver detalle de Brownie Sin Gluten">
             <span class="catalog-code-badge">PG001</span>
-            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" alt="Brownie Sin Gluten" loading="lazy">
+            <img src="img/producto_PG001.avif" alt="Brownie Sin Gluten" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Sin Gluten</span>
@@ -322,7 +334,7 @@
         <article class="catalog-item product-card" data-codigo="PG002" data-categoria="sin-gluten" data-nombre="Pan Sin Gluten" data-precio="3500">
           <a href="producto.html?id=PG002" class="catalog-img-box" aria-label="Ver detalle de Pan Sin Gluten">
             <span class="catalog-code-badge">PG002</span>
-            <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80" alt="Pan Sin Gluten" loading="lazy">
+            <img src="img/producto_PG002.avif" alt="Pan Sin Gluten" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Sin Gluten</span>
@@ -339,7 +351,7 @@
         <article class="catalog-item product-card" data-codigo="PV001" data-categoria="vegana" data-nombre="Torta Vegana de Chocolate" data-precio="50000">
           <a href="producto.html?id=PV001" class="catalog-img-box" aria-label="Ver detalle de Torta Vegana de Chocolate">
             <span class="catalog-code-badge">PV001</span>
-            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Torta Vegana de Chocolate" loading="lazy">
+            <img src="img/producto_PV001.avif" alt="Torta Vegana de Chocolate" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Productos Veganos</span>
@@ -356,7 +368,7 @@
         <article class="catalog-item product-card" data-codigo="PV002" data-categoria="vegana" data-nombre="Galletas Veganas de Avena" data-precio="4500">
           <a href="producto.html?id=PV002" class="catalog-img-box" aria-label="Ver detalle de Galletas Veganas de Avena">
             <span class="catalog-code-badge">PV002</span>
-            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=600&q=80" alt="Galletas Veganas de Avena" loading="lazy">
+            <img src="img/producto_PV002.avif" alt="Galletas Veganas de Avena" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Productos Veganos</span>
@@ -373,7 +385,7 @@
         <article class="catalog-item product-card" data-codigo="TE001" data-categoria="especiales" data-nombre="Torta Especial de Cumpleaños" data-precio="55000">
           <a href="producto.html?id=TE001" class="catalog-img-box" aria-label="Ver detalle de Torta Especial de Cumpleaños">
             <span class="catalog-code-badge">TE001</span>
-            <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=600&q=80" alt="Torta Especial de Cumpleaños" loading="lazy">
+            <img src="img/producto_TE001.avif" alt="Torta Especial de Cumpleaños" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Tortas Especiales</span>
@@ -390,7 +402,7 @@
         <article class="catalog-item product-card" data-codigo="TE002" data-categoria="especiales" data-nombre="Torta Especial de Boda" data-precio="60000">
           <a href="producto.html?id=TE002" class="catalog-img-box" aria-label="Ver detalle de Torta Especial de Boda">
             <span class="catalog-code-badge">TE002</span>
-            <img src="https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=600&q=80" alt="Torta Especial de Boda" loading="lazy">
+            <img src="img/producto_TE002.jpg" alt="Torta Especial de Boda" loading="lazy">
           </a>
           <div class="catalog-item-info">
             <span class="catalog-item-category">Tortas Especiales</span>
@@ -403,6 +415,18 @@
           </div>
         </article>
 
+      </section>
+
+      <!-- Sección para compartir el catálogo en redes sociales -->
+      <section style="margin: 3rem 0; padding: 2rem; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; text-align: center;">
+        <h3 style="font-family: var(--font-serif); color: var(--color-chocolate); margin-bottom: 0.5rem; font-size: 1.4rem;">¿Te gustaron nuestras creaciones?</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 1.2rem;">¡Comparte nuestro catálogo de 50 aniversario con tus amigos y familiares!</p>
+        <div class="social-btn-group" style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+          <button type="button" class="social-btn social-btn-ws" onclick="window.compartirEnRedes('whatsapp')" aria-label="Compartir en WhatsApp">💬 Compartir por WhatsApp</button>
+          <button type="button" class="social-btn social-btn-fb" onclick="window.compartirEnRedes('facebook')" aria-label="Compartir en Facebook">f Compartir en Facebook</button>
+          <button type="button" class="social-btn social-btn-tw" onclick="window.compartirEnRedes('twitter')" aria-label="Compartir en X">𝕏 Compartir en X</button>
+          <button type="button" class="social-btn social-btn-copy" onclick="window.compartirEnRedes('copiar')" aria-label="Copiar Enlace">🔗 Copiar enlace del catálogo</button>
+        </div>
       </section>
 
     </div>

@@ -75,12 +75,12 @@
   <!-- ======================================================================= -->
   <!-- 3. RUTA DE NAVEGACIÓN (BREADCRUMB)                                      -->
   <!-- ======================================================================= -->
-  <nav class="breadcrumb-section" aria-label="Miga de pan" style="background-color: rgba(22, 14, 10, 0.5); padding: 1rem 0; border-bottom: 1px solid var(--border-subtle);">
+  <nav class="breadcrumb-section" aria-label="Miga de pan" style="background-color: var(--bg-card-soft); padding: 1rem 0; border-bottom: 1px solid var(--border-subtle);">
     <div class="container">
       <div style="font-size: 0.88rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
-        <a href="index.html" style="color: var(--accent-gold);">Inicio</a>
+        <a href="index.html" style="color: var(--color-chocolate); font-weight: 600;">Inicio</a>
         <span style="color: var(--text-muted);">/</span>
-        <span style="color: var(--text-main); font-weight: 600;">Carrito de Compras</span>
+        <span style="color: var(--text-main); font-weight: 700;">Carrito de Compras</span>
       </div>
     </div>
   </nav>
@@ -120,6 +120,9 @@
         <!-- COLUMNA DERECHA: Resumen y opciones de pago                  -->
         <!-- ============================================================ -->
         <aside class="cart-summary-col" aria-label="Resumen del pedido">
+          <!-- Aviso Dinámico de Beneficios del Usuario -->
+          <div id="aviso-beneficio-usuario" class="cart-benefit-banner" style="display: none; background: rgba(229, 169, 60, 0.12); border: 1px solid var(--accent-gold); padding: 0.9rem; border-radius: 10px; margin-bottom: 1.2rem; font-size: 0.9rem; color: var(--accent-gold); line-height: 1.5; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);"></div>
+
           <div class="summary-card">
             <h2 class="summary-title">Resumen del Pedido</h2>
 
@@ -129,10 +132,10 @@
               <span id="resumen-subtotal">$0 CLP</span>
             </div>
 
-            <!-- Descuento (aparece solo si se aplica cupon) -->
+            <!-- Descuento (aparece solo si se aplica cupon o beneficio) -->
             <div class="summary-row descuento-row" id="fila-descuento" style="display: none;">
               <span id="label-descuento">Descuento</span>
-              <span id="resumen-descuento" style="color: #6fcf6f;">-$0 CLP</span>
+              <span id="resumen-descuento" style="color: #2e7d32; font-weight: 700;">-$0 CLP</span>
             </div>
 
             <!-- Envio fijo -->
@@ -145,6 +148,24 @@
             <div class="summary-row total-row">
               <span>Total</span>
               <span id="resumen-total">$3.500 CLP</span>
+            </div>
+
+            <!-- Programación de Entrega y Despacho -->
+            <div class="delivery-section" style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+              <h3 style="font-size: 0.95rem; font-family: var(--font-serif); color: var(--text-main); margin-bottom: 0.8rem;">📅 Programar Entrega</h3>
+              
+              <label for="input-fecha-entrega" class="promo-label">Fecha de entrega deseada:</label>
+              <input type="date" id="input-fecha-entrega" class="promo-input" style="width: 100%; margin-bottom: 0.8rem;" required>
+
+              <label for="select-horario-entrega" class="promo-label">Bloque horario preferido:</label>
+              <select id="select-horario-entrega" class="promo-input" style="width: 100%; margin-bottom: 0.8rem;">
+                <option value="10:00 a 14:00 hrs">Mañana (10:00 a 14:00 hrs)</option>
+                <option value="14:00 a 18:00 hrs" selected>Tarde (14:00 a 18:00 hrs)</option>
+                <option value="18:00 a 21:00 hrs">Vespertino (18:00 a 21:00 hrs)</option>
+              </select>
+
+              <label for="input-direccion-despacho" class="promo-label">Dirección de entrega (o retiro en tienda):</label>
+              <input type="text" id="input-direccion-despacho" class="promo-input" placeholder="Ej: Av. Concha y Toro #1234, Puente Alto" style="width: 100%;">
             </div>
 
             <!-- Campo de codigo de descuento -->
@@ -164,16 +185,16 @@
 
             <!-- Nota de descuentos especiales -->
             <p class="summary-note">
-              🎂 Adultos mayores (+60 años) acceden a 50% de descuento automático al identificarse en tienda.
+              🎂 <strong>Beneficio 50 Años:</strong> Personas mayores de 50 años acceden al 50% de descuento automático en todos los productos al registrarse.
             </p>
 
             <!-- Boton de confirmar pedido -->
             <button type="button" id="btn-confirmar" class="btn-checkout">
-              Confirmar Pedido &rarr;
+              Confirmar Pedido y Ver Boleta &rarr;
             </button>
 
             <!-- Enlace para seguir comprando -->
-            <a href="categoria.html" class="link-seguir">&larr; Seguir comprando</a>
+            <a href="categoria.html" class="link-seguir">&larr; Seguir comprando en Catálogo</a>
           </div>
         </aside>
 
