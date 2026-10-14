@@ -1,0 +1,25 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencias
+node_modules/
+
+# Builds de producción
+dist/
+dist-ssr/
+*.local
+
+# Reportes de cobertura
+coverage/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
