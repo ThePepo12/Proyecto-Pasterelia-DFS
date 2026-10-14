@@ -8,8 +8,7 @@
   <meta name="author" content="Estudiantes Duoc UC - Desarrollo Full Stack II">
   <title>Boleta Electrónica de Venta | Pastelería Mil Sabores</title>
 
-  <!-- Hojas de Estilos Externas -->
-  <link rel="stylesheet" href="css/estilos.css">
+<link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/cabecera.css">
 
   <style>
@@ -29,8 +28,7 @@
     }
   </style>
 
-  <!-- Scripts Modulares Diferidos -->
-  <script src="js/productos.js" defer></script>
+<script src="js/productos.js" defer></script>
   <script src="js/usuarios.js" defer></script>
   <script src="js/carrito.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -38,13 +36,10 @@
 
 <body>
 
-  <!-- ======================================================================= -->
-  <!-- 1. BARRA SUPERIOR DE AVISOS Y ACCESOS RÁPIDOS                         -->
-  <!-- ======================================================================= -->
-  <aside class="top-announcement no-print" aria-label="Avisos destacados">
+<aside class="top-announcement no-print" aria-label="Avisos destacados">
     <div class="container">
       <div>
-        <span>🎉 Celebramos 50 años: Descuento del <strong>50%</strong> para mayores de 50 años | Código <strong>FELICES50</strong></span>
+        <span>Celebramos 50 años: Descuento del <strong>50%</strong> para mayores de 50 años | Código <strong>FELICES50</strong></span>
       </div>
       <div class="top-user-links">
         <a href="login.html">Iniciar sesión</a>
@@ -54,10 +49,7 @@
     </div>
   </aside>
 
-  <!-- ======================================================================= -->
-  <!-- 2. CABECERA PRINCIPAL Y NAVEGACIÓN                                      -->
-  <!-- ======================================================================= -->
-  <header class="no-print">
+<header class="no-print">
     <div class="container barra-superior">
       <a href="index.html" class="logo" aria-label="Ir a inicio de Pastelería Mil Sabores">
         <span class="logo-icon">🧁</span>
@@ -78,7 +70,7 @@
 
       <div class="header-actions">
         <a href="carrito.html" class="boton-carro" aria-label="Ver carrito de compras">
-          <span>🛒 Carrito</span>
+          <span>Carrito</span>
           <span class="cont-carrito" id="num-cont-carrito">0</span>
         </a>
         <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
@@ -88,10 +80,7 @@
     </div>
   </header>
 
-  <!-- ======================================================================= -->
-  <!-- 3. RUTA DE NAVEGACIÓN (BREADCRUMB)                                      -->
-  <!-- ======================================================================= -->
-  <nav class="breadcrumb-section no-print" aria-label="Miga de pan" style="background-color: var(--bg-card-soft); padding: 1rem 0; border-bottom: 1px solid var(--border-subtle);">
+<nav class="breadcrumb-section no-print" aria-label="Miga de pan" style="background-color: var(--bg-card-soft); padding: 1rem 0; border-bottom: 1px solid var(--border-subtle);">
     <div class="container">
       <div style="font-size: 0.88rem; color: var(--text-secondary); display: flex; gap: 0.5rem;">
         <a href="index.html" style="color: var(--color-chocolate); font-weight: 600;">Inicio</a>
@@ -103,16 +92,12 @@
     </div>
   </nav>
 
-  <!-- ======================================================================= -->
-  <!-- 4. CONTENIDO PRINCIPAL: BOLETA ELECTRÓNICA DE VENTA                     -->
-  <!-- ======================================================================= -->
-  <main id="boleta-container" style="padding: 3rem 0 5rem;">
+<main id="boleta-container" style="padding: 3rem 0 5rem;">
     <div class="container" style="max-width: 800px;">
 
-      <!-- Acciones Superiores -->
-      <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+<div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
         <div style="display: flex; gap: 0.8rem; align-items: center;">
-          <span style="font-size: 1.5rem;">🎉</span>
+          <span style="font-size: 1.3rem; color: var(--accent-gold); font-weight: 700;">✓</span>
           <div>
             <h2 style="font-family: var(--font-serif); color: var(--color-chocolate); margin: 0; font-size: 1.25rem;">¡Tu pedido fue procesado con éxito!</h2>
             <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary);">Hemos enviado una copia de este comprobante a tu correo electrónico.</p>
@@ -120,23 +105,20 @@
         </div>
 
         <div style="display: flex; gap: 0.6rem;">
-          <button type="button" id="btn-imprimir-boleta" class="btn btn-outline btn-sm" style="display: inline-flex; align-items: center; gap: 0.3rem;">
-            🖨️ Imprimir / Guardar PDF
+          <button type="button" id="btn-imprimir-boleta" class="btn btn-outline btn-sm">
+            Imprimir / Guardar PDF
           </button>
-          <a href="seguimiento.html" class="btn btn-primary btn-sm" style="display: inline-flex; align-items: center; gap: 0.3rem;">
-            🚚 Rastrear Pedido en Vivo
+          <a href="seguimiento.html" class="btn btn-primary btn-sm">
+            Rastrear Pedido
           </a>
         </div>
       </div>
 
-      <!-- Documento Tributario Boleta -->
-      <div class="boleta-card" style="background: var(--bg-card); border: 2px solid var(--color-chocolate); border-radius: 16px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(93, 64, 55, 0.08);">
+<div class="boleta-card" style="background: var(--bg-card); border: 2px solid var(--color-chocolate); border-radius: 16px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(93, 64, 55, 0.08);">
 
-        <!-- Encabezado de la Empresa y Timbre SII -->
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--color-chocolate); padding-bottom: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1.5rem;">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--color-chocolate); padding-bottom: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1.5rem;">
           <div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
-              <span style="font-size: 1.8rem;">🧁</span>
+            <div style="margin-bottom: 0.4rem;">
               <h1 style="font-family: var(--font-cursive); font-size: 2rem; color: var(--color-chocolate); margin: 0;">Pastelería Mil Sabores</h1>
             </div>
             <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">PASTELERÍA Y CONFITERÍA MIL SABORES S.A.</p>
@@ -146,8 +128,7 @@
             <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">Teléfono: +56 2 2987 6543 | www.pasteleriamilsabores.cl</p>
           </div>
 
-          <!-- Cuadro Oficial de Boleta Electrónica -->
-          <div style="border: 2px solid #d32f2f; padding: 1rem 1.5rem; border-radius: 6px; text-align: center; min-width: 220px; background: #fff;">
+<div style="border: 2px solid #d32f2f; padding: 1rem 1.5rem; border-radius: 6px; text-align: center; min-width: 220px; background: #fff;">
             <p style="margin: 0; color: #d32f2f; font-weight: 800; font-size: 0.95rem;">R.U.T.: 76.543.210-K</p>
             <p style="margin: 0.4rem 0; color: #d32f2f; font-weight: 900; font-size: 1.05rem; letter-spacing: 0.5px;">BOLETA ELECTRÓNICA</p>
             <p style="margin: 0; color: #d32f2f; font-weight: 800; font-size: 1.15rem;" id="bol-folio">MS-000000</p>
@@ -155,8 +136,7 @@
           </div>
         </div>
 
-        <!-- Datos del Cliente y Despacho -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem; background: var(--bg-card-soft); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--border-subtle); font-size: 0.9rem;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 2rem; background: var(--bg-card-soft); padding: 1.2rem; border-radius: 10px; border: 1px solid var(--border-subtle); font-size: 0.9rem;">
           <div>
             <p style="margin: 0 0 0.4rem;"><strong>Señor(a):</strong> <span id="bol-cliente">Cliente</span></p>
             <p style="margin: 0 0 0.4rem;"><strong>Correo:</strong> <span id="bol-email">correo@ejemplo.com</span></p>
@@ -169,8 +149,7 @@
           </div>
         </div>
 
-        <!-- Tabla de Items Detallada -->
-        <div style="overflow-x: auto; margin-bottom: 2rem;">
+<div style="overflow-x: auto; margin-bottom: 2rem;">
           <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
             <thead>
               <tr style="background: var(--color-chocolate); color: #FFF5E1;">
@@ -182,13 +161,12 @@
               </tr>
             </thead>
             <tbody id="bol-items-body">
-              <!-- Inyectado por main.js -->
+              
             </tbody>
           </table>
         </div>
 
-        <!-- Resumen Financiero: Subtotal, Descuento, Envio, IVA y Total -->
-        <div style="display: flex; justify-content: flex-end;">
+<div style="display: flex; justify-content: flex-end;">
           <div style="min-width: 280px; font-size: 0.95rem;">
             <div style="display: flex; justify-content: space-between; padding: 0.4rem 0;">
               <span style="color: var(--text-secondary);">Subtotal Neto:</span>
@@ -217,26 +195,21 @@
           </div>
         </div>
 
-        <!-- Pie de Boleta -->
-        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-subtle); text-align: center; font-size: 0.8rem; color: var(--text-muted);">
-          <p style="margin: 0 0 0.3rem;">🎂 <strong>Gracias por celebrar 50 años de dulzura junto a Pastelería Mil Sabores.</strong></p>
+<div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-subtle); text-align: center; font-size: 0.8rem; color: var(--text-muted);">
+          <p style="margin: 0 0 0.3rem;"><strong>Gracias por celebrar 50 años de dulzura junto a Pastelería Mil Sabores.</strong></p>
           <p style="margin: 0;">Timbre Electrónico D.T.E. - Resolución S.I.I. N° 80 de 2014. Verifique documento en www.sii.cl</p>
         </div>
 
       </div>
 
-      <!-- Enlace para volver -->
-      <div class="no-print" style="text-align: center; margin-top: 2rem;">
+<div class="no-print" style="text-align: center; margin-top: 2rem;">
         <a href="categoria.html" class="link-seguir">&larr; Volver al Catálogo de Productos</a>
       </div>
 
     </div>
   </main>
 
-  <!-- ======================================================================= -->
-  <!-- 5. PIE DE PÁGINA (FOOTER INFORMATIVO)                                   -->
-  <!-- ======================================================================= -->
-  <footer class="no-print">
+<footer class="no-print">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
@@ -272,11 +245,11 @@
 
         <div class="footer-col">
           <h4>Horarios y Atención</h4>
-          <p>📍 Av. Concha y Toro #1234, Santiago, Chile</p>
-          <p>🕒 Lunes a Sábado: 09:00 - 20:00 hrs</p>
-          <p>🕒 Domingo: 10:00 - 16:00 hrs</p>
-          <p>📞 Teléfono: +56 2 2987 6543</p>
-          <p>✉️ contacto@pasteleriamilsabores.cl</p>
+          <p>Av. Concha y Toro #1234, Santiago, Chile</p>
+          <p>Lunes a Sábado: 09:00 - 20:00 hrs</p>
+          <p>Domingo: 10:00 - 16:00 hrs</p>
+          <p>Teléfono: +56 2 2987 6543</p>
+          <p>contacto@pasteleriamilsabores.cl</p>
         </div>
       </div>
 

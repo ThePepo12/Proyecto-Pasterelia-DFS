@@ -1,15 +1,10 @@
-// =============================================================================
-// ARCHIVO: carrito.js
-// PROYECTO: Pastelería Mil Sabores - Evaluación 1 (DSY1104)
-// PROPÓSITO: Carrito de compras, descuentos (+50 años y cupones), boleta y seguimiento
-// =============================================================================
-
-// -----------------------------------------------------------------------------
-// 1. FUNCIONES BASE DEL CARRITO (LOCALSTORAGE)
-// -----------------------------------------------------------------------------
 function obtenerCarrito() {
-  const datosGuardados = localStorage.getItem('carrito_mil_sabores');
-  return datosGuardados ? JSON.parse(datosGuardados) : [];
+  try {
+    const datosGuardados = localStorage.getItem('carrito_mil_sabores');
+    return datosGuardados ? JSON.parse(datosGuardados) : [];
+  } catch (e) {
+    return [];
+  }
 }
 
 function guardarCarrito(listaProductos) {
@@ -22,10 +17,7 @@ function actualizarContadorCarrito() {
   if (!contadorElemento) return;
 
   const carrito = obtenerCarrito();
-  let totalProductos = 0;
-  for (let i = 0; i < carrito.length; i++) {
-    totalProductos += carrito[i].cantidad;
-  }
+  const totalProductos = carrito.reduce((sum, item) => sum + item.cantidad, 0);
   contadorElemento.textContent = totalProductos;
 }
 
@@ -70,14 +62,11 @@ function activarBotonesAgregar() {
       };
 
       agregarAlCarrito(nuevoProducto);
-      alert(`🧁 ¡"${nombre}" fue agregado a tu carrito!`);
+      alert(`"${nombre}" fue agregado al carrito.`);
     });
   });
 }
 
-// -----------------------------------------------------------------------------
-// 2. VISTA DEL CARRITO DE COMPRAS (CARRITO.HTML)
-// -----------------------------------------------------------------------------
 function inicializarCarrito() {
   const contenedor = document.getElementById('lista-items-carrito');
   if (!contenedor) return;
@@ -86,7 +75,6 @@ function inicializarCarrito() {
   let motivoDescuento = '';
   const usuario = (typeof obtenerUsuarioActual === 'function') ? obtenerUsuarioActual() : null;
 
-  // Detección automática de beneficios del usuario activo
   if (usuario) {
     if (usuario.descuentoSenior) {
       porcentajeDescuento = 50;
@@ -117,7 +105,6 @@ function inicializarCarrito() {
       const precioTotalItem = item.precio * item.cantidad;
       subtotal += precioTotalItem;
 
-      // Buscar foto del producto en el catálogo
       const prodEncontrado = (typeof LISTA_PRODUCTOS !== 'undefined') ? LISTA_PRODUCTOS.find(p => p.codigo === item.codigo) : null;
       const imgPath = prodEncontrado ? prodEncontrado.imagen : 'img/producto_TE001.avif';
 
@@ -146,7 +133,6 @@ function inicializarCarrito() {
       contenedor.appendChild(fila);
     });
 
-    // Eventos: restar cantidad
     contenedor.querySelectorAll('.btn-minus').forEach(btn => {
       btn.addEventListener('click', () => {
         const indice = parseInt(btn.getAttribute('data-indice'), 10);
@@ -161,7 +147,6 @@ function inicializarCarrito() {
       });
     });
 
-    // Eventos: sumar cantidad
     contenedor.querySelectorAll('.btn-plus').forEach(btn => {
       btn.addEventListener('click', () => {
         const indice = parseInt(btn.getAttribute('data-indice'), 10);
@@ -172,7 +157,6 @@ function inicializarCarrito() {
       });
     });
 
-    // Eventos: eliminar producto
     contenedor.querySelectorAll('.cart-item-eliminar').forEach(btn => {
       btn.addEventListener('click', () => {
         const indice = parseInt(btn.getAttribute('data-indice'), 10);
@@ -209,20 +193,18 @@ function inicializarCarrito() {
       filaDescuento.style.display = 'none';
     }
 
-    // Aviso de beneficio activo
     const avisoBeneficio = document.getElementById('aviso-beneficio-usuario');
     if (avisoBeneficio && usuario) {
       if (usuario.descuentoSenior) {
         avisoBeneficio.style.display = 'block';
-        avisoBeneficio.innerHTML = `🎉 <strong>¡Beneficio Senior Aplicado!</strong> Tienes un 50% de descuento en todos tus productos por tener ${usuario.edad || '50+'} años.`;
+        avisoBeneficio.innerHTML = `<strong>Beneficio Senior Aplicado:</strong> Tienes un 50% de descuento en todos tus productos por tener ${usuario.edad || '50+'} años.`;
       } else if (usuario.esEstudianteDuoc) {
         avisoBeneficio.style.display = 'block';
-        avisoBeneficio.innerHTML = `🎓 <strong>¡Comunidad Duoc UC!</strong> Registrado con correo institucional. Tu regalo de cumpleaños está asegurado.`;
+        avisoBeneficio.innerHTML = `<strong>Comunidad Duoc UC:</strong> Registrado con correo institucional. Beneficio de cumpleaños activo.`;
       }
     }
   }
 
-  // Aplicación manual de cupones
   const btnAplicar = document.getElementById('btn-aplicar-codigo');
   if (btnAplicar) {
     btnAplicar.addEventListener('click', () => {
@@ -279,7 +261,6 @@ function inicializarCarrito() {
     });
   }
 
-  // Confirmar Pedido -> Genera Boleta Electrónica
   const btnConfirmar = document.getElementById('btn-confirmar');
   if (btnConfirmar) {
     btnConfirmar.addEventListener('click', () => {
@@ -327,17 +308,15 @@ function inicializarCarrito() {
 
       localStorage.setItem('ultimo_pedido_mil_sabores', JSON.stringify(nuevoPedido));
 
-      // Guardar en historial de compras
       try {
         const historial = JSON.parse(localStorage.getItem('historial_pedidos_mil_sabores') || '[]');
         historial.unshift(nuevoPedido);
         localStorage.setItem('historial_pedidos_mil_sabores', JSON.stringify(historial));
       } catch (e) {}
 
-      // Vaciamos el carrito tras comprar
       guardarCarrito([]);
 
-      alert('🎉 ¡Pedido generado con éxito! Redirigiendo a tu boleta electrónica...');
+      alert('Pedido generado con éxito. Redirigiendo a tu boleta electrónica...');
       window.location.href = 'boleta.html';
     });
   }
@@ -345,9 +324,6 @@ function inicializarCarrito() {
   renderizarCarrito();
 }
 
-// -----------------------------------------------------------------------------
-// 3. BOLETA ELECTRÓNICA (BOLETA.HTML)
-// -----------------------------------------------------------------------------
 function inicializarBoleta() {
   const contenedorBoleta = document.getElementById('boleta-container');
   if (!contenedorBoleta) return;
@@ -444,9 +420,6 @@ function inicializarBoleta() {
   }
 }
 
-// -----------------------------------------------------------------------------
-// 4. SEGUIMIENTO DE ENVÍOS (SEGUIMIENTO.HTML)
-// -----------------------------------------------------------------------------
 function inicializarSeguimiento() {
   const contenedor = document.getElementById('seguimiento-container');
   if (!contenedor) return;
@@ -485,7 +458,7 @@ function inicializarSeguimiento() {
     { key: 'entregado', titulo: '5. Entregado con Éxito', desc: '¡Disfruta tus momentos dulces con Pastelería Mil Sabores!' }
   ];
 
-  let estadoActualIndex = 2; // Estado visual interactivo por defecto
+  let estadoActualIndex = 2;
 
   function actualizarVisualizacionEstado(index) {
     estadoActualIndex = index;

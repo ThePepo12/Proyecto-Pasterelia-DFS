@@ -1,22 +1,13 @@
-/* =============================================================================
-   ARCHIVO: contacto.css
-   PROPÓSITO: Estilos exclusivos de la página contacto.html
-   PROYECTO: Pastelería Mil Sabores - Duoc UC
-   ============================================================================= */
-
-/* ---------------------------------------------------------------------------
-   1. ENCABEZADO DE LA PÁGINA
-   --------------------------------------------------------------------------- */
-.contacto-header {
-  padding: 3rem 0 1.5rem 0;
+﻿.contacto-header {
+  padding: 48px 0 24px 0;
   text-align: center;
 }
 
 .contacto-title {
   font-family: var(--font-serif);
-  font-size: 2.6rem;
+  font-size: 42px;
   color: var(--text-main);
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .contacto-title span {
@@ -26,56 +17,50 @@
 
 .contacto-subtitle {
   color: var(--text-secondary);
-  font-size: 1.05rem;
+  font-size: 17px;
   max-width: 680px;
   margin: 0 auto;
 }
 
-/* ---------------------------------------------------------------------------
-   2. LAYOUT DE DOS COLUMNAS (Formulario + Información)
-   --------------------------------------------------------------------------- */
 .contacto-layout {
   display: grid;
   grid-template-columns: 1.25fr 0.95fr;
-  gap: 2.5rem;
+  gap: 40px;
   align-items: start;
-  margin-bottom: 4.5rem;
-  margin-top: 1.5rem;
+  margin-bottom: 72px;
+  margin-top: 24px;
 }
 
-/* ---------------------------------------------------------------------------
-   3. COLUMNA 1: FORMULARIO DE CONTACTO
-   --------------------------------------------------------------------------- */
 .contacto-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 2.2rem;
+  padding: 35px;
   box-shadow: var(--shadow-sm);
 }
 
 .contacto-card h2 {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 26px;
   color: var(--text-main);
-  margin-bottom: 0.3rem;
+  margin-bottom: 5px;
 }
 
 .form-instruction {
-  font-size: 0.9rem;
+  font-size: 14px;
   color: var(--text-secondary);
-  margin-bottom: 1.8rem;
+  margin-bottom: 29px;
 }
 
 .form-group {
-  margin-bottom: 1.3rem;
+  margin-bottom: 21px;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 6px;
 }
 
 .form-group label {
-  font-size: 0.9rem;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text-main);
 }
@@ -84,7 +69,6 @@
   color: var(--accent-gold);
 }
 
-/* Campos de entrada, select y textarea */
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -92,10 +76,10 @@
   background-color: var(--bg-input);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  padding: 0.8rem 1rem;
+  padding: 13px 16px;
   color: var(--text-main);
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 15px;
   outline: none;
   transition: var(--transition);
 }
@@ -123,43 +107,40 @@
 
 .btn-submit {
   width: 100%;
-  padding: 0.9rem 1.5rem;
-  font-size: 1rem;
+  padding: 14px 24px;
+  font-size: 16px;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: 8px;
 }
 
-/* ---------------------------------------------------------------------------
-   4. COLUMNA 2: INFORMACIÓN DE ATENCIÓN Y PROMOCIONES
-   --------------------------------------------------------------------------- */
 .contacto-info-col {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 24px;
 }
 
 .info-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 2rem;
+  padding: 32px;
   box-shadow: var(--shadow-sm);
 }
 
 .info-card h2 {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 24px;
   color: var(--text-main);
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
+  margin-bottom: 24px;
+  padding-bottom: 13px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .info-item {
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1.4rem;
+  gap: 16px;
+  margin-bottom: 22px;
   align-items: flex-start;
 }
 
@@ -168,43 +149,42 @@
 }
 
 .info-icon {
-  font-size: 1.6rem;
+  font-size: 26px;
   flex-shrink: 0;
-  margin-top: 0.1rem;
+  margin-top: 2px;
 }
 
 .info-item strong {
   display: block;
-  font-size: 0.95rem;
+  font-size: 15px;
   color: var(--accent-gold);
-  margin-bottom: 0.2rem;
+  margin-bottom: 3px;
 }
 
 .info-item p {
-  font-size: 0.92rem;
+  font-size: 15px;
   color: var(--text-main);
   margin: 0;
   line-height: 1.4;
 }
 
 .info-detail {
-  font-size: 0.8rem;
+  font-size: 13px;
   color: var(--text-secondary);
 }
 
-/* Tarjeta informativa de beneficios */
 .info-promo-card {
   background: linear-gradient(135deg, rgba(44, 29, 21, 0.9), rgba(39, 25, 17, 0.9));
   border: 1px dashed var(--accent-gold);
   border-radius: var(--radius-md);
-  padding: 1.5rem;
+  padding: 24px;
 }
 
 .info-promo-card h3 {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 19px;
   color: var(--accent-gold);
-  margin-bottom: 0.8rem;
+  margin-bottom: 13px;
 }
 
 .info-promo-card ul {
@@ -213,11 +193,11 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 11px;
 }
 
 .info-promo-card li {
-  font-size: 0.88rem;
+  font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.45;
 }
@@ -232,27 +212,24 @@
   font-style: normal;
 }
 
-/* ---------------------------------------------------------------------------
-   5. RESPONSIVE
-   --------------------------------------------------------------------------- */
 @media (max-width: 860px) {
   .contacto-layout {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 32px;
   }
 
   .contacto-title {
-    font-size: 2rem;
+    font-size: 32px;
   }
 }
 
 @media (max-width: 520px) {
   .contacto-card,
   .info-card {
-    padding: 1.5rem 1.1rem;
+    padding: 24px 18px;
   }
 
   .contacto-title {
-    font-size: 1.8rem;
+    font-size: 29px;
   }
 }

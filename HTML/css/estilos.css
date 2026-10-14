@@ -1,43 +1,37 @@
-/* ==========================================================================
-   PASTELERÍA MIL SABORES - ESTILOS GLOBALES
-   Asignatura: Desarrollo Full Stack II (DSY1104) - Duoc UC
-   Paleta basada en Mockup: Dark Chocolate, Dorado Ámbar y Crema Pastel
-   ========================================================================== */
-
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Pacifico&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap');
 @import url('cabecera.css');
 
 :root {
-  /* Paleta de Colores Oficial del Mockup */
-  --bg-main: #1f140e;            /* Chocolate oscuro principal */
-  --bg-card: #2c1d15;            /* Fondo de tarjetas y secciones */
-  --bg-card-hover: #36241b;      /* Hover en tarjetas */
-  --bg-card-soft: #281a13;       /* Contraste suave interno */
-  --bg-input: #271911;           /* Fondo de campos de formulario */
   
-  --accent-gold: #e5a93c;        /* Dorado ámbar brillante del mockup */
-  --accent-gold-hover: #f3b952;  /* Dorado más claro para hover */
-  --accent-terracotta: #c87941;  /* Terracota cálido */
-  --accent-cream: #fff5e1;       /* Crema pastel */
-  --accent-rose: #ffc0cb;        /* Rosa suave para detalles */
-  --color-chocolate: #e5a93c;    /* Dorado del mockup para botones y acentos */
-  --color-rose: #e5a93c;         /* Acento dorado brillante */
+  --bg-main: #1f140e;            
+  --bg-card: #2c1d15;            
+  --bg-card-hover: #36241b;      
+  --bg-card-soft: #281a13;       
+  --bg-input: #271911;           
   
-  --text-main: #fbf5ef;          /* Blanco crema de alta legibilidad */
-  --text-secondary: #baa89b;     /* Texto beige / gris suave */
-  --text-muted: #8c786b;         /* Texto atenuado */
-  --text-dark: #271a11;          /* Texto para botones dorados */
-  --text-light: #ffffff;         /* Blanco puro */
+  --accent-gold: #e5a93c;        
+  --accent-gold-hover: #f3b952;  
+  --accent-terracotta: #c87941;  
+  --accent-cream: #fff5e1;       
+  --accent-rose: #ffc0cb;        
+  --color-chocolate: var(--accent-gold);
+  --color-rose: var(--accent-gold);
   
-  --border-color: rgba(229, 169, 60, 0.25);    /* Bordes dorados tenues */
-  --border-subtle: rgba(255, 255, 255, 0.08);  /* Bordes muy suaves */
+  --text-main: #fbf5ef;          
+  --text-secondary: #baa89b;     
+  --text-muted: #8c786b;         
+  --text-dark: #271a11;          
+  --text-light: #ffffff;         
   
-  /* Tipografías del Mockup */
+  --border-color: rgba(229, 169, 60, 0.25);    
+  --border-subtle: rgba(255, 255, 255, 0.08);  
+  
+  
   --font-sans: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;  /* Títulos elegantes del mockup */
-  --font-cursive: 'Pacifico', cursive;               /* Cursiva artística */
+  --font-serif: 'Playfair Display', Georgia, serif;  
+  --font-cursive: 'Pacifico', cursive;               
   
-  /* Sombras y transiciones */
+  
   --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.45);
   --shadow-gold: 0 4px 20px rgba(229, 169, 60, 0.25);
@@ -48,7 +42,6 @@
   --transition: all 0.3s ease;
 }
 
-/* Reset básico y normalización */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -72,31 +65,28 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Contenedor general */
 .container {
   width: 100%;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 24px;
 }
 
-/* Enlaces globales */
 a {
   color: inherit;
   text-decoration: none;
   transition: var(--transition);
 }
 
-/* Botones comunes */
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.6rem;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 26px;
   font-family: var(--font-sans);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 15px;
   border-radius: var(--radius-pill);
   cursor: pointer;
   border: 2px solid transparent;
@@ -143,20 +133,18 @@ a {
 }
 
 .btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
+  padding: 8px 16px;
+  font-size: 14px;
 }
 
-/* Badges e insignias */
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
+  padding: 4px 12px;
+  font-size: 12px;
   font-weight: 700;
   border-radius: var(--radius-pill);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .badge-gold {
@@ -175,14 +163,12 @@ a {
   color: var(--accent-gold);
 }
 
-
-/* Estilos de títulos comunes */
 .section-title {
   font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-size: 35px;
   color: var(--text-main);
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .section-title span {
@@ -194,14 +180,13 @@ a {
   color: var(--text-secondary);
   text-align: center;
   max-width: 650px;
-  margin: 0 auto 2.5rem auto;
-  font-size: 1.05rem;
+  margin: 0 auto 40px auto;
+  font-size: 17px;
 }
 
-/* Divisor sutil */
 .divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border-color), transparent);
   border: none;
-  margin: 3rem 0;
+  margin: 48px 0;
 }

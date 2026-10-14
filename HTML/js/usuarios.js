@@ -1,12 +1,3 @@
-// =============================================================================
-// ARCHIVO: usuarios.js
-// PROYECTO: Pastelería Mil Sabores - Evaluación 1 (DSY1104)
-// PROPÓSITO: Autenticación, registro, cálculo de edad (+50 años), perfil y sesiones
-// =============================================================================
-
-// -----------------------------------------------------------------------------
-// 1. GESTIÓN DE SESIÓN Y PERSISTENCIA (LOCALSTORAGE)
-// -----------------------------------------------------------------------------
 function obtenerUsuarioActual() {
   try {
     const data = localStorage.getItem('usuario_mil_sabores_activo');
@@ -46,9 +37,6 @@ function guardarUsuarioRegistrado(usuario) {
   guardarUsuarioActual(usuario);
 }
 
-// -----------------------------------------------------------------------------
-// 2. CÁLCULO DE EDAD (DETECCIÓN AUTOMÁTICA ADULTO MAYOR +50 AÑOS)
-// -----------------------------------------------------------------------------
 function calcularEdad(fechaNacimientoStr) {
   if (!fechaNacimientoStr) return 0;
   const hoy = new Date();
@@ -61,9 +49,6 @@ function calcularEdad(fechaNacimientoStr) {
   return isNaN(edad) ? 0 : edad;
 }
 
-// -----------------------------------------------------------------------------
-// 3. BARRA SUPERIOR DE USUARIO (NAVBAR COMPARTIDO)
-// -----------------------------------------------------------------------------
 function actualizarBarraUsuario() {
   const contenedorEnlaces = document.querySelector('.top-user-links');
   if (!contenedorEnlaces) return;
@@ -74,14 +59,14 @@ function actualizarBarraUsuario() {
     if (usuario.descuentoSenior) {
       insignia = ' <span class="badge badge-rose" style="font-size: 0.68rem; margin-left: 4px;">50% Senior (+50 años)</span>';
     } else if (usuario.esEstudianteDuoc) {
-      insignia = ' <span class="badge badge-rose" style="font-size: 0.68rem; margin-left: 4px;">Duoc UC 🎂</span>';
+      insignia = ' <span class="badge badge-rose" style="font-size: 0.68rem; margin-left: 4px;">Duoc UC</span>';
     } else if (usuario.descuentoFelices50) {
       insignia = ' <span class="badge badge-rose" style="font-size: 0.68rem; margin-left: 4px;">-10% FELICES50</span>';
     }
 
     const primerNombre = (usuario.nombre || 'Usuario').split(' ')[0];
     contenedorEnlaces.innerHTML = `
-      <span style="color: #FFF5E1; font-weight: 600;">👤 Hola, <strong>${primerNombre}</strong>${insignia}</span>
+      <span style="color: #FFF5E1; font-weight: 600;">Hola, <strong>${primerNombre}</strong>${insignia}</span>
       <span>|</span>
       <a href="perfil.html" style="color: var(--color-rose); font-weight: 700;">Mi Perfil</a>
       <span>|</span>
@@ -93,7 +78,7 @@ function actualizarBarraUsuario() {
       btnSalir.addEventListener('click', (e) => {
         e.preventDefault();
         guardarUsuarioActual(null);
-        alert('🧁 Has cerrado sesión correctamente.');
+        alert('Has cerrado sesión correctamente.');
         window.location.reload();
       });
     }
@@ -106,9 +91,6 @@ function actualizarBarraUsuario() {
   }
 }
 
-// -----------------------------------------------------------------------------
-// 4. REGISTRO DE USUARIOS (REGISTRO.HTML)
-// -----------------------------------------------------------------------------
 function inicializarRegistro() {
   const form = document.getElementById('form-registro');
   if (!form) return;
@@ -118,21 +100,19 @@ function inicializarRegistro() {
   const alertDuoc = document.getElementById('alert-duoc-benefit');
   const inputEmail = document.getElementById('reg-email');
 
-  // Detección visual en vivo al cambiar la fecha
   if (inputFecha && alertSenior) {
     inputFecha.addEventListener('change', () => {
       const edad = calcularEdad(inputFecha.value);
       alertSenior.style.display = edad >= 50 ? 'block' : 'none';
-      if (edad >= 50) alertSenior.textContent = `🎉 Tienes ${edad} años. Recibirás un 50% de descuento automático en tus pedidos.`;
+      if (edad >= 50) alertSenior.textContent = `Tienes ${edad} años. Recibirás un 50% de descuento automático en tus pedidos.`;
     });
   }
 
-  // Detección visual en vivo si es correo institucional Duoc UC
   if (inputEmail && alertDuoc) {
     inputEmail.addEventListener('input', () => {
       const esDuoc = inputEmail.value.toLowerCase().includes('@duocuc.cl');
       alertDuoc.style.display = esDuoc ? 'block' : 'none';
-      if (esDuoc) alertDuoc.textContent = '🎓 Correo @duocuc.cl detectado: Beneficio de torta gratis para tu cumpleaños activado.';
+      if (esDuoc) alertDuoc.textContent = 'Correo @duocuc.cl detectado: Beneficio de torta para tu cumpleaños activado.';
     });
   }
 
@@ -166,14 +146,11 @@ function inicializarRegistro() {
     };
 
     guardarUsuarioRegistrado(nuevoUsuario);
-    alert(`🎉 ¡Cuenta creada con éxito, ${nombre}! Bienvenido a la familia Mil Sabores.`);
+    alert(`Cuenta creada con éxito, ${nombre}. Bienvenido a Pastelería Mil Sabores.`);
     window.location.href = 'perfil.html';
   });
 }
 
-// -----------------------------------------------------------------------------
-// 5. INICIO DE SESIÓN (LOGIN.HTML)
-// -----------------------------------------------------------------------------
 function inicializarLogin() {
   const form = document.getElementById('form-login');
   if (!form) return;
@@ -184,75 +161,19 @@ function inicializarLogin() {
     const pass = document.getElementById('login-pass').value;
 
     const lista = obtenerUsuariosRegistrados();
-    let usuario = lista.find(u => u.email.toLowerCase() === email && u.password === pass);
+    const usuario = lista.find(u => u.email.toLowerCase() === email && u.password === pass);
 
     if (!usuario) {
-      // Usuario demo rápido para evaluación si no se había registrado previamente
-      usuario = {
-        nombre: email.split('@')[0].toUpperCase(),
-        email: email,
-        password: pass,
-        edad: 52,
-        descuentoSenior: true,
-        esEstudianteDuoc: email.includes('@duocuc.cl'),
-        descuentoFelices50: true,
-        telefono: '+56 9 8765 4321',
-        direccion: 'Av. Concha y Toro #1234, Santiago'
-      };
-      guardarUsuarioRegistrado(usuario);
+      alert('Correo o contraseña incorrectos. Verifica tus datos o regístrate.');
+      return;
     }
 
     guardarUsuarioActual(usuario);
-    alert(`🧁 ¡Bienvenido de vuelta, ${usuario.nombre}!`);
+    alert(`Bienvenido de vuelta, ${usuario.nombre}.`);
     window.location.href = 'perfil.html';
   });
-
-  // Botón Demo Rápido: Usuario Senior (+50 años, 50% desc)
-  const btnDemoSenior = document.getElementById('btn-demo-senior');
-  if (btnDemoSenior) {
-    btnDemoSenior.addEventListener('click', () => {
-      const demo = {
-        nombre: 'Marta Valenzuela',
-        email: 'marta.valenzuela@gmail.com',
-        password: '123',
-        edad: 58,
-        descuentoSenior: true,
-        esEstudianteDuoc: false,
-        descuentoFelices50: true,
-        telefono: '+56 9 9123 4567',
-        direccion: 'Av. Las Condes #7890, Santiago'
-      };
-      guardarUsuarioRegistrado(demo);
-      alert('👤 Sesión iniciada como Usuario Senior (+50 años, 50% descuento activado).');
-      window.location.href = 'carrito.html';
-    });
-  }
-
-  // Botón Demo Rápido: Estudiante Duoc UC
-  const btnDemoDuoc = document.getElementById('btn-demo-duoc');
-  if (btnDemoDuoc) {
-    btnDemoDuoc.addEventListener('click', () => {
-      const demo = {
-        nombre: 'Matías González',
-        email: 'matias.gonzalez@duocuc.cl',
-        password: '123',
-        edad: 22,
-        descuentoSenior: false,
-        esEstudianteDuoc: true,
-        descuentoFelices50: true,
-        telefono: '+56 9 8234 5678',
-        direccion: 'Av. Concha y Toro #1234, Puente Alto'
-      };
-      guardarUsuarioRegistrado(demo);
-      alert('🎓 Sesión iniciada como Estudiante Duoc UC (Torta gratis de cumpleaños).');
-      window.location.href = 'perfil.html';
-    });
-  }
 }
 
-// -----------------------------------------------------------------------------
-// 6. PERFIL DE USUARIO (PERFIL.HTML)
-// -----------------------------------------------------------------------------
 function inicializarPerfil() {
   const contenedorPerfil = document.getElementById('perfil-container');
   if (!contenedorPerfil) return;
@@ -279,7 +200,6 @@ function inicializarPerfil() {
     guardarUsuarioActual(usuario);
   }
 
-  // Rellenar datos en pantalla
   const elemNombre = document.getElementById('perfil-nombre-display');
   const elemEmail = document.getElementById('perfil-email-display');
   const inputNombre = document.getElementById('perf-nombre');
@@ -305,14 +225,13 @@ function inicializarPerfil() {
     if (selectRestriccion && usuario.preferencias.restriccion) selectRestriccion.value = usuario.preferencias.restriccion;
   }
 
-  // Insignias de beneficios activos
   const boxInsignias = document.getElementById('perfil-insignias-beneficios');
   if (boxInsignias) {
     boxInsignias.innerHTML = '';
     if (usuario.descuentoSenior) {
       boxInsignias.innerHTML += `
         <div class="benefit-badge-card" style="background: rgba(229, 169, 60, 0.1); border: 1px solid var(--accent-gold); padding: 0.8rem; border-radius: 12px; margin-bottom: 0.8rem;">
-          <h4 style="color: var(--accent-gold); margin-bottom: 0.2rem;">🎂 Beneficio Senior (+50 años)</h4>
+          <h4 style="color: var(--accent-gold); margin-bottom: 0.2rem;">Beneficio Senior (+50 años)</h4>
           <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Tienes 50% de descuento automático en todas tus compras por tu edad (${usuario.edad || 50} años).</p>
         </div>
       `;
@@ -320,7 +239,7 @@ function inicializarPerfil() {
     if (usuario.esEstudianteDuoc) {
       boxInsignias.innerHTML += `
         <div class="benefit-badge-card" style="background: rgba(229, 169, 60, 0.1); border: 1px solid var(--accent-gold); padding: 0.8rem; border-radius: 12px; margin-bottom: 0.8rem;">
-          <h4 style="color: var(--accent-gold); margin-bottom: 0.2rem;">🎓 Convenio Alumnos Duoc UC</h4>
+          <h4 style="color: var(--accent-gold); margin-bottom: 0.2rem;">Convenio Alumnos Duoc UC</h4>
           <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Torta de cortesía gratuita para tu cumpleaños presentando tu credencial o correo institucional.</p>
         </div>
       `;
@@ -328,14 +247,13 @@ function inicializarPerfil() {
     if (usuario.descuentoFelices50) {
       boxInsignias.innerHTML += `
         <div class="benefit-badge-card" style="background: rgba(229, 169, 60, 0.1); border: 1px solid var(--accent-gold); padding: 0.8rem; border-radius: 12px; margin-bottom: 0.8rem;">
-          <h4 style="color: var(--accent-gold); margin-bottom: 0.2rem;">🎉 Código FELICES50</h4>
+          <h4 style="color: var(--accent-gold); margin-bottom: 0.2rem;">Código FELICES50</h4>
           <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">10% de rebaja garantizada de por vida en homenaje a nuestro 50 aniversario.</p>
         </div>
       `;
     }
   }
 
-  // Guardar cambios en el perfil
   const formPerfil = document.getElementById('form-perfil');
   if (formPerfil) {
     formPerfil.addEventListener('submit', (e) => {
@@ -353,12 +271,11 @@ function inicializarPerfil() {
       };
 
       guardarUsuarioRegistrado(usuario);
-      alert('✓ Tus datos y preferencias de compra fueron actualizados correctamente.');
+      alert('Tus datos y preferencias de compra fueron actualizados correctamente.');
       window.location.reload();
     });
   }
 
-  // Historial de pedidos
   const boxHistorial = document.getElementById('historial-pedidos-lista');
   if (boxHistorial) {
     try {
@@ -377,8 +294,8 @@ function inicializarPerfil() {
               <span class="badge badge-gold" style="font-size: 0.72rem;">Estado: ${ped.estado || 'En Preparación'}</span>
             </div>
             <div style="display: flex; gap: 0.5rem;">
-              <a href="seguimiento.html" class="btn btn-outline btn-sm">🚚 Rastrear</a>
-              <a href="boleta.html" class="btn btn-primary btn-sm">📄 Ver Boleta</a>
+              <a href="seguimiento.html" class="btn btn-outline btn-sm">Rastrear</a>
+              <a href="boleta.html" class="btn btn-primary btn-sm">Ver Boleta</a>
             </div>
           `;
           boxHistorial.appendChild(itemDiv);
@@ -388,9 +305,6 @@ function inicializarPerfil() {
   }
 }
 
-// -----------------------------------------------------------------------------
-// 7. SUGERENCIAS DE SABORES (PERFIL.HTML)
-// -----------------------------------------------------------------------------
 function inicializarSugerenciasPerfil() {
   const formSugerencia = document.getElementById('form-sugerencia-perfil');
   if (!formSugerencia) return;
@@ -398,7 +312,12 @@ function inicializarSugerenciasPerfil() {
   formSugerencia.addEventListener('submit', (e) => {
     e.preventDefault();
     const titulo = document.getElementById('sug-titulo').value.trim();
-    alert(`💡 ¡Gracias por sugerir "${titulo}"! Nuestros maestros pasteleros revisarán tu idea.`);
+    try {
+      const sugerencias = JSON.parse(localStorage.getItem('sugerencias_mil_sabores') || '[]');
+      sugerencias.unshift({ titulo, fecha: new Date().toLocaleDateString('es-CL') });
+      localStorage.setItem('sugerencias_mil_sabores', JSON.stringify(sugerencias));
+    } catch (err) {}
+    alert(`Gracias por sugerir "${titulo}". Nuestros maestros pasteleros revisarán tu idea.`);
     formSugerencia.reset();
   });
 }

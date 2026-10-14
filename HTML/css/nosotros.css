@@ -1,22 +1,13 @@
-/* =============================================================================
-   ARCHIVO: nosotros.css
-   PROPÓSITO: Estilos exclusivos de la página nosotros.html
-   PROYECTO: Pastelería Mil Sabores - Duoc UC
-   ============================================================================= */
-
-/* ---------------------------------------------------------------------------
-   1. ENCABEZADO DE LA PÁGINA
-   --------------------------------------------------------------------------- */
-.nosotros-header {
-  padding: 3rem 0 1.5rem 0;
+﻿.nosotros-header {
+  padding: 48px 0 24px 0;
   text-align: center;
 }
 
 .nosotros-title {
   font-family: var(--font-serif);
-  font-size: 2.6rem;
+  font-size: 42px;
   color: var(--text-main);
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .nosotros-title span {
@@ -26,66 +17,62 @@
 
 .nosotros-subtitle {
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 18px;
   max-width: 650px;
   margin: 0 auto;
 }
 
-/* ---------------------------------------------------------------------------
-   2. SECCIÓN DE HISTORIA Y RÉCORD GUINNESS
-   --------------------------------------------------------------------------- */
 .nosotros-historia {
-  padding: 2.5rem 0 3.5rem 0;
+  padding: 40px 0 56px 0;
 }
 
 .historia-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 3rem;
+  gap: 48px;
   align-items: center;
 }
 
 .historia-texto h2 {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 29px;
   color: var(--text-main);
-  margin-bottom: 1.2rem;
+  margin-bottom: 19px;
 }
 
 .historia-texto p {
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.7;
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 }
 
-/* Caja de destaque: Récord Guinness */
 .guinness-box {
-  margin-top: 1.8rem;
+  margin-top: 29px;
   background-color: var(--bg-card);
   border: 1px solid var(--accent-gold);
   border-radius: var(--radius-md);
-  padding: 1.2rem 1.4rem;
+  padding: 19px 22px;
   display: flex;
-  gap: 1.2rem;
+  gap: 19px;
   align-items: center;
   box-shadow: 0 4px 15px rgba(229, 169, 60, 0.15);
 }
 
 .guinness-icon {
-  font-size: 2.5rem;
+  font-size: 40px;
   flex-shrink: 0;
 }
 
 .guinness-box h3 {
   font-family: var(--font-serif);
   color: var(--accent-gold);
-  font-size: 1.2rem;
-  margin-bottom: 0.3rem;
+  font-size: 19px;
+  margin-bottom: 5px;
 }
 
 .guinness-box p {
-  font-size: 0.9rem;
+  font-size: 14px;
   color: var(--text-secondary);
   margin-bottom: 0;
   line-height: 1.5;
@@ -106,24 +93,21 @@
   display: block;
 }
 
-/* ---------------------------------------------------------------------------
-   3. SECCIÓN MISIÓN Y VISIÓN
-   --------------------------------------------------------------------------- */
 .mision-vision-section {
-  padding: 1rem 0 3.5rem 0;
+  padding: 16px 0 56px 0;
 }
 
 .mv-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 32px;
 }
 
 .mv-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 2.2rem;
+  padding: 35px;
   display: flex;
   flex-direction: column;
   transition: var(--transition);
@@ -149,36 +133,33 @@
 }
 
 .mv-icon {
-  font-size: 2.2rem;
-  margin-bottom: 0.8rem;
+  font-size: 35px;
+  margin-bottom: 13px;
 }
 
 .mv-card h2 {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 24px;
   color: var(--text-main);
-  margin-bottom: 0.8rem;
+  margin-bottom: 13px;
 }
 
 .mv-card p {
   color: var(--text-secondary);
-  font-size: 0.98rem;
+  font-size: 16px;
   line-height: 1.65;
 }
 
-/* ---------------------------------------------------------------------------
-   4. SECCIÓN VALORES
-   --------------------------------------------------------------------------- */
 .valores-section {
-  padding: 1rem 0 3.5rem 0;
+  padding: 16px 0 56px 0;
   text-align: center;
 }
 
 .valores-title {
   font-family: var(--font-serif);
-  font-size: 2.2rem;
+  font-size: 35px;
   color: var(--text-main);
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
 }
 
 .valores-title span {
@@ -189,14 +170,14 @@
 .valores-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  gap: 24px;
 }
 
 .valor-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 1.8rem 1.2rem;
+  padding: 29px 19px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -210,56 +191,50 @@
 }
 
 .valor-emoji {
-  font-size: 2.4rem;
-  margin-bottom: 0.8rem;
+  font-size: 38px;
+  margin-bottom: 13px;
 }
 
 .valor-card h3 {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 18px;
   color: var(--text-main);
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
 .valor-card p {
-  font-size: 0.88rem;
+  font-size: 14px;
   color: var(--text-secondary);
   line-height: 1.5;
 }
 
-/* ---------------------------------------------------------------------------
-   5. LLAMADO A LA ACCIÓN (CTA FINAL)
-   --------------------------------------------------------------------------- */
 .nosotros-cta {
   background: linear-gradient(135deg, rgba(44, 29, 21, 0.95), rgba(31, 20, 14, 0.95));
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  padding: 3rem 1.5rem;
+  padding: 48px 24px;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 64px;
   box-shadow: var(--shadow-sm);
 }
 
 .nosotros-cta h2 {
   font-family: var(--font-serif);
-  font-size: 1.9rem;
+  font-size: 30px;
   color: var(--text-main);
-  margin-bottom: 0.6rem;
+  margin-bottom: 10px;
 }
 
 .nosotros-cta p {
   color: var(--text-secondary);
-  font-size: 1rem;
-  margin-bottom: 1.6rem;
+  font-size: 16px;
+  margin-bottom: 26px;
 }
 
-/* ---------------------------------------------------------------------------
-   6. RESPONSIVE
-   --------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .historia-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 32px;
   }
 
   .valores-grid {
@@ -277,7 +252,7 @@
   }
 
   .nosotros-title {
-    font-size: 1.8rem;
+    font-size: 29px;
   }
 
   .guinness-box {

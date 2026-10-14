@@ -1,44 +1,27 @@
-// =============================================================================
-// ARCHIVO: main.js
-// PROYECTO: Pastelería Mil Sabores - Evaluación 1 (DSY1104)
-// PROPÓSITO: Coordinador principal, menú responsive, contacto y recetas del blog
-// =============================================================================
-
-// Esperamos a que el DOM esté completamente cargado para inicializar la aplicación
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Pastelería Mil Sabores - Sistema modular iniciado correctamente.');
-
-  // 1. Menú responsive y estado general del navbar
   iniciarMenuMovil();
   if (typeof actualizarContadorCarrito === 'function') actualizarContadorCarrito();
   if (typeof actualizarBarraUsuario === 'function') actualizarBarraUsuario();
 
-  // 2. Módulo de Productos (productos.js)
   if (typeof activarBotonesAgregar === 'function') activarBotonesAgregar();
   if (typeof cargarDatosProducto === 'function') cargarDatosProducto();
   if (typeof inicializarDetalleProducto === 'function') inicializarDetalleProducto();
   if (typeof inicializarFiltrosCatalogo === 'function') inicializarFiltrosCatalogo();
   if (typeof inicializarComentariosProducto === 'function') inicializarComentariosProducto();
 
-  // 3. Módulo de Usuarios (usuarios.js)
   if (typeof inicializarRegistro === 'function') inicializarRegistro();
   if (typeof inicializarLogin === 'function') inicializarLogin();
   if (typeof inicializarPerfil === 'function') inicializarPerfil();
   if (typeof inicializarSugerenciasPerfil === 'function') inicializarSugerenciasPerfil();
 
-  // 4. Módulo de Carrito, Boleta y Seguimiento (carrito.js)
   if (typeof inicializarCarrito === 'function') inicializarCarrito();
   if (typeof inicializarBoleta === 'function') inicializarBoleta();
   if (typeof inicializarSeguimiento === 'function') inicializarSeguimiento();
 
-  // 5. Formularios generales (Contacto y Blog)
   inicializarFormularioContacto();
   inicializarRecetasBlog();
 });
 
-// -----------------------------------------------------------------------------
-// 1. MENÚ RESPONSIVE (Para celulares y tablets)
-// -----------------------------------------------------------------------------
 function iniciarMenuMovil() {
   const botonMenu = document.querySelector('.menu-toggle');
   const menuNav = document.querySelector('nav');
@@ -49,7 +32,6 @@ function iniciarMenuMovil() {
       menuNav.classList.toggle('nav-open');
     });
 
-    // Cerrar el menú al hacer clic en cualquier enlace
     const enlaces = menuNav.querySelectorAll('a');
     enlaces.forEach(enlace => {
       enlace.addEventListener('click', () => {
@@ -57,7 +39,6 @@ function iniciarMenuMovil() {
       });
     });
 
-    // Cerrar el menú al hacer clic fuera
     document.addEventListener('click', (e) => {
       if (!menuNav.contains(e.target) && !botonMenu.contains(e.target)) {
         menuNav.classList.remove('nav-open');
@@ -66,9 +47,6 @@ function iniciarMenuMovil() {
   }
 }
 
-// -----------------------------------------------------------------------------
-// 2. FORMULARIO DE CONTACTO (CONTACTO.HTML)
-// -----------------------------------------------------------------------------
 function inicializarFormularioContacto() {
   const formulario = document.getElementById('form-contacto');
   if (!formulario) return;
@@ -84,14 +62,11 @@ function inicializarFormularioContacto() {
       return;
     }
 
-    alert(`🧁 ¡Muchas gracias ${nombre}! Tu consulta ha sido enviada con éxito. Te responderemos pronto a ${email}.`);
+    alert(`Muchas gracias, ${nombre}. Tu consulta ha sido enviada con éxito. Te responderemos pronto a ${email}.`);
     formulario.reset();
   });
 }
 
-// -----------------------------------------------------------------------------
-// 3. RECETAS Y CONSEJOS EN EL BLOG (BLOGS.HTML)
-// -----------------------------------------------------------------------------
 function inicializarRecetasBlog() {
   const lista = document.getElementById('lista-recetas-comunidad');
   const form = document.getElementById('form-receta-blog');
@@ -101,7 +76,7 @@ function inicializarRecetasBlog() {
     { 
       autor: 'Sofía Navarro (Gastronomía Duoc UC)', 
       titulo: 'Merengue suizo brillante y firme', 
-      puntuacion: '⭐⭐ Media', 
+      puntuacion: 'Dificultad Media', 
       contenido: 'Calentar las claras con el azúcar a baño maría hasta disolver los cristales antes de batir a velocidad máxima.' 
     }
   ];
@@ -132,7 +107,7 @@ function inicializarRecetasBlog() {
 
     recetasBase.unshift({ autor: autor, titulo: titulo, puntuacion: puntuacion, contenido: contenido });
     renderRecetas();
-    alert(`🎉 ¡Gracias ${autor}! Tu publicación fue añadida al blog.`);
+    alert(`Gracias, ${autor}. Tu publicación fue añadida al blog.`);
     form.reset();
   });
 

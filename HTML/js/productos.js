@@ -1,12 +1,3 @@
-// =============================================================================
-// ARCHIVO: productos.js
-// PROYECTO: Pastelería Mil Sabores - Evaluación 1 (DSY1104)
-// PROPÓSITO: Catálogo de productos, filtros, vista de detalle dinámico y comentarios
-// =============================================================================
-
-// -----------------------------------------------------------------------------
-// 1. ARREGLO DE PRODUCTOS (16 Delicias Oficiales)
-// -----------------------------------------------------------------------------
 const LISTA_PRODUCTOS = [
   {
     codigo: 'TC001',
@@ -138,21 +129,15 @@ const LISTA_PRODUCTOS = [
   }
 ];
 
-// -----------------------------------------------------------------------------
-// 2. DETALLE DINÁMICO DE PRODUCTO (PRODUCTO.HTML)
-// Lee el parámetro de la URL (ej: producto.html?id=TC001) y muestra sus datos
-// -----------------------------------------------------------------------------
 function cargarDatosProducto() {
   const elementoTitulo = document.getElementById('product-name');
-  if (!elementoTitulo) return; // Si no estamos en producto.html, salimos
+  if (!elementoTitulo) return;
 
   const parametros = new URLSearchParams(window.location.search);
   const idProducto = parametros.get('id') || 'TE001';
 
-  // Buscamos el producto en nuestro catálogo
   const producto = LISTA_PRODUCTOS.find(p => p.codigo === idProducto) || LISTA_PRODUCTOS[0];
 
-  // Actualizamos el título de la pestaña y los textos
   document.title = `${producto.nombre} | Pastelería Mil Sabores`;
   elementoTitulo.textContent = producto.nombre;
 
@@ -177,7 +162,6 @@ function cargarDatosProducto() {
     imgPrincipal.alt = producto.nombre;
   }
 
-  // Opciones de tamaño adaptadas al precio del producto
   const selectTamano = document.getElementById('select-tamano');
   if (selectTamano) {
     const base = producto.precio;
@@ -195,9 +179,6 @@ function cargarDatosProducto() {
   }
 }
 
-// -----------------------------------------------------------------------------
-// 3. CONTROLES DEL DETALLE (Cantidad, tamaño, dedicatoria y botón agregar)
-// -----------------------------------------------------------------------------
 function inicializarDetalleProducto() {
   const btnRestar = document.getElementById('btn-restar');
   const btnSumar = document.getElementById('btn-sumar');
@@ -208,7 +189,6 @@ function inicializarDetalleProducto() {
 
   if (!btnComprar || !inputCantidad) return;
 
-  // Cambio de precio dinámico según el tamaño
   if (selectTamano && elementoPrecio) {
     selectTamano.addEventListener('change', () => {
       const opcion = selectTamano.options[selectTamano.selectedIndex];
@@ -217,7 +197,6 @@ function inicializarDetalleProducto() {
     });
   }
 
-  // Restar cantidad
   if (btnRestar) {
     btnRestar.addEventListener('click', () => {
       let valor = parseInt(inputCantidad.value, 10) || 1;
@@ -225,7 +204,6 @@ function inicializarDetalleProducto() {
     });
   }
 
-  // Sumar cantidad
   if (btnSumar) {
     btnSumar.addEventListener('click', () => {
       let valor = parseInt(inputCantidad.value, 10) || 1;
@@ -233,7 +211,6 @@ function inicializarDetalleProducto() {
     });
   }
 
-  // Botón Agregar al Carrito desde el detalle
   btnComprar.addEventListener('click', () => {
     const cantidad = parseInt(inputCantidad.value, 10) || 1;
     const forma = document.getElementById('select-forma') ? document.getElementById('select-forma').value : 'Circular';
@@ -261,13 +238,10 @@ function inicializarDetalleProducto() {
     };
 
     agregarAlCarrito(productoDetalle);
-    alert(`🧁 ¡Se agregaron ${cantidad} unidad(es) de "${productoDetalle.nombre}" a tu carrito!`);
+    alert(`Se agregaron ${cantidad} unidad(es) de "${productoDetalle.nombre}" al carrito.`);
   });
 }
 
-// -----------------------------------------------------------------------------
-// 4. CAMBIAR FOTO AL HACER CLIC EN MINIATURA
-// -----------------------------------------------------------------------------
 function cambiarFoto(nuevaSrc, elementoMiniatura) {
   const imagenGrande = document.getElementById('img-principal');
   if (imagenGrande) {
@@ -281,9 +255,6 @@ function cambiarFoto(nuevaSrc, elementoMiniatura) {
   }
 }
 
-// -----------------------------------------------------------------------------
-// 5. FILTROS Y BUSCADOR DEL CATÁLOGO (CATEGORIA.HTML)
-// -----------------------------------------------------------------------------
 function inicializarFiltrosCatalogo() {
   const botonesFiltro = document.querySelectorAll('.filter-btn');
   const itemsCatalogo = document.querySelectorAll('.catalog-item');
@@ -306,10 +277,8 @@ function inicializarFiltrosCatalogo() {
       const desc = item.querySelector('.catalog-item-desc').textContent.toLowerCase();
       const codigo = (item.getAttribute('data-codigo') || '').toLowerCase();
 
-      // Validación por categoría
       const coincideCat = (categoria === 'todos' || catItem === categoria);
 
-      // Validación por forma (cuadrada o circular)
       let coincideForma = true;
       if (forma === 'cuadrada') {
         coincideForma = titulo.includes('cuadrada') || catItem === 'cuadradas';
@@ -317,7 +286,6 @@ function inicializarFiltrosCatalogo() {
         coincideForma = titulo.includes('circular') || catItem === 'circulares';
       }
 
-      // Validación por texto escrito
       const coincideTexto = !texto || titulo.includes(texto) || desc.includes(texto) || codigo.includes(texto);
 
       if (coincideCat && coincideForma && coincideTexto) {
@@ -344,7 +312,6 @@ function inicializarFiltrosCatalogo() {
   if (selectForma) selectForma.addEventListener('change', aplicarFiltros);
   if (buscador) buscador.addEventListener('input', aplicarFiltros);
 
-  // Si viene con parámetro ?cat=... desde otra página
   const urlParams = new URLSearchParams(window.location.search);
   const catParam = urlParams.get('cat');
   if (catParam) {
@@ -355,17 +322,14 @@ function inicializarFiltrosCatalogo() {
   }
 }
 
-// -----------------------------------------------------------------------------
-// 6. COMENTARIOS DE CLIENTES (PRODUCTO.HTML)
-// -----------------------------------------------------------------------------
 function inicializarComentariosProducto() {
   const lista = document.getElementById('lista-comentarios-producto');
   const form = document.getElementById('form-comentario-producto');
   if (!lista || !form) return;
 
   const comentariosBase = [
-    { autor: 'Camila Rojas', estrellas: '⭐⭐⭐⭐⭐', texto: '¡La mejor torta de cumpleaños! El bizcocho muy húmedo y el manjar artesanal delicioso.' },
-    { autor: 'Felipe Mendoza', estrellas: '⭐⭐⭐⭐⭐', texto: 'Llegó puntual y la dedicatoria venía tal como la pedí. 100% recomendada.' }
+    { autor: 'Camila Rojas', estrellas: '★★★★★', texto: '¡La mejor torta de cumpleaños! El bizcocho muy húmedo y el manjar artesanal delicioso.' },
+    { autor: 'Felipe Mendoza', estrellas: '★★★★★', texto: 'Llegó puntual y la dedicatoria venía tal como la pedí. 100% recomendada.' }
   ];
 
   function renderComentarios() {
@@ -375,8 +339,8 @@ function inicializarComentariosProducto() {
       item.style.cssText = 'padding: 1rem; border-radius: 10px; background: var(--bg-card-soft); border: 1px solid var(--border-subtle);';
       item.innerHTML = `
         <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-          <strong>👤 ${com.autor}</strong>
-          <span>${com.estrellas}</span>
+          <strong>${com.autor}</strong>
+          <span style="color: var(--accent-gold); letter-spacing: 2px;">${com.estrellas}</span>
         </div>
         <p style="margin: 0; font-size: 0.92rem; color: var(--text-secondary);">${com.texto}</p>
       `;
@@ -392,7 +356,7 @@ function inicializarComentariosProducto() {
 
     comentariosBase.unshift({ autor: nombre, estrellas: estrellas, texto: texto });
     renderComentarios();
-    alert('✓ ¡Gracias por tu comentario! Ha sido publicado.');
+    alert('Gracias por tu comentario. Ha sido publicado con éxito.');
     form.reset();
   });
 
