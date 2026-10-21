@@ -1,12 +1,8 @@
 /**
- * NAVBAR COMÚN (src/components/common/Navbar.jsx)
+ * BARRA DE NAVEGACIÓN INSTITUCIONAL (src/components/common/Navbar.jsx)
  * 
- * Barra de navegación superior responsiva con:
- * - Anuncio conmemorativo de los 50 años
- * - Logo institucional con enlace a Home
- * - Enlaces principales (Inicio, Catálogo, Ofertas, Nosotros, Blogs, Contacto, Seguimiento)
- * - Carrito con contador reactivo
- * - Estado de sesión: Login/Registro o Saludo, insignias (Senior/Duoc), Mi Perfil, Panel Admin y Cerrar Sesión.
+ * Migrada de legacy/cabecera.css y estructuras HTML.
+ * Adaptada a Bootstrap 5 y React Router con estado global de sesión y carrito.
  */
 import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
@@ -14,7 +10,7 @@ import { useAuth } from '../../context/AuthContext.jsx';
 import { useCarrito } from '../../context/CartContext.jsx';
 
 export function Navbar() {
-  const { usuario, isAuthenticated, isAdmin, isSenior, isEstudiante, logout } = useAuth();
+  const { user, isAuthenticated, isSenior, isAdmin, logout } = useAuth();
   const { totalItems } = useCarrito();
   const navigate = useNavigate();
 
@@ -24,25 +20,27 @@ export function Navbar() {
     navigate('/');
   };
 
-  const primerNombre = usuario?.nombre ? usuario.nombre.split(' ')[0] : 'Usuario';
+  const primerNombre = user?.nombre ? user.nombre.split(' ')[0] : 'Usuario';
 
   return (
-    <>
-      {/* Top Banner de Aniversario */}
+    <div className="d-flex flex-column">
+      {/* Barra Superior de Beneficios / Anuncio Institucional */}
       <div className="bg-warning text-dark py-1 text-center small fw-bold">
-        <span>🎉 ¡Celebramos 50 Años de Tradición! 10% OFF con código <strong>FELICES50</strong> | 50% Senior (+50 años)</span>
+        <span>
+          🎉 ¡Celebramos 50 Años de Tradición! 10% OFF con código <strong>FELICES50</strong> | 50% Senior (+50 años)
+        </span>
       </div>
 
-      {/* Header Principal */}
+      {/* Navbar Principal */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-warning sticky-top shadow-sm">
         <div className="container">
-          {/* Brand / Logo */}
+          {/* Logo y Marca */}
           <Link to="/" className="navbar-brand d-flex align-items-center text-warning fw-bold fs-4">
             <i className="bi bi-cake2 me-2 fs-3 text-warning"></i>
             <span>Mil Sabores</span>
           </Link>
 
-          {/* Botón Hamburguesa Móvil */}
+          {/* Botón Hamburguesa para Móvil */}
           <button
             className="navbar-toggler border-warning text-warning"
             type="button"
@@ -73,6 +71,14 @@ export function Navbar() {
                   className={({ isActive }) => `nav-link ${isActive ? 'active text-warning fw-bold' : 'text-light'}`}
                 >
                   Catálogo
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink
+                  to="/categorias"
+                  className={({ isActive }) => `nav-link ${isActive ? 'active text-warning fw-bold' : 'text-light'}`}
+                >
+                  Categorías
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -144,29 +150,32 @@ export function Navbar() {
                         50% Senior
                       </span>
                     )}
-                    {isEstudiante && (
-                      <span className="badge bg-info text-dark ms-1" title="Convenio Duoc UC">
+                    {user?.esEstudianteDuoc && (
+                      <span className="badge bg-primary text-light ms-1" title="Convenio Alumno Duoc UC">
                         Duoc UC
                       </span>
                     )}
+                    {isAdmin && (
+                      <span className="badge bg-danger text-light ms-1">
+                        Admin
+                      </span>
+                    )}
                   </div>
-
-                  <Link to="/perfil" className="btn btn-outline-light btn-sm">
-                    <i className="bi bi-person me-1"></i> Mi Perfil
+                  <Link to="/perfil" className="btn btn-outline-warning btn-sm">
+                    <i className="bi bi-person-circle me-1"></i> Mi Perfil
                   </Link>
-
                   {isAdmin && (
-                    <Link to="/admin" className="btn btn-warning btn-sm text-dark fw-bold">
-                      <i className="bi bi-speedometer2 me-1"></i> Panel Admin
+                    <Link to="/admin" className="btn btn-danger btn-sm text-light fw-bold">
+                      <i className="bi bi-speedometer2 me-1"></i> Admin
                     </Link>
                   )}
-
                   <button
+                    type="button"
                     onClick={handleCerrarSesion}
-                    className="btn btn-link text-secondary text-decoration-none btn-sm p-0 ms-1"
+                    className="btn btn-outline-secondary btn-sm text-light"
                     title="Cerrar sesión"
                   >
-                    Cerrar
+                    Salir
                   </button>
                 </div>
               ) : (
@@ -183,6 +192,6 @@ export function Navbar() {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 }

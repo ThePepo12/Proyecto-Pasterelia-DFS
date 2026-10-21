@@ -80,6 +80,7 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider
       value={{
         usuario,
+        user: usuario,
         cargando,
         isAuthenticated: Boolean(usuario),
         isAdmin,

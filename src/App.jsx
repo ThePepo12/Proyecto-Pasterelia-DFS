@@ -3,7 +3,7 @@
  * 
  * Configura los proveedores globales (AuthProvider y CartProvider),
  * la barra de navegación superior (Navbar), el pie de página (Footer)
- * y todas las rutas públicas y migras de la tienda.
+ * y todas las rutas públicas y migradas de la tienda.
  */
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { CartProvider } from './context/CartContext.jsx';
 import { Navbar } from './components/common/Navbar.jsx';
 import { Footer } from './components/common/Footer.jsx';
 
-// Vistas Blancas de la Tienda (Fase 4)
+// Vistas de la Tienda (Fases 4, 5 y 6)
 import { Home } from './pages/tienda/Home.jsx';
 import { Catalogo } from './pages/tienda/Catalogo.jsx';
 import { DetalleProducto } from './pages/tienda/DetalleProducto.jsx';
@@ -25,45 +25,13 @@ import { Blogs } from './pages/tienda/Blogs.jsx';
 import { DetalleBlog } from './pages/tienda/DetalleBlog.jsx';
 import { Contacto } from './pages/tienda/Contacto.jsx';
 import { Seguimiento } from './pages/tienda/Seguimiento.jsx';
+import { Categorias } from './pages/tienda/Categorias.jsx';
+import { Ofertas } from './pages/tienda/Ofertas.jsx';
+import { Checkout } from './pages/tienda/Checkout.jsx';
+import { PagoExitoso } from './pages/tienda/PagoExitoso.jsx';
+import { PagoError } from './pages/tienda/PagoError.jsx';
 
-// Placeholders para Vistas Verdes (Fases 5, 6, 7 y 8)
-function OfertasPlaceholder() {
-  return (
-    <div className="bg-dark text-light py-5 min-vh-100 text-center d-flex align-items-center">
-      <div className="container" style={{ maxWidth: '600px' }}>
-        <div className="card bg-secondary bg-opacity-10 border-warning p-4 shadow-lg">
-          <i className="bi bi-tag-fill text-warning display-4 mb-3"></i>
-          <h2 className="text-warning fw-bold">Sección de Ofertas (Vista Verde)</h2>
-          <p className="text-secondary">
-            Esta vista obligatoria se conectará al endpoint <code>/api/productos/ofertas</code> en la <strong>Fase 5</strong>.
-          </p>
-          <Link to="/productos" className="btn btn-warning text-dark fw-bold">
-            Ver Catálogo General
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function CheckoutPlaceholder() {
-  return (
-    <div className="bg-dark text-light py-5 min-vh-100 text-center d-flex align-items-center">
-      <div className="container" style={{ maxWidth: '600px' }}>
-        <div className="card bg-secondary bg-opacity-10 border-warning p-4 shadow-lg">
-          <i className="bi bi-credit-card-2-front-fill text-warning display-4 mb-3"></i>
-          <h2 className="text-warning fw-bold">Checkout / Comprar (Vista Verde)</h2>
-          <p className="text-secondary">
-            Pasarela de pago y validación de dirección que se conectará con <code>POST /api/ordenes</code> en la <strong>Fase 6</strong>.
-          </p>
-          <Link to="/carrito" className="btn btn-outline-warning">
-            Volver al Carrito
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
+// Placeholders para Capa Administrativa (Fases 7 y 8)
 
 function AdminPlaceholder() {
   return (
@@ -127,9 +95,16 @@ export default function App() {
                 <Route path="/contacto" element={<Contacto />} />
                 <Route path="/seguimiento" element={<Seguimiento />} />
 
-                {/* Vistas Verdes (Fases 5, 6, 7 y 8) */}
-                <Route path="/ofertas" element={<OfertasPlaceholder />} />
-                <Route path="/checkout" element={<CheckoutPlaceholder />} />
+                {/* Vistas Verdes de la Tienda (Fases 5 y 6) */}
+                <Route path="/categorias" element={<Categorias />} />
+                <Route path="/categorias/:id" element={<Categorias />} />
+                <Route path="/categoria/:id" element={<Categorias />} />
+                <Route path="/ofertas" element={<Ofertas />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/pago-exitoso" element={<PagoExitoso />} />
+                <Route path="/pago-error" element={<PagoError />} />
+
+                {/* Capa Administrativa (Fases 7 y 8) */}
                 <Route path="/admin/*" element={<AdminPlaceholder />} />
 
                 {/* 404 Not Found */}

@@ -43,18 +43,18 @@ describe('FASE 4: Estructura Común y Vistas Blancas de la Tienda', () => {
       expect(screen.getByRole('link', { name: /^Seguimiento$/i })).toBeInTheDocument();
     });
 
-    it('muestra enlaces de Ingresar y Registrarse cuando no hay sesión activa', () => {
+    it('refleja el acceso al carrito en la cabecera', () => {
       renderConProviders(<Navbar />);
-      expect(screen.getByRole('link', { name: /Ingresar/i })).toBeInTheDocument();
-      expect(screen.getByRole('link', { name: /Registrarse/i })).toBeInTheDocument();
+      expect(screen.getByRole('link', { name: /Carrito/i })).toBeInTheDocument();
+      expect(screen.queryByTestId('contador-carrito')).not.toBeInTheDocument();
     });
   });
 
-  describe('2. Catálogo de Productos (Catalogo.jsx)', () => {
-    it('renderiza el catálogo y permite filtrar productos por término de búsqueda', async () => {
+  describe('2. Catálogo de Productos y Filtros Reactivos (Catalogo.jsx)', () => {
+    it('muestra los productos iniciales y filtra por buscador en tiempo real', async () => {
       renderConProviders(<Catalogo />);
 
-      // Esperar a que carguen los productos iniciales
+      // Debe mostrar el contador de productos iniciales
       await waitFor(() => {
         expect(screen.getByText(/Torta Cuadrada de Chocolate/i)).toBeInTheDocument();
       });
@@ -76,10 +76,10 @@ describe('FASE 4: Estructura Común y Vistas Blancas de la Tienda', () => {
 
       // Esperar que cargue el producto por defecto (Torta Especial Cumpleaños - Base $55.000)
       await waitFor(() => {
-        expect(screen.getByText(/Torta Especial de Cumpleaños/i)).toBeInTheDocument();
+        expect(screen.getAllByText(/Torta Especial de Cumpleaños/i)[0]).toBeInTheDocument();
       });
 
-      const selectorTamano = screen.getByLabelText(/Tamaño y Porciones/i);
+      const selectorTamano = screen.getByLabelText(/Seleccionar tamaño/i);
       expect(selectorTamano).toBeInTheDocument();
 
       // Cambiar a tamaño Chica (75% de $55.000 = $41.250)

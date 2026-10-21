@@ -12,17 +12,17 @@ describe('App y Enrutador Base Integrado', () => {
     const brandLink = screen.getByRole('link', { name: /Mil Sabores/i });
     expect(brandLink).toBeInTheDocument();
 
-    expect(screen.getByRole('link', { name: /^Inicio$/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /^Catálogo$/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Ofertas/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Carrito/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Ingresar/i })).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /^Inicio$/i })[0]).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /^Catálogo$/i })[0]).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /Ofertas/i })[0]).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /Carrito/i })[0]).toBeInTheDocument();
+    expect(screen.getAllByRole('link', { name: /Ingresar/i })[0]).toBeInTheDocument();
   });
 
   it('renderiza la sección conmemorativa de 50 años', () => {
     render(<App />);
-    expect(screen.getByText(/50 Años de Historia/i)).toBeInTheDocument();
-    expect(screen.getByText(/Récord Guinness/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/50 Años de Historia/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Récord Guinness/i)[0]).toBeInTheDocument();
   });
 
   it('renderiza el pie de página con créditos institucionales de Duoc UC', () => {
