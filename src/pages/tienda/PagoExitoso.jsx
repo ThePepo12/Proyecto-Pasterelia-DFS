@@ -116,7 +116,7 @@ export function PagoExitoso() {
           </div>
 
           {/* Datos del Cliente y Despacho (Solo Lectura) */}
-          <div className="row g-3 mb-4 p-3 bg-dark bg-opacity-50 rounded-3 border border-secondary border-opacity-50" data-testid="datos-cliente-readonly">
+          <div className="row g-3 mb-4 p-3 bg-dark bg-opacity-50 rounded-3 border border-secondary border-opacity-50 text-light" data-testid="datos-cliente-readonly">
             <div className="col-12 col-md-6">
               <h6 className="text-warning fw-bold mb-2">
                 <i className="bi bi-person-badge me-1"></i> Datos del Cliente
@@ -153,10 +153,10 @@ export function PagoExitoso() {
                     <td className="text-warning fw-bold small">{it.codigoProducto || 'MS'}</td>
                     <td>
                       <strong className="text-light d-block">{it.nombreProducto || it.nombre}</strong>
-                      <span className="small text-secondary">{it.personalizacion || 'Estándar'}</span>
+                      <span className="small text-warning opacity-75">{it.personalizacion || 'Estándar'}</span>
                     </td>
                     <td className="text-center fw-bold">{it.cantidad}</td>
-                    <td className="text-end text-secondary">${(it.precioUnitario || it.precio || 0).toLocaleString('es-CL')}</td>
+                    <td className="text-end text-light">${(it.precioUnitario || it.precio || 0).toLocaleString('es-CL')}</td>
                     <td className="text-end fw-bold text-light">${(it.subtotal || (it.precio * it.cantidad) || 0).toLocaleString('es-CL')}</td>
                   </tr>
                 ))}

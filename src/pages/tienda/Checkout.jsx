@@ -542,7 +542,7 @@ export function Checkout() {
                   </div>
                 </div>
 
-                {/* Simulador de Fallo para Testing Docente */}
+                {/* Simulador de Fallo para Pruebas */}
                 <div className="p-3 bg-dark border border-warning border-opacity-25 rounded-3">
                   <div className="form-check form-switch mb-1">
                     <input
@@ -559,7 +559,7 @@ export function Checkout() {
                     </label>
                   </div>
                   <small className="text-secondary d-block ps-4">
-                    Activa este selector si deseas validar el flujo de error de transacción requerido en la pauta de evaluación.
+                    Activa este selector si deseas probar el flujo de error de transacción.
                   </small>
                 </div>
               </div>
@@ -646,11 +646,6 @@ export function Checkout() {
                 <span className="fs-3 fw-bold text-warning" data-testid="total-checkout">
                   ${total.toLocaleString('es-CL')} CLP
                 </span>
-              </div>
-
-              <div className="d-flex align-items-center gap-2 text-secondary small p-2 bg-dark rounded border border-secondary">
-                <i className="bi bi-shield-check text-warning fs-5"></i>
-                <span>Transacción encriptada con cifrado SSL de 256 bits.</span>
               </div>
             </div>
           </div>

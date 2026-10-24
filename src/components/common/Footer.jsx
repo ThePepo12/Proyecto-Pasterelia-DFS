@@ -77,9 +77,6 @@ export function Footer() {
           <p className="mb-0">
             &copy; 2026 Pastelería Mil Sabores SpA. Todos los derechos reservados.
           </p>
-          <p className="mb-0 text-light opacity-75">
-            DSY1104 Desarrollo Fullstack II &bull; Duoc UC &bull; Evaluación Parcial 2
-          </p>
         </div>
       </div>
     </footer>

@@ -105,7 +105,8 @@ export function Categorias() {
       precio: prod.precio,
       cantidad: 1,
       personalizacion: 'Estándar',
-      imagen: prod.imagen
+      imagen: prod.imagen,
+      stock: prod.stock
     });
     setMensajeToast(`¡"${prod.nombre}" se añadió al carrito!`);
     setTimeout(() => setMensajeToast(''), 3000);

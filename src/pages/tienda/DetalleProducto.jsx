@@ -68,7 +68,8 @@ export function DetalleProducto() {
       precio: precioUnitarioCalculado,
       cantidad: cantidad,
       personalizacion: dedicatoria.trim() ? `Mensaje: "${dedicatoria.trim()}"` : 'Sin dedicatoria',
-      imagen: producto.imagen
+      imagen: producto.imagen,
+      stock: producto.stock
     };
 
     agregarAlCarrito(itemAComprar);

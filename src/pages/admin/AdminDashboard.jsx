@@ -265,27 +265,6 @@ export function AdminDashboard() {
                 Revisar Vista Pública de Ofertas
               </Link>
             </div>
-
-            <div className="p-3 bg-dark bg-opacity-50 rounded border border-secondary border-opacity-50">
-              <h6 className="text-light fw-bold small mb-2">
-                <i className="bi bi-info-circle text-warning me-2"></i>
-                Información del Sistema
-              </h6>
-              <ul className="list-unstyled text-secondary small mb-0">
-                <li className="d-flex justify-content-between py-1 border-bottom border-secondary border-opacity-25">
-                  <span>Backend:</span>
-                  <span className="text-success fw-bold">Spring Boot 4 / H2</span>
-                </li>
-                <li className="d-flex justify-content-between py-1 border-bottom border-secondary border-opacity-25">
-                  <span>Frontend:</span>
-                  <span className="text-light">React 18 + Vite</span>
-                </li>
-                <li className="d-flex justify-content-between py-1">
-                  <span>Persistencia:</span>
-                  <span className="text-warning">Dual (API + db.js)</span>
-                </li>
-              </ul>
-            </div>
           </div>
         </div>
       </div>

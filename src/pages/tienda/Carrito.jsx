@@ -147,8 +147,15 @@ export function Carrito() {
                                   <button
                                     className="btn btn-outline-warning"
                                     type="button"
-                                    onClick={() => actualizarCantidad(index, item.cantidad + 1)}
-                                    title="Aumentar"
+                                    onClick={() => {
+                                      const limite = item.stock ?? 99;
+                                      if (item.cantidad >= limite) return;
+                                      actualizarCantidad(index, item.cantidad + 1);
+                                    }}
+                                    disabled={item.stock != null && item.cantidad >= item.stock}
+                                    title={item.stock != null && item.cantidad >= item.stock
+                                      ? `Solo hay ${item.stock} unidades disponibles`
+                                      : "Aumentar"}
                                   >
                                     +
                                   </button>
@@ -259,13 +266,6 @@ export function Carrito() {
                 <Link to="/productos" className="btn btn-outline-light btn-sm text-center">
                   &larr; Continuar Comprando
                 </Link>
-
-                {/* Banner de beneficios informativos */}
-                {isSenior && (
-                  <div className="alert alert-info py-2 px-3 small mt-3 mb-0">
-                    <i className="bi bi-stars me-1"></i> Beneficio Senior activo: 50% de descuento aplicado en toda la orden.
-                  </div>
-                )}
               </div>
             </div>
           </div>

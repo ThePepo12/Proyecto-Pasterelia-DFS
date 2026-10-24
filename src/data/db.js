@@ -49,7 +49,7 @@ const CATEGORIAS_INICIALES = [
     id: 6,
     nombre: 'Productos Sin Gluten',
     descripcion: 'Preparaciones certificadas libres de gluten para personas celíacas.',
-    imagen: '/img/producto_PSG001.avif'
+    imagen: '/img/producto_PG001.avif'
   },
   {
     id: 7,
@@ -218,7 +218,7 @@ const PRODUCTOS_INICIALES = [
     enOferta: false,
     porcentajeDescuento: 0,
     descripcion: 'Intenso brownie húmedo elaborado con harina de almendras certificada libre de gluten.',
-    imagen: '/img/producto_PSG001.avif'
+    imagen: '/img/producto_PG001.avif'
   },
   {
     id: 12,
@@ -232,7 +232,7 @@ const PRODUCTOS_INICIALES = [
     enOferta: false,
     porcentajeDescuento: 0,
     descripcion: 'Finas capas de panqueque sin gluten rellenas de crema de naranja natural y decorado artesanal.',
-    imagen: '/img/producto_PSG002.avif'
+    imagen: '/img/producto_PG002.avif'
   },
   {
     id: 13,

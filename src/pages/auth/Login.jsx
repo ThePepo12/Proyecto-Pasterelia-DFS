@@ -45,7 +45,7 @@ export function Login() {
     }
   };
 
-  // Botón rápido para facilitar la presentación al docente
+  // Botón rápido de prueba
   const cargarDemo = (userEmail, userPass) => {
     setEmail(userEmail);
     setPassword(userPass);
@@ -119,7 +119,7 @@ export function Login() {
               {/* Botones de Acceso Rápido para Demostración */}
               <div className="p-3 bg-dark bg-opacity-50 border border-secondary rounded-3 my-3">
                 <small className="text-warning fw-bold d-block mb-2">
-                  <i className="bi bi-lightning-charge-fill me-1"></i> Accesos Demo para la Presentación:
+                  <i className="bi bi-lightning-charge-fill me-1"></i> Accesos de Prueba:
                 </small>
                 <div className="d-flex flex-wrap gap-1">
                   <button

@@ -270,11 +270,11 @@ export function AdminCategorias() {
                       {/* Imagen */}
                       <td>
                         <img
-                          src={cat.imagen || '/img/categoria_tortas_cuadradas.avif'}
+                          src={cat.imagen || '/img/producto_TC001.avif'}
                           alt={cat.nombre}
                           className="rounded border border-secondary"
                           style={{ width: '52px', height: '42px', objectFit: 'cover' }}
-                          onError={(e) => { e.target.src = '/img/categoria_tortas_cuadradas.avif'; }}
+                          onError={(e) => { e.target.onerror = null; e.target.src = '/img/producto_TC001.avif'; }}
                         />
                       </td>
 

@@ -38,7 +38,8 @@ export function Home() {
       precio: prod.precio,
       cantidad: 1,
       personalizacion: 'Estándar',
-      imagen: prod.imagen
+      imagen: prod.imagen,
+      stock: prod.stock
     });
     setMensajeToast(`¡"${prod.nombre}" agregado al carrito!`);
     setTimeout(() => setMensajeToast(''), 3000);
