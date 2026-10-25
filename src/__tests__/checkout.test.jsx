@@ -1,7 +1,4 @@
 /**
- * PRUEBAS DE CHECKOUT Y PASARELA DE PAGO (checkout.test.jsx)
- * Evaluación Parcial 2 - Desarrollo Fullstack II
- * 
  * Contiene 3 pruebas clave:
  * 1. Descuento automático Senior (+50 años) en la orden.
  * 2. Simulación de rechazo de pago (error en pasarela) y preservación del carrito.

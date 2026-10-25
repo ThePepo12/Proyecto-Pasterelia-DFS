@@ -1,7 +1,4 @@
 /**
- * PRUEBAS DEL CARRITO DE COMPRAS (carrito.test.jsx)
- * Evaluación Parcial 2 - Desarrollo Fullstack II
- * 
  * Contiene 3 pruebas clave:
  * 1. Cálculo de subtotales y cantidades al agregar productos.
  * 2. Aplicación de cupón de descuento conmemorativo (FELICES50).

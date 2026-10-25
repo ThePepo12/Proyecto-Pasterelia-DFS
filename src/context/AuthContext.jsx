@@ -1,6 +1,4 @@
 /**
- * CONTEXTO DE AUTENTICACIÓN (src/context/AuthContext.jsx)
- * 
  * Gestiona el estado global de la sesión de usuario, roles (ADMIN / CLIENTE),
  * beneficios de edad (Senior 50%) y comunidad Duoc UC.
  */

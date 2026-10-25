@@ -1,9 +1,4 @@
-/**
- * BARRA DE NAVEGACIÓN INSTITUCIONAL (src/components/common/Navbar.jsx)
- * 
- * Migrada de legacy/cabecera.css y estructuras HTML.
- * Adaptada a Bootstrap 5 y React Router con estado global de sesión y carrito.
- */
+
 import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';

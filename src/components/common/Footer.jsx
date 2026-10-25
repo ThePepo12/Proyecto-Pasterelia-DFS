@@ -1,7 +1,7 @@
 /**
- * FOOTER COMÚN (src/components/common/Footer.jsx)
+ * FOOTER COMÚN 
  * 
- * Pie de página institucional con historia, enlaces rápidos, horarios, sucursales y créditos.
+ * Pie de página con historia, enlaces rápidos, horarios, sucursales y créditos.
  */
 import React from 'react';
 import { Link } from 'react-router-dom';

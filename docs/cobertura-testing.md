@@ -1,7 +1,6 @@
 # Informe de Pruebas Unitarias y Cobertura
 
-**Proyecto:** Pastelería Mil Sabores  
-**Asignatura:** Desarrollo Fullstack II (Duoc UC)  
+**Proyecto:** Pastelería Mil Sabores    
 **Herramientas:** Vitest, React Testing Library y `@testing-library/jest-dom`  
 **Enfoque:** Pruebas unitarias de componentes, hooks y flujos de negocio clave en el Frontend.  
 

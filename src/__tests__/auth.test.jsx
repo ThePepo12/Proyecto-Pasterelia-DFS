@@ -1,7 +1,4 @@
 /**
- * PRUEBAS DE AUTENTICACIÓN Y SEGURIDAD (auth.test.jsx)
- * Evaluación Parcial 2 - Desarrollo Fullstack II
- * 
  * Contiene 2 pruebas clave:
  * 1. Inicio de sesión exitoso y recuperación de roles.
  * 2. Protección de rutas administrativas (bloqueo a rol CLIENTE).

@@ -1,10 +1,4 @@
-/**
- * REGISTRO DE USUARIOS (src/pages/auth/Registro.jsx)
- * 
- * Migrada de legacy/registro.html.
- * Valida formulario en tiempo real, calcula la edad automáticamente para otorgar el
- * beneficio Senior (+50 años = 50% de descuento) y detecta correos @duocuc.cl.
- */
+
 import React, { useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';

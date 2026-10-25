@@ -190,3 +190,124 @@ a {
   border: none;
   margin: 48px 0;
 }
+
+
+/* ==========================================================================
+   ADAPTACIÓN DE IDENTIDAD VISUAL PASTELERÍA (BOOTSTRAP + LEGACY TONES)
+   ========================================================================== */
+
+/* 1. Tipografías con remates para títulos tradicionales */
+h1, h2, h3, h4, h5, .font-serif, .display-4, .display-5, .display-6 {
+  font-family: var(--font-serif) !important;
+  letter-spacing: -0.01em;
+}
+
+/* 2. Paleta cálida de chocolate para reemplazar el gris carbón plano */
+.bg-dark {
+  background-color: var(--bg-main) !important; /* #1f140e */
+}
+
+/* 3. Tarjetas con color café tostado artesanal y bordes suaves */
+.card:not(.bg-warning):not(.bg-success):not(.bg-danger),
+.card.bg-secondary.bg-opacity-10,
+.card.bg-dark {
+  background-color: var(--bg-card) !important; /* #2c1d15 */
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+/* Tarjetas y banners promocionales dorados (bg-warning) */
+.card.bg-warning {
+  background: linear-gradient(135deg, var(--accent-gold), #c87941) !important;
+  color: #1f140e !important;
+  border: 1px solid rgba(229, 169, 60, 0.5) !important;
+}
+
+.card.bg-warning h1,
+.card.bg-warning h2,
+.card.bg-warning h3,
+.card.bg-warning p,
+.card.bg-warning .lead {
+  color: #1f140e !important;
+}
+
+.card.bg-warning .text-dark {
+  color: #1f140e !important;
+}
+
+.card-header,
+.card-footer {
+  background-color: rgba(22, 14, 10, 0.7) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* 4. Tablas en armonía con los tonos cálidos */
+.table-dark {
+  --bs-table-bg: var(--bg-card) !important;
+  --bs-table-striped-bg: rgba(22, 14, 10, 0.4) !important;
+  --bs-table-hover-bg: rgba(229, 169, 60, 0.08) !important;
+  border-color: var(--border-color) !important;
+}
+
+.table-dark thead th {
+  background-color: #160e0a !important;
+  border-bottom: 2px solid var(--accent-gold) !important;
+}
+
+/* 5. Inputs y formularios con fondo café oscuro y placeholders legibles */
+.form-control,
+.form-select {
+  background-color: var(--bg-input) !important; /* #271911 */
+  border: 1px solid rgba(229, 169, 60, 0.35) !important;
+  color: var(--text-main) !important;
+}
+
+.form-control::placeholder,
+textarea.form-control::placeholder {
+  color: #c9b7aa !important; /* Tono crema cálido legible */
+  opacity: 0.8 !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--accent-gold) !important;
+  box-shadow: 0 0 0 0.25rem rgba(229, 169, 60, 0.25) !important;
+  background-color: #2f1d14 !important;
+  color: #ffffff !important;
+}
+
+/* 6. Botones dorados de acento artesanal */
+.btn-warning {
+  background: linear-gradient(135deg, var(--accent-gold), #c87941) !important;
+  border: none !important;
+  color: #1f140e !important;
+  font-weight: 700 !important;
+  box-shadow: 0 3px 10px rgba(229, 169, 60, 0.25);
+  transition: all 0.25s ease;
+}
+
+.btn-warning:hover {
+  background: linear-gradient(135deg, var(--accent-gold-hover), #d9884e) !important;
+  color: #120905 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(229, 169, 60, 0.35);
+}
+
+.btn-outline-warning {
+  border-color: var(--accent-gold) !important;
+  color: var(--accent-gold) !important;
+}
+
+.btn-outline-warning:hover {
+  background-color: var(--accent-gold) !important;
+  color: #1f140e !important;
+}
+
+/* 7. Colores dorados y textos secundarios más cálidos */
+.text-warning {
+  color: var(--accent-gold) !important;
+}
+
+.text-secondary {
+  color: var(--text-secondary) !important; /* #baa89b */
+}

@@ -1,5 +1,5 @@
 /**
- * RUTA PROTEGIDA DE ADMINISTRACIÓN (src/components/admin/RutaProtegidaAdmin.jsx)
+ * RUTA PROTEGIDA DE ADMINISTRACIÓN 
  * 
  * Verifica que el usuario tenga una sesión activa y cuente con rol 'ADMIN'.
  * Si no está autenticado o carece de permisos, muestra una pantalla de bloqueo

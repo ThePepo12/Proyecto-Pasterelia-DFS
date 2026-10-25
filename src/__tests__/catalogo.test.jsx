@@ -1,7 +1,4 @@
 /**
- * PRUEBAS DE CATÁLOGO Y PRODUCTOS (catalogo.test.jsx)
- * Evaluación Parcial 2 - Desarrollo Fullstack II
- * 
  * Contiene 2 pruebas clave:
  * 1. Carga y renderizado de tarjetas de categorías y productos.
  * 2. Búsqueda y filtrado dinámico de productos en tiempo real.

@@ -1,10 +1,4 @@
-/**
- * INICIO DE SESIÓN (src/pages/auth/Login.jsx)
- * 
- * Migrada de legacy/login.html.
- * Maneja formulario con validación visual, autenticación con el backend (/api/auth/login),
- * botones rápidos de demostración para la presentación y redirección según rol.
- */
+
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -116,7 +110,7 @@ export function Login() {
                 </button>
               </form>
 
-              {/* Botones de Acceso Rápido para Demostración */}
+              {/* Botones de Acceso Rápido */}
               <div className="p-3 bg-dark bg-opacity-50 border border-secondary rounded-3 my-3">
                 <small className="text-warning fw-bold d-block mb-2">
                   <i className="bi bi-lightning-charge-fill me-1"></i> Accesos de Prueba:

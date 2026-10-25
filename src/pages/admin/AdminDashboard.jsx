@@ -167,7 +167,7 @@ export function AdminDashboard() {
       {/* Fila Secundaria: Productos Críticos & Resumen Operativo */}
       <div className="row g-4">
         {/* Tabla de Productos con Stock Crítico */}
-        <div className="col-12 col-lg-8">
+        <div className="col-12">
           <div className="card bg-secondary bg-opacity-10 border-secondary p-4 h-100 shadow-sm rounded-3">
             <div className="d-flex justify-content-between align-items-center mb-3">
               <h5 className="text-warning fw-bold mb-0">
@@ -240,33 +240,7 @@ export function AdminDashboard() {
           </div>
         </div>
 
-        {/* Panel Lateral: Accesos Directos y Estado del Sistema */}
-        <div className="col-12 col-lg-4">
-          <div className="card bg-secondary bg-opacity-10 border-secondary p-4 h-100 shadow-sm rounded-3">
-            <h5 className="text-warning fw-bold mb-3">
-              <i className="bi bi-lightning-charge me-2"></i>
-              Acciones Rápidas
-            </h5>
-            <div className="d-grid gap-2 mb-4">
-              <Link to="/admin/productos" className="btn btn-warning text-dark fw-bold text-start py-2">
-                <i className="bi bi-plus-circle me-2"></i>
-                Agregar Nuevo Producto
-              </Link>
-              <Link to="/admin/categorias" className="btn btn-outline-light text-start py-2">
-                <i className="bi bi-tags me-2"></i>
-                Administrar Categorías
-              </Link>
-              <Link to="/admin/usuarios" className="btn btn-outline-light text-start py-2">
-                <i className="bi bi-people me-2"></i>
-                Control de Usuarios y Roles
-              </Link>
-              <Link to="/ofertas" className="btn btn-outline-light text-start py-2" target="_blank">
-                <i className="bi bi-percent me-2 text-warning"></i>
-                Revisar Vista Pública de Ofertas
-              </Link>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   );

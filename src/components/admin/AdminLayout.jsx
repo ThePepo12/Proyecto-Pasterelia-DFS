@@ -1,5 +1,5 @@
 /**
- * LAYOUT DE ADMINISTRACIÓN (src/components/admin/AdminLayout.jsx)
+ * LAYOUT DE ADMINISTRACIÓN 
  * 
  * Estructura contenedora para todas las vistas del panel administrativo:
  * - Sidebar lateral de navegación con enlaces a Dashboard, Productos, Categorías, Usuarios y Reportes

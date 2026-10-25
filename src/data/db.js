@@ -1,9 +1,8 @@
 /**
- * BASE DE DATOS LOCAL Y RESPALDO (src/data/db.js)
+ * BASE DE DATOS LOCAL Y RESPALDO 
  * 
  * Implementa la persistencia en localStorage para el funcionamiento offline,
  * respaldo cuando el backend no esté disponible y soporte para pruebas unitarias con Vitest.
- * Replica exactamente la misma estructura de datos y operaciones CRUD que el backend Spring Boot.
  */
 
 const STORAGE_KEYS = {

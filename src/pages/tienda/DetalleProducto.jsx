@@ -266,7 +266,12 @@ export function DetalleProducto() {
                     <button
                       className="btn btn-outline-warning"
                       type="button"
-                      onClick={() => setCantidad((c) => c + 1)}
+                      onClick={() => {
+                        const maxStock = producto?.stock ?? 99;
+                        setCantidad((c) => Math.min(maxStock, c + 1));
+                      }}
+                      disabled={producto?.stock != null && cantidad >= producto.stock}
+                      title={producto?.stock != null && cantidad >= producto.stock ? `Solo hay ${producto.stock} unidades en stock` : 'Aumentar'}
                     >
                       +
                     </button>

@@ -1,7 +1,5 @@
 /**
- * CONTEXTO DEL CARRITO DE COMPRAS (src/context/CartContext.jsx)
- * 
- * Implementa la lógica de compra migrada de legacy/js/carrito.js:
+ * Implementa la lógica de compra:
  * - Persistencia en localStorage ('carrito_mil_sabores')
  * - Soporte para personalizaciones y tamaños
  * - Cálculo de Subtotal, Descuentos (Senior 50%, Cupones), Envío ($3.500) e IVA
@@ -60,7 +58,8 @@ export function CartProvider({ children }) {
           precio: Number(item.precio),
           cantidad: cantidad,
           personalizacion: personalizacion,
-          imagen: item.imagen || '/img/producto_TE001.avif'
+          imagen: item.imagen || '/img/producto_TE001.avif',
+          stock: item.stock != null ? item.stock : 99
         });
       }
       return copia;
