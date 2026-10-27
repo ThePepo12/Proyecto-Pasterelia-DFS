@@ -1,13 +1,9 @@
 /**
- * VISTA OBLIGATORIA: GESTIÓN DE CATEGORÍAS (VERDE)
- * (src/pages/admin/AdminCategorias.jsx)
- * 
  * Administración completa de categorías de pastelería:
  * - Listado en tabla y cuadrícula con conteo de productos asociados en tiempo real
  * - Búsqueda por texto y ordenamiento
  * - Creación y edición reactiva mediante modal accesible
  * - Eliminación preventiva con control de productos asociados
- * - Conectado con Spring Boot (categoriaService) y conmutación a db.js
  */
 import React, { useState, useEffect, useMemo } from 'react';
 import { categoriaService } from '../../services/categoriaService.js';

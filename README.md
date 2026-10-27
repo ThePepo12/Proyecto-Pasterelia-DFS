@@ -1,8 +1,8 @@
-# 🎂 Pastelería Mil Sabores — Plataforma Web Integrada
+#  Pastelería Mil Sabores — Plataforma Web Integrada
 
-> **Asignatura:** DSY1104 Desarrollo Fullstack II  
+> **Asignatura:** Desarrollo Fullstack II  
 > **Institución:** Duoc UC — Escuela de Informática y Telecomunicaciones  
-> **Evaluación:** Evaluación Parcial 2 (30% de la nota final)  
+> **Evaluación:** Evaluación Parcial 2  
 > **Arquitectura:** Frontend React (Vite + Bootstrap 5) + Backend Spring Boot (Java 17+ / H2 Database)  
 
 ---
@@ -72,7 +72,7 @@ Las pruebas unitarias fueron desarrolladas exclusivamente para el frontend utili
 
 ```bash
 # Ejecutar las 10 Pruebas Estrella seleccionadas para la presentación:
-npm test src/__tests__/pruebasEstrella.test.jsx
+npm test src/test/pruebasEstrella.test.jsx
 
 # Ejecutar la suite completa de pruebas (57 casos):
 npm test
@@ -105,6 +105,5 @@ El reporte gráfico de cobertura queda generado en:
 
 ## 7. DOCUMENTACIÓN TÉCNICA DEL PROYECTO
 
-* [`docs/ERS_V2.md`](docs/ERS_V2.md): Especificación de Requisitos de Software formal V2.0, arquitectura de doble fuente, integración CORS, H2 y equivalencias Vitest ↔ Jasmine/Karma.
 * [`docs/cobertura-testing.md`](docs/cobertura-testing.md): Informe exhaustivo de aseguramiento de calidad, inventario de pruebas y métricas V8.
-* [`docs/pruebas-estrella.md`](docs/pruebas-estrella.md): Guion de 1 minuto por prueba para la defensa oral ante el profesor.
+

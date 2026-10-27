@@ -1,13 +1,9 @@
 /**
- * VISTA OBLIGATORIA: GESTIÓN DE PRODUCTOS / CRUD (VERDE)
- * (src/pages/admin/AdminProductos.jsx)
- * 
  * Administración completa del catálogo de pastelería:
  * - Tabla interactiva con miniatura, código, nombre, categoría, precio, stock y estado
  * - Filtro en tiempo real por buscador y por categoría
  * - Creación y edición reactiva mediante modal accesible
  * - Eliminación de productos con confirmación
- * - Conectado con Spring Boot (productoService) con fallback automático a db.js
  */
 import React, { useState, useEffect, useMemo } from 'react';
 import { productoService } from '../../services/productoService.js';

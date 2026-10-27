@@ -1,13 +1,9 @@
 /**
- * VISTA OBLIGATORIA: PEDIDOS Y REPORTES FINANCIEROS (VERDE)
- * (src/pages/admin/AdminReportes.jsx)
- * 
  * Gestión del ciclo de vida de pedidos y analítica financiera:
  * - Historial completo de órdenes con cambio reactivo de estado
  * - Detalle modal de boleta tributaria e ítems adquiridos
  * - Indicadores financieros: Total de ventas, Ticket Promedio y conteo por estado
  * - Exportación de reporte a archivo CSV y vista imprimible
- * - Conectado con Spring Boot (ordenService, reporteService) y db.js
  */
 import React, { useState, useEffect, useMemo } from 'react';
 import { ordenService } from '../../services/ordenService.js';

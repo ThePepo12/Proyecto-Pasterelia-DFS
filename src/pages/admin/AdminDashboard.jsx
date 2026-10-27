@@ -1,5 +1,5 @@
 /**
- * DASHBOARD ADMINISTRATIVO (src/pages/admin/AdminDashboard.jsx)
+ * DASHBOARD ADMINISTRATIVO 
  * 
  * Vista principal del panel de administración:
  * - Indicadores clave de desempeño (KPIs): Total de productos, inventario, ventas, pedidos y stock crítico

@@ -1,13 +1,9 @@
 /**
- * VISTA OBLIGATORIA: GESTIÓN DE USUARIOS Y ROLES (VERDE)
- * (src/pages/admin/AdminUsuarios.jsx)
- * 
  * Administración de cuentas de usuario y asignación de roles:
  * - Tabla con id, nombre, email, teléfono, dirección, edad, rol y beneficios
  * - Buscador por texto en tiempo real y filtro por rol (ADMIN / CLIENTE)
  * - Creación y edición reactiva mediante modal accesible
  * - Protección de auto-eliminación para la sesión administrativa activa
- * - Conectado con Spring Boot (usuarioService) y conmutación a db.js
  */
 import React, { useState, useEffect, useMemo } from 'react';
 import { usuarioService } from '../../services/usuarioService.js';
