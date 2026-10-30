@@ -1,7 +1,6 @@
 #  Pastelería Mil Sabores — Plataforma Web Integrada
 
-> **Asignatura:** Desarrollo Fullstack II  
-> **Institución:** Duoc UC — Escuela de Informática y Telecomunicaciones  
+> **Asignatura:** Desarrollo Fullstack II   
 > **Evaluación:** Evaluación Parcial 2  
 > **Arquitectura:** Frontend React (Vite + Bootstrap 5) + Backend Spring Boot (Java 17+ / H2 Database)  
 
@@ -37,23 +36,10 @@ El sistema arranca automáticamente con cuentas precargadas en la base de datos 
 
 ## 4. INSTRUCCIONES DE EJECUCIÓN
 
-### 4.1 Backend (Spring Boot + Base de Datos H2)
-El backend utiliza Maven Wrapper (`mvnw.cmd`) y base de datos relacional H2 embebida en memoria. No requiere instalar servidores SQL externos.
-
-```bash
-# 1. Ingresar a la carpeta del backend
-cd tienda-pasteleria-backend
-
-# 2. Levantar la aplicación Spring Boot
-./mvnw.cmd spring-boot:run
-```
-* **Puerto de ejecución:** `http://localhost:8080`
-* **Consola de la base de datos H2:** `http://localhost:8080/h2-console`  
-  *(JDBC URL: `jdbc:h2:mem:pasteleriadb` — Usuario: `sa` — Sin contraseña)*
 
 ---
 
-### 4.2 Frontend (React + Vite + Bootstrap 5)
+### 4.1 Frontend (React + Vite + Bootstrap 5)
 ```bash
 # 1. Abrir una nueva terminal en la raíz del proyecto
 # 2. Instalar dependencias (solo la primera vez)
@@ -71,10 +57,8 @@ npm run dev
 Las pruebas unitarias fueron desarrolladas exclusivamente para el frontend utilizando **Vitest** y **React Testing Library** (ejecutadas sobre el entorno simulado `jsdom`), garantizando total desacoplamiento del backend gracias a la estrategia de mocks (`vi.spyOn`) y la base de datos local de respaldo (`src/data/db.js`).
 
 ```bash
-# Ejecutar las 10 Pruebas Estrella seleccionadas para la presentación:
-npm test src/test/pruebasEstrella.test.jsx
 
-# Ejecutar la suite completa de pruebas (57 casos):
+# Ejecutar las pruebas
 npm test
 
 # Generar reporte de cobertura de código (proveedor V8):
@@ -85,7 +69,7 @@ El reporte gráfico de cobertura queda generado en:
 
 ---
 
-## 6. MAPA DE VISTAS VERDES (OBLIGATORIAS)
+## 6. MAPA DE VISTAS 
 
 | Sección | Vista Verde | Ruta en el Frontend | Endpoint Consumido |
 |---|---|---|---|

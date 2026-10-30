@@ -40,11 +40,7 @@ export function Login() {
   };
 
   // Botón rápido de prueba
-  const cargarDemo = (userEmail, userPass) => {
-    setEmail(userEmail);
-    setPassword(userPass);
-    setErrorMsg('');
-  };
+  
 
   return (
     <div className="bg-dark text-light py-5 min-vh-100 d-flex align-items-center">
@@ -109,36 +105,6 @@ export function Login() {
                   )}
                 </button>
               </form>
-
-              {/* Botones de Acceso Rápido */}
-              <div className="p-3 bg-dark bg-opacity-50 border border-secondary rounded-3 my-3">
-                <small className="text-warning fw-bold d-block mb-2">
-                  <i className="bi bi-lightning-charge-fill me-1"></i> Accesos de Prueba:
-                </small>
-                <div className="d-flex flex-wrap gap-1">
-                  <button
-                    type="button"
-                    onClick={() => cargarDemo('admin@pasteleriamilsabores.cl', 'admin123')}
-                    className="btn btn-outline-warning btn-sm"
-                  >
-                    Admin
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => cargarDemo('rosa.carrasco@gmail.com', 'rosa123')}
-                    className="btn btn-outline-info btn-sm"
-                  >
-                    Senior (+50 años)
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => cargarDemo('estudiante@duocuc.cl', 'duoc123')}
-                    className="btn btn-outline-light btn-sm"
-                  >
-                    Duoc UC
-                  </button>
-                </div>
-              </div>
 
               <div className="text-center pt-2 border-top border-secondary border-opacity-25 small text-secondary">
                 ¿No tienes cuenta aún?{' '}

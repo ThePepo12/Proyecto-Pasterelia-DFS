@@ -31,7 +31,7 @@ export function Registro() {
   }, [fechaNacimiento]);
 
   const esSenior = edadCalculada >= 50;
-  const esDuoc = email.trim().toLowerCase().endsWith('@duocuc.cl') || esEstudianteManual;
+  const esDuoc = email.trim().toLowerCase().endsWith('@duocuc.cl');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -178,22 +178,6 @@ export function Registro() {
                       onChange={(e) => setDireccion(e.target.value)}
                       aria-label="Dirección"
                     />
-                  </div>
-
-                  {/* Convenio Duoc Checkbox */}
-                  <div className="col-12">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input bg-dark border-secondary"
-                        type="checkbox"
-                        id="checkDuoc"
-                        checked={esDuoc}
-                        onChange={(e) => setEsEstudianteManual(e.target.checked)}
-                      />
-                      <label className="form-check-label text-light small" htmlFor="checkDuoc">
-                        Pertenezco a la comunidad educativa <strong>Duoc UC</strong> (estudiante, docente o colaborador).
-                      </label>
-                    </div>
                   </div>
                 </div>
 
