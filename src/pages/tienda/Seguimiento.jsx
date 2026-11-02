@@ -1,11 +1,3 @@
-/**
- * SEGUIMIENTO DE DESPACHO (src/pages/tienda/Seguimiento.jsx)
- * 
- * Migrada de legacy/seguimiento.html.
- * Permite buscar pedidos por Folio (ej: MS-501991), visualizar el stepper
- * interactivo de 5 etapas (Confirmado, Horneado, Decoración, En Ruta, Entregado)
- * y simular el avance de estado para la demostración.
- */
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ordenService } from '../../services/ordenService.js';
@@ -57,7 +49,6 @@ export function Seguimiento() {
     }
   }, [searchParams]);
 
-  // Determinar etapa activa
   const etapaActualIndex = () => {
     if (!orden) return 1;
     const est = (orden.estado || '').toLowerCase();
@@ -73,7 +64,6 @@ export function Seguimiento() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container" style={{ maxWidth: '880px' }}>
-        {/* Encabezado */}
         <div className="text-center mb-5">
           <span className="badge bg-warning text-dark px-3 py-2 text-uppercase fw-bold mb-2">
             Despacho en Frío &bull; Tracking en Vivo
@@ -84,7 +74,6 @@ export function Seguimiento() {
           </p>
         </div>
 
-        {/* Buscador de Folio */}
         <div className="card bg-secondary bg-opacity-10 border-warning p-4 shadow-sm mb-5">
           <form
             onSubmit={(e) => {
@@ -122,7 +111,6 @@ export function Seguimiento() {
           )}
         </div>
 
-        {/* Tarjeta de Progreso */}
         {orden && (
           <div className="card bg-secondary bg-opacity-10 border-secondary p-4 p-md-5 rounded-4 shadow-lg mb-4">
             <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2 pb-3 border-bottom border-secondary border-opacity-25">
@@ -136,15 +124,12 @@ export function Seguimiento() {
               </div>
             </div>
 
-            {/* Stepper de 5 Etapas */}
             <div className="my-4">
               <div className="d-flex justify-content-between position-relative mb-4">
-                {/* Línea conectora de fondo */}
                 <div
                   className="position-absolute top-50 start-0 translate-middle-y w-100 bg-secondary"
                   style={{ height: '4px', zIndex: 1 }}
                 ></div>
-                {/* Línea conectora activa */}
                 <div
                   className="position-absolute top-50 start-0 translate-middle-y bg-warning"
                   style={{
@@ -184,14 +169,12 @@ export function Seguimiento() {
                 })}
               </div>
 
-              {/* Detalle del estado actual */}
               <div className="alert alert-warning bg-warning bg-opacity-10 border-warning text-light text-center py-3">
                 <i className="bi bi-info-circle-fill text-warning me-2 fs-5"></i>
                 Estado actual: <strong>{orden.estado}</strong> &bull; {ETAPAS[pasoActivo - 1]?.desc}
               </div>
             </div>
 
-            {/* Datos del Cliente y Productos */}
             <div className="row g-4 pt-3 border-top border-secondary border-opacity-25">
               <div className="col-12 col-md-6">
                 <h6 className="text-warning fw-bold text-uppercase small">Destino de Entrega</h6>

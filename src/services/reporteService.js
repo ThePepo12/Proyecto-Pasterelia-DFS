@@ -1,8 +1,3 @@
-/**
- * SERVICIO DE REPORTES (src/services/reporteService.js)
- * 
- * Conecta con los endpoints de métricas administrativas (/api/reportes/productos y /api/reportes/generales).
- */
 import { request } from './api.js';
 import { db } from '../data/db.js';
 

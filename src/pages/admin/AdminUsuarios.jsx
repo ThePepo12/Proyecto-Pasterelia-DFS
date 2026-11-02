@@ -1,10 +1,3 @@
-/**
- * Administración de cuentas de usuario y asignación de roles:
- * - Tabla con id, nombre, email, teléfono, dirección, edad, rol y beneficios
- * - Buscador por texto en tiempo real y filtro por rol (ADMIN / CLIENTE)
- * - Creación y edición reactiva mediante modal accesible
- * - Protección de auto-eliminación para la sesión administrativa activa
- */
 import React, { useState, useEffect, useMemo } from 'react';
 import { usuarioService } from '../../services/usuarioService.js';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -28,7 +21,6 @@ export function AdminUsuarios() {
   const [busqueda, setBusqueda] = useState('');
   const [filtroRol, setFiltroRol] = useState('TODOS');
 
-  // Modal Crear / Editar
   const [modalAbierto, setModalAbierto] = useState(false);
   const [modoEdicion, setModoEdicion] = useState(false);
   const [formData, setFormData] = useState(ESTADO_FORM_INICIAL);
@@ -36,7 +28,6 @@ export function AdminUsuarios() {
   const [guardando, setGuardando] = useState(false);
   const [mensajeExito, setMensajeExito] = useState('');
 
-  // Modal Eliminación
   const [usuarioAEliminar, setUsuarioAEliminar] = useState(null);
 
   const cargarUsuarios = async () => {
@@ -60,7 +51,6 @@ export function AdminUsuarios() {
     setTimeout(() => setMensajeExito(''), 3500);
   };
 
-  // Filtrado reactivo en tiempo real
   const usuariosFiltrados = useMemo(() => {
     return usuarios.filter((u) => {
       const coincideTexto =
@@ -179,7 +169,6 @@ export function AdminUsuarios() {
   const handleEliminarUsuario = async () => {
     if (!usuarioAEliminar) return;
 
-    // Validación preventiva: no auto-eliminar el usuario actual
     if (adminActivo && (adminActivo.id === usuarioAEliminar.id || adminActivo.email === usuarioAEliminar.email)) {
       alert('Operación no permitida: no puedes eliminar la cuenta de administrador con la que iniciaste sesión.');
       setUsuarioAEliminar(null);
@@ -199,7 +188,6 @@ export function AdminUsuarios() {
 
   return (
     <div className="container-fluid p-0" data-testid="admin-usuarios">
-      {/* Toast de Éxito */}
       {mensajeExito && (
         <div
           className="alert alert-success bg-success bg-opacity-25 border-success text-light text-center position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg z-3"
@@ -212,7 +200,6 @@ export function AdminUsuarios() {
         </div>
       )}
 
-      {/* Encabezado y Botón Crear */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
         <div>
           <h1 className="h2 text-warning fw-bold font-serif mb-1">
@@ -233,10 +220,8 @@ export function AdminUsuarios() {
         </button>
       </div>
 
-      {/* Barra de Filtros y Búsqueda */}
       <div className="card bg-secondary bg-opacity-10 border-secondary p-3 mb-4 rounded-3 shadow-sm">
         <div className="row g-3 align-items-center">
-          {/* Buscador */}
           <div className="col-12 col-md-6 col-lg-5">
             <div className="input-group">
               <span className="input-group-text bg-dark border-secondary text-secondary">
@@ -263,7 +248,6 @@ export function AdminUsuarios() {
             </div>
           </div>
 
-          {/* Filtro por Rol */}
           <div className="col-12 col-md-4 col-lg-4">
             <select
               className="form-select bg-dark text-light border-secondary"
@@ -278,14 +262,12 @@ export function AdminUsuarios() {
             </select>
           </div>
 
-          {/* Contador */}
           <div className="col-12 col-md-2 col-lg-3 text-md-end text-secondary small">
             Mostrando <strong>{usuariosFiltrados.length}</strong> de {usuarios.length} usuarios
           </div>
         </div>
       </div>
 
-      {/* Tabla de Usuarios */}
       <div className="card bg-secondary bg-opacity-10 border-secondary shadow-sm rounded-3 overflow-hidden">
         {cargando ? (
           <div className="text-center py-5">
@@ -321,14 +303,12 @@ export function AdminUsuarios() {
 
                   return (
                     <tr key={u.id || u.email} data-testid={`fila-usuario-${u.id}`}>
-                      {/* ID */}
                       <td>
                         <span className="badge bg-dark border border-secondary text-secondary">
                           #{u.id}
                         </span>
                       </td>
 
-                      {/* Nombre & Correo */}
                       <td>
                         <div className="d-flex align-items-center gap-2">
                           <div
@@ -346,7 +326,6 @@ export function AdminUsuarios() {
                         </div>
                       </td>
 
-                      {/* Teléfono & Dirección */}
                       <td className="small text-secondary">
                         <div>
                           <i className="bi bi-telephone me-1 text-warning"></i>
@@ -358,12 +337,10 @@ export function AdminUsuarios() {
                         </div>
                       </td>
 
-                      {/* Edad */}
                       <td className="text-center fw-bold small text-light">
                         {u.edad || '—'} {u.edad ? 'años' : ''}
                       </td>
 
-                      {/* Rol */}
                       <td className="text-center">
                         <span
                           className={`badge ${
@@ -376,7 +353,6 @@ export function AdminUsuarios() {
                         </span>
                       </td>
 
-                      {/* Beneficios */}
                       <td className="text-center">
                         <div className="d-flex flex-column gap-1 align-items-center">
                           {esSenior && (
@@ -397,7 +373,6 @@ export function AdminUsuarios() {
                         </div>
                       </td>
 
-                      {/* Acciones */}
                       <td className="text-end">
                         <div className="btn-group btn-group-sm">
                           <button
@@ -429,7 +404,6 @@ export function AdminUsuarios() {
         )}
       </div>
 
-      {/* MODAL CREAR / EDITAR USUARIO */}
       {modalAbierto && (
         <div
           className="modal show d-block bg-black bg-opacity-75 z-3"
@@ -462,7 +436,6 @@ export function AdminUsuarios() {
                   )}
 
                   <div className="row g-3">
-                    {/* Nombre */}
                     <div className="col-12 col-sm-6">
                       <label htmlFor="usr-nombre" className="form-label small fw-bold text-light">
                         Nombre Completo: <span className="text-danger">*</span>
@@ -481,7 +454,6 @@ export function AdminUsuarios() {
                       {errores.nombre && <div className="invalid-feedback">{errores.nombre}</div>}
                     </div>
 
-                    {/* Email */}
                     <div className="col-12 col-sm-6">
                       <label htmlFor="usr-email" className="form-label small fw-bold text-light">
                         Correo Electrónico: <span className="text-danger">*</span>
@@ -500,7 +472,6 @@ export function AdminUsuarios() {
                       {errores.email && <div className="invalid-feedback">{errores.email}</div>}
                     </div>
 
-                    {/* Contraseña */}
                     <div className="col-12 col-sm-6">
                       <label htmlFor="usr-password" className="form-label small fw-bold text-light">
                         Contraseña: {modoEdicion ? <span className="text-secondary">(Opcional en edición)</span> : <span className="text-danger">*</span>}
@@ -519,7 +490,6 @@ export function AdminUsuarios() {
                       {errores.password && <div className="invalid-feedback">{errores.password}</div>}
                     </div>
 
-                    {/* Teléfono */}
                     <div className="col-12 col-sm-6">
                       <label htmlFor="usr-telefono" className="form-label small fw-bold text-light">
                         Teléfono:
@@ -535,7 +505,6 @@ export function AdminUsuarios() {
                       />
                     </div>
 
-                    {/* Dirección */}
                     <div className="col-12 col-sm-8">
                       <label htmlFor="usr-direccion" className="form-label small fw-bold text-light">
                         Dirección de Despacho:
@@ -551,7 +520,6 @@ export function AdminUsuarios() {
                       />
                     </div>
 
-                    {/* Edad */}
                     <div className="col-12 col-sm-4">
                       <label htmlFor="usr-edad" className="form-label small fw-bold text-light">
                         Edad: <span className="text-danger">*</span>
@@ -572,7 +540,6 @@ export function AdminUsuarios() {
                       {errores.edad && <div className="invalid-feedback">{errores.edad}</div>}
                     </div>
 
-                    {/* Rol Administrativo */}
                     <div className="col-12 col-sm-6">
                       <label htmlFor="usr-rol" className="form-label small fw-bold text-light">
                         Rol en la Plataforma: <span className="text-danger">*</span>
@@ -590,7 +557,6 @@ export function AdminUsuarios() {
                       </select>
                     </div>
 
-                    {/* Checkbox Duoc */}
                     <div className="col-12 col-sm-6 d-flex align-items-center pt-3">
                       <div className="form-check">
                         <input
@@ -643,7 +609,6 @@ export function AdminUsuarios() {
         </div>
       )}
 
-      {/* MODAL CONFIRMACIÓN ELIMINACIÓN */}
       {usuarioAEliminar && (
         <div
           className="modal show d-block bg-black bg-opacity-75 z-3"

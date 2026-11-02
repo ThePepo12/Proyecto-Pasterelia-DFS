@@ -1,9 +1,3 @@
-/**
- * SERVICIO DE USUARIOS (src/services/usuarioService.js)
- * 
- * Implementa CRUD de usuarios y consulta de perfiles conectando con Spring Boot (/api/usuarios)
- * y conmutando a db.js en caso de desconexión.
- */
 import { request } from './api.js';
 import { db } from '../data/db.js';
 

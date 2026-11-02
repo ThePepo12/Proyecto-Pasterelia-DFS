@@ -1,10 +1,3 @@
-/**
- * ENRUTADOR PRINCIPAL (src/App.jsx)
- * 
- * Configura los proveedores globales (AuthProvider y CartProvider),
- * la navegación de la tienda pública (Navbar y Footer) y las rutas
- * protegidas del panel administrativo (RutaProtegidaAdmin y AdminLayout).
- */
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext.jsx';
@@ -12,7 +5,6 @@ import { CartProvider } from './context/CartContext.jsx';
 import { Navbar } from './components/common/Navbar.jsx';
 import { Footer } from './components/common/Footer.jsx';
 
-// Vistas de la Tienda (Fases 4, 5 y 6)
 import { Home } from './pages/tienda/Home.jsx';
 import { Catalogo } from './pages/tienda/Catalogo.jsx';
 import { DetalleProducto } from './pages/tienda/DetalleProducto.jsx';
@@ -31,7 +23,6 @@ import { Checkout } from './pages/tienda/Checkout.jsx';
 import { PagoExitoso } from './pages/tienda/PagoExitoso.jsx';
 import { PagoError } from './pages/tienda/PagoError.jsx';
 
-// Capa Administrativa (Fases 7 y 8)
 import { RutaProtegidaAdmin } from './components/admin/RutaProtegidaAdmin.jsx';
 import { AdminLayout } from './components/admin/AdminLayout.jsx';
 import { AdminDashboard } from './pages/admin/AdminDashboard.jsx';
@@ -66,12 +57,10 @@ function AppContenido() {
 
   return (
     <div className="d-flex flex-column min-vh-100 bg-dark text-light">
-      {/* Navbar de la tienda pública (se oculta dentro de /admin) */}
       {!esRutaAdmin && <Navbar />}
 
       <main className="flex-grow-1">
         <Routes>
-          {/* Vistas Públicas y Blancas (Fases 3 y 4) */}
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<Catalogo />} />
           <Route path="/producto/:codigo" element={<DetalleProducto />} />
@@ -85,7 +74,6 @@ function AppContenido() {
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/seguimiento" element={<Seguimiento />} />
 
-          {/* Vistas Verdes de la Tienda (Fases 5 y 6) */}
           <Route path="/categorias" element={<Categorias />} />
           <Route path="/categorias/:id" element={<Categorias />} />
           <Route path="/categoria/:id" element={<Categorias />} />
@@ -94,7 +82,6 @@ function AppContenido() {
           <Route path="/pago-exitoso" element={<PagoExitoso />} />
           <Route path="/pago-error" element={<PagoError />} />
 
-          {/* Capa Administrativa Protegida (Fases 7 y 8) */}
           <Route
             path="/admin"
             element={
@@ -110,12 +97,10 @@ function AppContenido() {
             <Route path="reportes" element={<AdminReportes />} />
           </Route>
 
-          {/* 404 Not Found */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
-      {/* Footer de la tienda pública (se oculta dentro de /admin) */}
       {!esRutaAdmin && <Footer />}
     </div>
   );

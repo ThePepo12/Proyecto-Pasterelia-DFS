@@ -1,10 +1,3 @@
-/**
- * PERFIL DE USUARIO (src/pages/tienda/Perfil.jsx)
- * 
- * Migrada de legacy/perfil.html.
- * Muestra información del usuario activo, permite actualizar sus datos personales,
- * visualiza sus insignias de beneficios (Senior/Duoc) y carga su historial de compras reales.
- */
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -33,7 +26,6 @@ export function Perfil() {
       setTelefono(usuario.telefono || '');
       setDireccion(usuario.direccion || '');
 
-      // Cargar historial de compras de este usuario
       async function cargarHistorial() {
         try {
           const misOrdenes = await ordenService.obtenerPorUsuario(usuario.id);
@@ -72,7 +64,6 @@ export function Perfil() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Encabezado */}
         <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
           <div>
             <h1 className="display-6 fw-bold text-warning mb-1">
@@ -93,9 +84,7 @@ export function Perfil() {
         </div>
 
         <div className="row g-4">
-          {/* Columna Izquierda: Tarjeta de Insignias y Edición */}
           <div className="col-12 col-lg-5">
-            {/* Tarjeta de Resumen */}
             <div className="card bg-secondary bg-opacity-10 border-warning p-4 shadow-sm mb-4">
               <div className="text-center mb-3">
                 <div className="avatar bg-warning text-dark rounded-circle d-inline-flex align-items-center justify-content-center fw-bold fs-2 mb-2" style={{ width: '80px', height: '80px' }}>
@@ -105,7 +94,6 @@ export function Perfil() {
                 <small className="text-secondary">{usuario.email}</small>
               </div>
 
-              {/* Insignias de Beneficios */}
               <div className="d-flex flex-wrap gap-2 justify-content-center mb-3">
                 <span className="badge bg-secondary border border-light">Rol: {usuario.rol}</span>
                 {isSenior && (
@@ -127,7 +115,6 @@ export function Perfil() {
               )}
             </div>
 
-            {/* Formulario de Actualización */}
             <div className="card bg-secondary bg-opacity-10 border-secondary p-4 shadow-sm">
               <h5 className="text-warning fw-bold mb-3">
                 <i className="bi bi-pencil-square me-2"></i> Editar Mis Datos
@@ -182,7 +169,6 @@ export function Perfil() {
             </div>
           </div>
 
-          {/* Columna Derecha: Historial de Compras */}
           <div className="col-12 col-lg-7">
             <div className="card bg-secondary bg-opacity-10 border-secondary shadow-sm">
               <div className="card-header bg-dark border-bottom border-secondary py-3 d-flex justify-content-between align-items-center">

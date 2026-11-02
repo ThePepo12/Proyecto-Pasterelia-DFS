@@ -19,23 +19,19 @@ export function Navbar() {
 
   return (
     <div className="d-flex flex-column">
-      {/* Barra Superior de Beneficios / Anuncio Institucional */}
       <div className="bg-warning text-dark py-1 text-center small fw-bold">
         <span>
           🎉 ¡Celebramos 50 Años de Tradición! 10% OFF con código <strong>FELICES50</strong> | 50% Senior (+50 años)
         </span>
       </div>
 
-      {/* Navbar Principal */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-warning sticky-top shadow-sm">
         <div className="container">
-          {/* Logo y Marca */}
           <Link to="/" className="navbar-brand d-flex align-items-center text-warning fw-bold fs-4">
             <i className="bi bi-cake2 me-2 fs-3 text-warning"></i>
             <span>Mil Sabores</span>
           </Link>
 
-          {/* Botón Hamburguesa para Móvil */}
           <button
             className="navbar-toggler border-warning text-warning"
             type="button"
@@ -48,7 +44,6 @@ export function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* Menú Colapsable */}
           <div className="collapse navbar-collapse" id="navbarContenido">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -118,9 +113,7 @@ export function Navbar() {
               </li>
             </ul>
 
-            {/* Acciones de la Derecha: Carrito y Autenticación */}
             <div className="d-flex align-items-center gap-3 flex-wrap">
-              {/* Carrito */}
               <Link to="/carrito" className="btn btn-outline-warning position-relative btn-sm" aria-label="Ver carrito">
                 <i className="bi bi-cart3 me-1"></i>
                 <span>Carrito</span>
@@ -135,7 +128,6 @@ export function Navbar() {
                 )}
               </Link>
 
-              {/* Sesión de Usuario */}
               {isAuthenticated ? (
                 <div className="d-flex align-items-center gap-2 flex-wrap">
                   <div className="text-light small">

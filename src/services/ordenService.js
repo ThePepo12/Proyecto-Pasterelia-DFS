@@ -1,9 +1,3 @@
-/**
- * SERVICIO DE ÓRDENES Y BOLETAS (src/services/ordenService.js)
- * 
- * Gestiona el registro de compras (checkout), consulta de boletas,
- * historial por usuario y cambio de estado para la administración.
- */
 import { request } from './api.js';
 import { db } from '../data/db.js';
 

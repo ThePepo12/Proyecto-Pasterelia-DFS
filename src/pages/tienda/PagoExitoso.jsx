@@ -1,13 +1,3 @@
-/**
- * VISTA OBLIGATORIA: PAGO CORRECTO / BOLETA (VERDE)
- * (src/pages/tienda/PagoExitoso.jsx)
- * 
- * Muestra el comprobante oficial de pago exitoso (Boleta Electrónica):
- * - Mensaje de éxito con número de folio y código de autorización
- * - Datos del cliente y dirección en modo solo lectura
- * - Desglose de productos comprados, personalizaciones y totales en CLP
- * - Botones requeridos: "Imprimir boleta en PDF" y "Enviar boleta por email"
- */
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 
@@ -15,7 +5,6 @@ export function PagoExitoso() {
   const location = useLocation();
   const [emailEnviado, setEmailEnviado] = useState(false);
 
-  // Recuperar orden desde el state de navegación o del almacenamiento local
   const orden = location.state?.orden || (() => {
     try {
       const guardada = localStorage.getItem('ultimo_pedido_mil_sabores');
@@ -66,7 +55,6 @@ export function PagoExitoso() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container" style={{ maxWidth: '850px' }}>
-        {/* Toast Notificación de Email */}
         {emailEnviado && (
           <div
             className="alert alert-success bg-success bg-opacity-25 border-success text-light text-center position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg z-3"
@@ -79,7 +67,6 @@ export function PagoExitoso() {
           </div>
         )}
 
-        {/* Tarjeta de Confirmación de Éxito */}
         <div className="card bg-success bg-opacity-10 border-success p-4 text-center mb-4 shadow rounded-4" data-testid="banner-exito">
           <div className="display-4 text-success mb-2">
             <i className="bi bi-check-circle-fill"></i>
@@ -95,9 +82,7 @@ export function PagoExitoso() {
           </span>
         </div>
 
-        {/* Boleta Electrónica Formal */}
         <div className="card bg-secondary bg-opacity-10 border-warning p-4 p-md-5 shadow-lg rounded-4 mb-4" id="seccion-boleta" data-testid="boleta-detalle">
-          {/* Cabecera de la Boleta */}
           <div className="d-flex flex-wrap justify-content-between align-items-center border-bottom border-warning pb-4 mb-4 gap-3">
             <div>
               <div className="d-flex align-items-center text-warning fs-4 fw-bold">
@@ -115,7 +100,6 @@ export function PagoExitoso() {
             </div>
           </div>
 
-          {/* Datos del Cliente y Despacho (Solo Lectura) */}
           <div className="row g-3 mb-4 p-3 bg-dark bg-opacity-50 rounded-3 border border-secondary border-opacity-50 text-light" data-testid="datos-cliente-readonly">
             <div className="col-12 col-md-6">
               <h6 className="text-warning fw-bold mb-2">
@@ -135,7 +119,6 @@ export function PagoExitoso() {
             </div>
           </div>
 
-          {/* Tabla de Productos Comprados */}
           <div className="table-responsive mb-4">
             <table className="table table-dark table-borderless align-middle mb-0">
               <thead>
@@ -164,7 +147,6 @@ export function PagoExitoso() {
             </table>
           </div>
 
-          {/* Desglose de Totales */}
           <div className="row justify-content-end mb-4">
             <div className="col-12 col-sm-7 col-md-6">
               <div className="d-flex justify-content-between py-1 small">
@@ -195,7 +177,6 @@ export function PagoExitoso() {
             </div>
           </div>
 
-          {/* Pie de la Boleta */}
           <div className="border-top border-secondary border-opacity-50 pt-3 text-center text-secondary small">
             <p className="mb-1">
               Documento tributario electrónico generado según normativa del SII.
@@ -206,7 +187,6 @@ export function PagoExitoso() {
           </div>
         </div>
 
-        {/* Botones de Acción Requeridos */}
         <div className="d-flex flex-wrap justify-content-center gap-3">
           <button
             type="button"

@@ -1,10 +1,3 @@
-/**
- * Gestión del ciclo de vida de pedidos y analítica financiera:
- * - Historial completo de órdenes con cambio reactivo de estado
- * - Detalle modal de boleta tributaria e ítems adquiridos
- * - Indicadores financieros: Total de ventas, Ticket Promedio y conteo por estado
- * - Exportación de reporte a archivo CSV y vista imprimible
- */
 import React, { useState, useEffect, useMemo } from 'react';
 import { ordenService } from '../../services/ordenService.js';
 import { reporteService } from '../../services/reporteService.js';
@@ -58,7 +51,6 @@ export function AdminReportes() {
     setTimeout(() => setMensajeExito(''), 3500);
   };
 
-  // Filtrado de órdenes
   const ordenesFiltradas = useMemo(() => {
     return ordenes.filter((o) => {
       const coincideTexto =
@@ -75,12 +67,10 @@ export function AdminReportes() {
     });
   }, [ordenes, busqueda, filtroEstado]);
 
-  // Totales acumulados recalculados
   const totalRecaudadoFiltrado = useMemo(() => {
     return ordenesFiltradas.reduce((sum, o) => sum + (o.total || 0), 0);
   }, [ordenesFiltradas]);
 
-  // Cambiar estado de una orden
   const handleCambiarEstado = async (id, nuevoEstado) => {
     setActualizandoId(id);
     try {
@@ -97,7 +87,6 @@ export function AdminReportes() {
     }
   };
 
-  // Exportar a CSV
   const handleExportarCsv = () => {
     if (ordenes.length === 0) {
       alert('No hay órdenes para exportar.');
@@ -130,7 +119,6 @@ export function AdminReportes() {
 
   return (
     <div className="container-fluid p-0" data-testid="admin-reportes">
-      {/* Toast de Éxito */}
       {mensajeExito && (
         <div
           className="alert alert-success bg-success bg-opacity-25 border-success text-light text-center position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg z-3"
@@ -143,7 +131,6 @@ export function AdminReportes() {
         </div>
       )}
 
-      {/* Encabezado y Acciones */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
         <div>
           <h1 className="h2 text-warning fw-bold font-serif mb-1">
@@ -175,7 +162,6 @@ export function AdminReportes() {
         </div>
       </div>
 
-      {/* Grid de Métricas Financieras */}
       <div className="row g-3 mb-4">
         <div className="col-12 col-sm-6 col-xl-3">
           <div className="card bg-secondary bg-opacity-10 border-secondary p-3 rounded-3 shadow-sm h-100">
@@ -218,10 +204,8 @@ export function AdminReportes() {
         </div>
       </div>
 
-      {/* Barra de Filtros y Búsqueda */}
       <div className="card bg-secondary bg-opacity-10 border-secondary p-3 mb-4 rounded-3 shadow-sm">
         <div className="row g-3 align-items-center">
-          {/* Buscador */}
           <div className="col-12 col-md-6 col-lg-5">
             <div className="input-group">
               <span className="input-group-text bg-dark border-secondary text-secondary">
@@ -248,7 +232,6 @@ export function AdminReportes() {
             </div>
           </div>
 
-          {/* Filtro por Estado */}
           <div className="col-12 col-md-4 col-lg-4">
             <select
               className="form-select bg-dark text-light border-secondary"
@@ -272,7 +255,6 @@ export function AdminReportes() {
         </div>
       </div>
 
-      {/* Tabla de Órdenes */}
       <div className="card bg-secondary bg-opacity-10 border-secondary shadow-sm rounded-3 overflow-hidden">
         {cargando ? (
           <div className="text-center py-5">
@@ -304,20 +286,17 @@ export function AdminReportes() {
                   const estadoActual = ord.estado || 'Confirmado';
                   return (
                     <tr key={ord.id || ord.folio} data-testid={`fila-orden-${ord.id || ord.folio}`}>
-                      {/* Folio */}
                       <td>
                         <span className="badge bg-dark border border-warning text-warning font-monospace" data-testid={`badge-folio-${ord.id || ord.folio}`}>
                           {ord.folio}
                         </span>
                       </td>
 
-                      {/* Fecha */}
                       <td className="small text-secondary">
                         <span className="text-light d-block">{ord.fecha}</span>
                         <span style={{ fontSize: '0.75rem' }}>{ord.hora || '12:00'} hrs</span>
                       </td>
 
-                      {/* Cliente & Despacho */}
                       <td>
                         <strong className="text-light d-block">{ord.clienteNombre}</strong>
                         <span className="small text-secondary">
@@ -326,12 +305,10 @@ export function AdminReportes() {
                         </span>
                       </td>
 
-                      {/* Total */}
                       <td className="text-end fw-bold text-warning">
                         ${Number(ord.total || 0).toLocaleString('es-CL')}
                       </td>
 
-                      {/* Selector de Estado */}
                       <td className="text-center">
                         <select
                           className={`form-select form-select-sm bg-dark text-light border-${
@@ -355,7 +332,6 @@ export function AdminReportes() {
                         </select>
                       </td>
 
-                      {/* Acciones */}
                       <td className="text-end">
                         <button
                           type="button"
@@ -377,7 +353,6 @@ export function AdminReportes() {
         )}
       </div>
 
-      {/* MODAL DETALLE DE ORDEN / BOLETA ELECTRÓNICA */}
       {ordenDetalle && (
         <div
           className="modal show d-block bg-black bg-opacity-75 z-3"
@@ -402,7 +377,6 @@ export function AdminReportes() {
               </div>
 
               <div className="modal-body p-4">
-                {/* Cabecera del pedido */}
                 <div className="row g-3 mb-4 p-3 bg-secondary bg-opacity-10 rounded-3 border border-secondary border-opacity-25">
                   <div className="col-12 col-md-6">
                     <h6 className="text-warning fw-bold small text-uppercase mb-2">Datos del Cliente</h6>
@@ -418,7 +392,6 @@ export function AdminReportes() {
                   </div>
                 </div>
 
-                {/* Tabla de Productos Comprados */}
                 <h6 className="text-warning fw-bold small text-uppercase mb-2">Productos Comprados</h6>
                 <div className="table-responsive mb-4">
                   <table className="table table-dark table-borderless align-middle mb-0">
@@ -446,7 +419,6 @@ export function AdminReportes() {
                   </table>
                 </div>
 
-                {/* Totales */}
                 <div className="row justify-content-end">
                   <div className="col-12 col-sm-6">
                     <div className="d-flex justify-content-between small py-1 text-secondary">

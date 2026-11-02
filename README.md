@@ -1,7 +1,5 @@
-#  Pastelería Mil Sabores — Plataforma Web Integrada
+# Pastelería Mil Sabores — Plataforma Web Integrada
 
-> **Asignatura:** Desarrollo Fullstack II   
-> **Evaluación:** Evaluación Parcial 2  
 > **Arquitectura:** Frontend React (Vite + Bootstrap 5)   
 
 ---
@@ -22,7 +20,7 @@ Plataforma de comercio electrónico y gestión empresarial para **Pastelería Mi
 
 ## 3. USUARIOS Y CREDENCIALES DE PRUEBA
 
-El sistema arranca automáticamente con cuentas precargadas en la base de datos para facilitar la evaluación:
+El sistema arranca automáticamente con cuentas precargadas en la base de datos:
 
 | Rol | Correo Electrónico | Contraseña | Beneficio / Privilegio Asociado |
 |---|---|---|---|
@@ -30,22 +28,18 @@ El sistema arranca automáticamente con cuentas precargadas en la base de datos 
 | **CLIENTE** | `rosa.carrasco@gmail.com` | `rosa123` | **Beneficio Senior (50% de por vida)** por tener 61 años (+50). |
 | **CLIENTE** | `estudiante@duocuc.cl` | `duoc123` | **Convenio Duoc UC** con cupón `DUOCUMPLE` (20% de descuento). |
 
-> 💡 *En la pantalla de inicio de sesión (`/login`) existen botones de acceso demo de 1 clic para autenticarse al instante durante la presentación.*
+> 💡 *En la pantalla de inicio de sesión (`/login`) existen botones de acceso rápido para pruebas con cuentas preconfiguradas.*
 
 ---
 
 ## 4. INSTRUCCIONES DE EJECUCIÓN
 
-
----
-
 ### 4.1 Frontend (React + Vite + Bootstrap 5)
 ```bash
-# 1. Abrir una nueva terminal en la raíz del proyecto
-# 2. Instalar dependencias (solo la primera vez)
+# 1. Instalar dependencias
 npm install
 
-# 3. Iniciar el servidor de desarrollo Vite
+# 2. Iniciar el servidor de desarrollo Vite
 npm run dev
 ```
 * **Puerto de la tienda:** `http://localhost:3000` (o `http://localhost:5173`)
@@ -54,26 +48,25 @@ npm run dev
 
 ## 5. EJECUCIÓN DE PRUEBAS UNITARIAS (VITEST)
 
-Las pruebas unitarias fueron desarrolladas exclusivamente para el frontend utilizando **Vitest** y **React Testing Library** (ejecutadas sobre el entorno simulado `jsdom`), garantizando total desacoplamiento del backend gracias a la estrategia de mocks (`vi.spyOn`) y la base de datos local de respaldo (`src/data/db.js`).
+Las pruebas unitarias fueron desarrolladas para el frontend utilizando **Vitest** y **React Testing Library** (ejecutadas sobre el entorno simulado `jsdom`), garantizando total desacoplamiento del backend gracias a la estrategia de mocks (`vi.spyOn`) y la base de datos local de respaldo (`src/data/db.js`).
 
 ```bash
-
 # Ejecutar las pruebas
 npm test
 
-# Generar reporte de cobertura de código (proveedor V8):
+# Generar reporte de cobertura de código:
 npm run test:coverage
 ```
 El reporte gráfico de cobertura queda generado en:  
-`coverage/index.html` *(Supera el umbral del 70% fijado en `vite.config.js`)*.
+`coverage/index.html`.
 
 ---
 
 ## 6. MAPA DE VISTAS 
 
-| Sección | Vista Verde | Ruta en el Frontend | Endpoint Consumido |
+| Sección | Módulo / Vista | Ruta en el Frontend | Endpoint Consumido |
 |---|---|---|---|
-| **Tienda** | Categorías → Categoría #1 | `/categorias` | `GET /api/categorias` y `/api/productos/categoria/{id}` |
+| **Tienda** | Categorías | `/categorias` | `GET /api/categorias` y `/api/productos/categoria/{id}` |
 | **Tienda** | Ofertas Especiales | `/ofertas` | `GET /api/productos/ofertas` |
 | **Tienda** | Comprar (Checkout) | `/checkout` | `POST /api/ordenes` |
 | **Tienda** | Pago Correcto (Boleta) | `/pago-exitoso` | `GET /api/ordenes/{id}` |
@@ -84,10 +77,3 @@ El reporte gráfico de cobertura queda generado en:
 | **Admin** | Reportes Generales | `/admin/reportes` | `GET /api/reportes/generales` |
 | **Admin** | Perfil Administrador | `/admin/usuarios` | `GET /api/usuarios/{id}` y `PUT /api/usuarios/{id}` |
 | **Admin** | Historial de Usuario | `/admin/reportes` | `GET /api/ordenes/usuario/{id}` |
-
----
-
-## 7. DOCUMENTACIÓN TÉCNICA DEL PROYECTO
-
-* [`docs/cobertura-testing.md`](docs/cobertura-testing.md): Informe exhaustivo de aseguramiento de calidad, inventario de pruebas y métricas V8.
-

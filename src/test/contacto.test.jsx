@@ -1,10 +1,3 @@
-/**
- * PRUEBAS: Vista de Contacto y Sucursales (Contacto.jsx)
- * 
- * Verifica:
- * 1. Renderiza el formulario de contacto con sus campos obligatorios.
- * 2. Valida el envío y muestra mensaje de éxito al completar los datos.
- */
 import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';

@@ -1,10 +1,3 @@
-/**
- * DETALLE DE PRODUCTO (src/pages/tienda/DetalleProducto.jsx)
- * 
- * Migrada de legacy/producto.html.
- * Maneja parámetros de ruta con useParams, cálculo dinámico de precio por porciones/tamaño,
- * personalización con dedicatoria, selector de cantidad y comentarios.
- */
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { productoService } from '../../services/productoService.js';
@@ -15,7 +8,6 @@ export function DetalleProducto() {
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
 
-  // Estados de personalización
   const [tamano, setTamano] = useState('Mediana');
   const [forma, setForma] = useState('Circular');
   const [dedicatoria, setDedicatoria] = useState('');
@@ -34,7 +26,6 @@ export function DetalleProducto() {
           setProducto(prod);
           setImagenSeleccionada(prod.imagen);
         } else {
-          // Intentar por ID
           const porId = await productoService.obtenerPorId(codigo);
           setProducto(porId);
           if (porId) setImagenSeleccionada(porId.imagen);
@@ -48,7 +39,6 @@ export function DetalleProducto() {
     cargar();
   }, [codigo]);
 
-  // Cálculo de precio según tamaño
   const precioUnitarioCalculado = useMemo(() => {
     if (!producto) return 0;
     const base = producto.precio;
@@ -104,7 +94,6 @@ export function DetalleProducto() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Notificación Toast */}
         {mensajeToast && (
           <div className="position-fixed top-0 end-0 p-3" style={{ zIndex: 1090 }}>
             <div className="toast show bg-success text-white border-0 shadow">
@@ -116,7 +105,6 @@ export function DetalleProducto() {
           </div>
         )}
 
-        {/* Migas de Pan (Breadcrumb) */}
         <nav aria-label="breadcrumb" className="mb-4">
           <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link to="/" className="text-secondary text-decoration-none">Inicio</Link></li>
@@ -126,7 +114,6 @@ export function DetalleProducto() {
         </nav>
 
         <div className="row g-5">
-          {/* Columna Izquierda: Galería e Imagen Principal */}
           <div className="col-12 col-lg-6">
             <div className="card bg-secondary bg-opacity-10 border-warning p-3 shadow-lg rounded-4">
               <div style={{ height: '400px', overflow: 'hidden' }} className="rounded-3 mb-3 bg-dark text-center">
@@ -140,7 +127,6 @@ export function DetalleProducto() {
                 />
               </div>
 
-              {/* Miniaturas */}
               <div className="d-flex gap-2">
                 <button
                   type="button"
@@ -170,7 +156,6 @@ export function DetalleProducto() {
             </div>
           </div>
 
-          {/* Columna Derecha: Información y Configuración de Compra */}
           <div className="col-12 col-lg-6">
             <span className="badge bg-warning text-dark px-3 py-1 fw-bold text-uppercase mb-2">
               {producto.categoriaNombre || producto.categoria?.nombre || 'Pastelería'} &bull; Cód: {producto.codigo}
@@ -178,7 +163,6 @@ export function DetalleProducto() {
             <h1 className="display-6 fw-bold text-warning mb-2">{producto.nombre}</h1>
             <p className="lead text-secondary mb-3">{producto.descripcion}</p>
 
-            {/* Precio Dinámico */}
             <div className="p-3 bg-secondary bg-opacity-10 border border-secondary rounded-3 mb-4 d-flex align-items-center justify-content-between">
               <div>
                 <span className="text-secondary small d-block">Precio según porciones seleccionadas:</span>
@@ -191,13 +175,11 @@ export function DetalleProducto() {
               </span>
             </div>
 
-            {/* Selectores de Personalización */}
             <div className="card bg-secondary bg-opacity-10 border-secondary p-4 mb-4">
               <h5 className="text-warning fw-bold mb-3">
                 <i className="bi bi-sliders me-2"></i> Personaliza tu Pedido
               </h5>
 
-              {/* Tamaño */}
               <div className="mb-3">
                 <label className="form-label text-light small fw-bold">Tamaño y Porciones:</label>
                 <select
@@ -213,7 +195,6 @@ export function DetalleProducto() {
                 </select>
               </div>
 
-              {/* Forma */}
               <div className="mb-3">
                 <label className="form-label text-light small fw-bold">Forma de la Torta:</label>
                 <select
@@ -228,7 +209,6 @@ export function DetalleProducto() {
                 </select>
               </div>
 
-              {/* Dedicatoria personalizada */}
               <div className="mb-3">
                 <label className="form-label text-light small fw-bold">
                   Dedicatoria o Mensaje en Placa de Azúcar (Opcional):
@@ -245,7 +225,6 @@ export function DetalleProducto() {
                 <small className="text-secondary">{50 - dedicatoria.length} caracteres restantes</small>
               </div>
 
-              {/* Control de Cantidad y Botón Comprar */}
               <div className="row g-3 align-items-center mt-2">
                 <div className="col-12 col-sm-4">
                   <div className="input-group">
@@ -289,7 +268,6 @@ export function DetalleProducto() {
               </div>
             </div>
 
-            {/* Aviso Beneficio Senior */}
             <div className="alert alert-warning bg-warning bg-opacity-10 border-warning text-light small mb-0">
               <i className="bi bi-info-circle-fill text-warning me-2"></i>
               <strong>Recuerda:</strong> Si eres mayor de 50 años o estudiante de Duoc UC, inicia sesión para que se aplique tu descuento especial en el resumen de tu compra.
@@ -297,7 +275,6 @@ export function DetalleProducto() {
           </div>
         </div>
 
-        {/* Reseñas y Opiniones */}
         <div className="mt-5 pt-4 border-top border-secondary border-opacity-25">
           <h4 className="text-warning fw-bold mb-4">Opiniones de Nuestros Clientes</h4>
           <div className="row g-4">

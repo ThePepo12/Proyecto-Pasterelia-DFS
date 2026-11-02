@@ -1,12 +1,3 @@
-/**
- * VISTA OBLIGATORIA: OFERTAS (VERDE)
- * (src/pages/tienda/Ofertas.jsx)
- * 
- * Muestra el catálogo de todos los productos en oferta de Pastelería Mil Sabores.
- * Conecta al endpoint /api/productos/ofertas con fallback a db.js.
- * Incluye badges de descuento, precios originales tachados, precio final CLP,
- * filtros por categoría y búsqueda en tiempo real.
- */
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { productoService } from '../../services/productoService.js';
@@ -39,7 +30,6 @@ export function Ofertas() {
     cargarOfertas();
   }, []);
 
-  // Lista única de categorías presentes en las ofertas
   const categoriasPresentes = useMemo(() => {
     const cats = new Set();
     ofertas.forEach((p) => {
@@ -49,7 +39,6 @@ export function Ofertas() {
     return Array.from(cats);
   }, [ofertas]);
 
-  // Filtrado y ordenamiento reactivo
   const ofertasFiltradas = useMemo(() => {
     let result = ofertas.filter((prod) => {
       const matchTexto =
@@ -93,7 +82,6 @@ export function Ofertas() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Toast Notificación */}
         {mensajeToast && (
           <div
             className="alert alert-success bg-success bg-opacity-25 border-success text-light text-center position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg z-3"
@@ -105,7 +93,6 @@ export function Ofertas() {
           </div>
         )}
 
-        {/* Banner Promocional 50 Años */}
         <div className="card bg-warning text-dark p-4 p-md-5 mb-5 border-0 shadow-lg position-relative overflow-hidden">
           <div className="row align-items-center">
             <div className="col-12 col-md-8">
@@ -144,10 +131,8 @@ export function Ofertas() {
           </div>
         </div>
 
-        {/* Barra de Filtros y Búsqueda */}
         <div className="card bg-secondary bg-opacity-10 border-secondary p-4 mb-4 rounded-3 shadow-sm">
           <div className="row g-3 align-items-center">
-            {/* Buscador */}
             <div className="col-12 col-md-5">
               <label htmlFor="input-buscar-ofertas" className="form-label text-light small fw-bold mb-1">
                 Buscar en Ofertas:
@@ -168,7 +153,6 @@ export function Ofertas() {
               </div>
             </div>
 
-            {/* Categoría */}
             <div className="col-12 col-sm-6 col-md-4">
               <label htmlFor="select-categoria-ofertas" className="form-label text-light small fw-bold mb-1">
                 Filtrar por Categoría:
@@ -189,7 +173,6 @@ export function Ofertas() {
               </select>
             </div>
 
-            {/* Ordenar */}
             <div className="col-12 col-sm-6 col-md-3">
               <label htmlFor="select-orden-ofertas" className="form-label text-light small fw-bold mb-1">
                 Ordenar por:
@@ -209,7 +192,6 @@ export function Ofertas() {
           </div>
         </div>
 
-        {/* Resumen del catálogo de ofertas */}
         <div className="d-flex justify-content-between align-items-center mb-4">
           <span className="text-secondary small">
             Se encontraron <strong className="text-warning">{ofertasFiltradas.length}</strong> productos con descuento activo
@@ -227,7 +209,6 @@ export function Ofertas() {
           )}
         </div>
 
-        {/* Lista de Productos en Oferta */}
         {cargando ? (
           <div className="text-center py-5">
             <div className="spinner-border text-warning" role="status"></div>
@@ -259,7 +240,6 @@ export function Ofertas() {
               return (
                 <div key={prod.id || prod.codigo} className="col">
                   <div className="card h-100 bg-secondary bg-opacity-10 border-warning border-opacity-50 shadow-lg hover-glow d-flex flex-column position-relative">
-                    {/* Badge Promocional */}
                     <div className="position-relative overflow-hidden" style={{ height: '230px' }}>
                       <img
                         src={prod.imagen || '/img/producto_TC001.avif'}
@@ -282,7 +262,6 @@ export function Ofertas() {
                       )}
                     </div>
 
-                    {/* Cuerpo de la Tarjeta */}
                     <div className="card-body d-flex flex-column p-4">
                       <span className="text-secondary small text-uppercase fw-bold mb-1">
                         {prod.categoria?.nombre || prod.categoriaNombre || 'Pastelería Selecta'}
@@ -294,7 +273,6 @@ export function Ofertas() {
                         {prod.descripcion}
                       </p>
 
-                      {/* Desglose de Precios */}
                       <div className="p-3 bg-dark bg-opacity-50 rounded-3 my-3 border border-secondary border-opacity-50">
                         <div className="d-flex justify-content-between align-items-center mb-1">
                           <span className="text-secondary small">Precio regular:</span>
@@ -314,7 +292,6 @@ export function Ofertas() {
                         </div>
                       </div>
 
-                      {/* Botones de Acción */}
                       <div className="d-flex gap-2 mt-auto">
                         <Link
                           to={`/producto/${prod.codigo}`}

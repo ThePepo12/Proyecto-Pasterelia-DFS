@@ -1,13 +1,3 @@
-/**
- * VISTA OBLIGATORIA: PAGO CON ERROR (VERDE)
- * (src/pages/tienda/PagoError.jsx)
- * 
- * Pantalla informativa ante un fallo de pasarela de pago o transacción rechazada:
- * - Informa claramente el motivo del rechazo y el código de error
- * - Garantiza al usuario que el carrito se mantiene intacto y no hubo cobro
- * - Ofrece acciones inmediatas: reintentar el pago, revisar el carrito o contactar a soporte
- * - Diseño profesional y responsive con Bootstrap 5
- */
 import React from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { useCarrito } from '../../context/CartContext.jsx';
@@ -17,7 +7,6 @@ export function PagoError() {
   const navigate = useNavigate();
   const { carrito, total } = useCarrito();
 
-  // Obtener datos pasados por navegación o valores por defecto
   const state = location.state || {};
   const motivo = state.motivo || 'La entidad bancaria rechazó la transacción o expiró el tiempo de espera de la pasarela.';
   const codigoError = state.codigoError || 'ERR-WEBPAY-RECHAZO';
@@ -29,7 +18,6 @@ export function PagoError() {
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container" style={{ maxWidth: '850px' }}>
         
-        {/* Encabezado de Error */}
         <div className="card bg-secondary bg-opacity-10 border-danger border-2 shadow-lg mb-4">
           <div className="card-body p-4 p-md-5 text-center">
             <div className="mb-3">
@@ -43,7 +31,6 @@ export function PagoError() {
               La transacción no pudo completarse y tu cuenta bancaria no ha recibido ningún cargo.
             </p>
 
-            {/* Motivo del rechazo */}
             <div className="alert alert-danger bg-danger bg-opacity-10 border-danger border-opacity-25 text-start p-3 mb-4">
               <div className="d-flex align-items-start gap-2">
                 <i className="bi bi-exclamation-triangle-fill text-danger fs-5 mt-1 flex-shrink-0"></i>
@@ -54,7 +41,6 @@ export function PagoError() {
               </div>
             </div>
 
-            {/* Garantía de carrito preservado */}
             <div className="p-3 bg-secondary bg-opacity-10 rounded border border-secondary border-opacity-25 text-start mb-4">
               <div className="d-flex align-items-center gap-3">
                 <i className="bi bi-cart-check text-warning fs-2 flex-shrink-0"></i>
@@ -67,7 +53,6 @@ export function PagoError() {
               </div>
             </div>
 
-            {/* Botones de Acción Inmediata */}
             <div className="d-flex flex-column flex-sm-row justify-content-center gap-3 pt-2">
               <button
                 type="button"
@@ -89,9 +74,7 @@ export function PagoError() {
           </div>
         </div>
 
-        {/* Resumen del Intento y Consejos de Solución */}
         <div className="row g-4">
-          {/* Tarjeta de Resumen del Intento */}
           <div className="col-md-6">
             <div className="card bg-secondary bg-opacity-10 border-secondary h-100 p-4">
               <h5 className="text-warning fw-bold mb-3">
@@ -125,7 +108,6 @@ export function PagoError() {
             </div>
           </div>
 
-          {/* Tarjeta de Sugerencias para el Cliente */}
           <div className="col-md-6">
             <div className="card bg-secondary bg-opacity-10 border-secondary h-100 p-4">
               <h5 className="text-warning fw-bold mb-3">

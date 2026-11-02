@@ -1,7 +1,3 @@
-/**
- * Gestiona el estado global de la sesión de usuario, roles (ADMIN / CLIENTE),
- * beneficios de edad (Senior 50%) y comunidad Duoc UC.
- */
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { authService } from '../services/authService.js';
 import { usuarioService } from '../services/usuarioService.js';
@@ -41,7 +37,6 @@ export function AuthProvider({ children }) {
     setCargando(true);
     try {
       const nuevo = await usuarioService.crear(datos);
-      // Iniciar sesión automáticamente tras registrarse
       authService.guardarSesion(nuevo);
       setUsuario(nuevo);
       return { success: true, usuario: nuevo };

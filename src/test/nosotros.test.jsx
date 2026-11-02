@@ -1,10 +1,3 @@
-/**
- * PRUEBAS: Vista Institucional Nosotros (Nosotros.jsx)
- * 
- * Verifica:
- * 1. Renderiza el hero institucional de los 50 años de historia.
- * 2. Renderiza la sección del Récord Guinness de 1995 y la misión institucional.
- */
 import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';

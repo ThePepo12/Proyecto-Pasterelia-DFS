@@ -1,11 +1,3 @@
-/**
- * DASHBOARD ADMINISTRATIVO 
- * 
- * Vista principal del panel de administración:
- * - Indicadores clave de desempeño (KPIs): Total de productos, inventario, ventas, pedidos y stock crítico
- * - Lista de productos críticos con advertencia visual
- * - Accesos directos a los flujos de gestión (crear producto, catálogo, reportes)
- */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { reporteService } from '../../services/reporteService.js';
@@ -65,7 +57,6 @@ export function AdminDashboard() {
 
   return (
     <div className="container-fluid p-0" data-testid="admin-dashboard">
-      {/* Título y Acciones Rápidas */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
         <div>
           <h1 className="h2 text-warning fw-bold font-serif mb-1">
@@ -87,9 +78,7 @@ export function AdminDashboard() {
         </div>
       </div>
 
-      {/* Grid de KPIs Principales */}
       <div className="row g-3 mb-4">
-        {/* KPI: Productos Totales */}
         <div className="col-12 col-sm-6 col-xl-3">
           <div className="card bg-secondary bg-opacity-10 border-secondary h-100 p-3 shadow-sm rounded-3">
             <div className="d-flex justify-content-between align-items-start">
@@ -107,7 +96,6 @@ export function AdminDashboard() {
           </div>
         </div>
 
-        {/* KPI: Stock Total */}
         <div className="col-12 col-sm-6 col-xl-3">
           <div className="card bg-secondary bg-opacity-10 border-secondary h-100 p-3 shadow-sm rounded-3">
             <div className="d-flex justify-content-between align-items-start">
@@ -125,7 +113,6 @@ export function AdminDashboard() {
           </div>
         </div>
 
-        {/* KPI: Ventas Totales CLP */}
         <div className="col-12 col-sm-6 col-xl-3">
           <div className="card bg-secondary bg-opacity-10 border-secondary h-100 p-3 shadow-sm rounded-3">
             <div className="d-flex justify-content-between align-items-start">
@@ -145,7 +132,6 @@ export function AdminDashboard() {
           </div>
         </div>
 
-        {/* KPI: Stock Crítico / Alerta */}
         <div className="col-12 col-sm-6 col-xl-3">
           <div className="card bg-secondary bg-opacity-10 border-danger border-opacity-50 h-100 p-3 shadow-sm rounded-3">
             <div className="d-flex justify-content-between align-items-start">
@@ -164,9 +150,7 @@ export function AdminDashboard() {
         </div>
       </div>
 
-      {/* Fila Secundaria: Productos Críticos & Resumen Operativo */}
       <div className="row g-4">
-        {/* Tabla de Productos con Stock Crítico */}
         <div className="col-12">
           <div className="card bg-secondary bg-opacity-10 border-secondary p-4 h-100 shadow-sm rounded-3">
             <div className="d-flex justify-content-between align-items-center mb-3">
@@ -239,7 +223,6 @@ export function AdminDashboard() {
             )}
           </div>
         </div>
-
 
       </div>
     </div>

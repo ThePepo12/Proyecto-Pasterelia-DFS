@@ -1,11 +1,3 @@
-/**
- * VISTA OBLIGATORIA: CATEGORÍAS -> CATEGORÍA #1 (VERDE)
- * (src/pages/tienda/Categorias.jsx)
- * 
- * Muestra las tarjetas interactivas de todas las categorías disponibles y, debajo,
- * los productos correspondientes a la categoría seleccionada con filtros reactivos
- * de búsqueda por texto y por forma de la torta.
- */
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { categoriaService } from '../../services/categoriaService.js';
@@ -23,12 +15,10 @@ export function Categorias() {
   const [cargandoCategorias, setCargandoCategorias] = useState(true);
   const [cargandoProductos, setCargandoProductos] = useState(false);
 
-  // Filtros reactivos
   const [busqueda, setBusqueda] = useState('');
   const [filtroForma, setFiltroForma] = useState('todas');
   const [mensajeToast, setMensajeToast] = useState('');
 
-  // 1. Cargar todas las categorías
   useEffect(() => {
     async function cargarCats() {
       setCargandoCategorias(true);
@@ -36,7 +26,6 @@ export function Categorias() {
         const data = await categoriaService.obtenerTodas();
         setCategorias(data);
 
-        // Determinar categoría activa por parámetro de URL o por defecto la primera (#1)
         if (data && data.length > 0) {
           const inicial = id
             ? data.find((c) => String(c.id) === String(id)) || data[0]
@@ -52,7 +41,6 @@ export function Categorias() {
     cargarCats();
   }, [id]);
 
-  // 2. Cargar productos de la categoría seleccionada
   useEffect(() => {
     if (!categoriaSeleccionada) return;
 
@@ -70,7 +58,6 @@ export function Categorias() {
     cargarProds();
   }, [categoriaSeleccionada]);
 
-  // Cambiar categoría y actualizar URL
   const handleSeleccionarCategoria = (cat) => {
     setCategoriaSeleccionada(cat);
     setBusqueda('');
@@ -78,7 +65,6 @@ export function Categorias() {
     navigate(`/categorias/${cat.id}`);
   };
 
-  // Filtrado reactivo en memoria
   const productosFiltrados = useMemo(() => {
     return productos.filter((prod) => {
       const matchTexto =
@@ -115,7 +101,6 @@ export function Categorias() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Toast Notificación */}
         {mensajeToast && (
           <div
             className="alert alert-success bg-success bg-opacity-25 border-success text-light text-center position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg z-3"
@@ -127,7 +112,6 @@ export function Categorias() {
           </div>
         )}
 
-        {/* Encabezado */}
         <div className="text-center mb-5">
           <span className="badge bg-warning text-dark px-3 py-2 fw-bold text-uppercase mb-2">
             Catálogo por Especialidad
@@ -141,7 +125,6 @@ export function Categorias() {
           </p>
         </div>
 
-        {/* Grid de Tarjetas de Categorías */}
         {cargandoCategorias ? (
           <div className="text-center py-5">
             <div className="spinner-border text-warning" role="status"></div>
@@ -205,7 +188,6 @@ export function Categorias() {
 
         <hr className="border-warning opacity-25 my-5" />
 
-        {/* Sección Reactiva de Productos de la Categoría */}
         {categoriaSeleccionada && (
           <section data-testid="seccion-productos-categoria">
             <div className="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
@@ -220,7 +202,6 @@ export function Categorias() {
               </div>
             </div>
 
-            {/* Barra de Filtros y Búsqueda */}
             <div className="card bg-secondary bg-opacity-10 border-secondary p-3 mb-4 rounded-3">
               <div className="row g-3">
                 <div className="col-12 col-md-8">
@@ -262,7 +243,6 @@ export function Categorias() {
               </div>
             </div>
 
-            {/* Grid de Productos */}
             {cargandoProductos ? (
               <div className="text-center py-5">
                 <div className="spinner-border text-warning" role="status"></div>
@@ -290,7 +270,6 @@ export function Categorias() {
                 {productosFiltrados.map((prod) => (
                   <div key={prod.id || prod.codigo} className="col">
                     <div className="card h-100 bg-secondary bg-opacity-10 border-secondary shadow hover-glow d-flex flex-column">
-                      {/* Imagen y Badges */}
                       <div className="position-relative overflow-hidden" style={{ height: '220px' }}>
                         <img
                           src={prod.imagen || '/img/producto_TC001.avif'}
@@ -315,7 +294,6 @@ export function Categorias() {
                         )}
                       </div>
 
-                      {/* Cuerpo de la Tarjeta */}
                       <div className="card-body d-flex flex-column p-4">
                         <span className="text-secondary small text-uppercase fw-bold mb-1">
                           {categoriaSeleccionada.nombre}
@@ -327,7 +305,6 @@ export function Categorias() {
                           {prod.descripcion}
                         </p>
 
-                        {/* Precios */}
                         <div className="my-3 d-flex align-items-baseline justify-content-between">
                           <div>
                             {prod.enOferta ? (
@@ -350,7 +327,6 @@ export function Categorias() {
                           </span>
                         </div>
 
-                        {/* Botones de Acción */}
                         <div className="d-flex gap-2 mt-auto">
                           <Link
                             to={`/producto/${prod.codigo}`}

@@ -1,10 +1,3 @@
-/**
- * HOME / INICIO (src/pages/tienda/Home.jsx)
- * 
- * Migrada de legacy/index.html.
- * Presenta el Hero de 50 años, hitos, productos destacados con botón de compra rápida,
- * historia institucional y testimonios.
- */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { productoService } from '../../services/productoService.js';
@@ -20,7 +13,6 @@ export function Home() {
     async function cargar() {
       try {
         const prods = await productoService.obtenerTodos();
-        // Tomar primeros 4 productos como destacados
         setDestacados(prods.slice(0, 4));
       } catch (e) {
         console.error('Error cargando destacados:', e);
@@ -47,7 +39,6 @@ export function Home() {
 
   return (
     <div>
-      {/* Toast Notificación */}
       {mensajeToast && (
         <div
           className="position-fixed top-0 end-0 p-3"
@@ -65,7 +56,6 @@ export function Home() {
         </div>
       )}
 
-      {/* Hero Section */}
       <section className="bg-dark text-light py-5 border-bottom border-warning position-relative overflow-hidden">
         <div className="container py-4">
           <div className="row align-items-center g-5">
@@ -107,7 +97,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* 4 Hitos y Beneficios Clave */}
       <section className="py-5 bg-dark text-light border-bottom border-secondary border-opacity-25">
         <div className="container">
           <div className="row g-4 text-center">
@@ -143,7 +132,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Productos Destacados */}
       <section className="py-5 bg-dark text-light">
         <div className="container">
           <div className="d-flex justify-content-between align-items-end mb-4 flex-wrap gap-2">
@@ -221,7 +209,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* Banner Promocional Cupones */}
       <section className="py-5 bg-warning text-dark text-center">
         <div className="container">
           <h3 className="fw-bold mb-2">¿Ya conoces nuestros descuentos de aniversario?</h3>

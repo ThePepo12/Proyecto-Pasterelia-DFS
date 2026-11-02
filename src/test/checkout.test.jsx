@@ -1,9 +1,3 @@
-/**
- * Contiene 3 pruebas clave:
- * 1. Descuento automático Senior (+50 años) en la orden.
- * 2. Simulación de rechazo de pago (error en pasarela) y preservación del carrito.
- * 3. Pago aprobado con generación de boleta y número de folio.
- */
 import React from 'react';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, renderHook } from '@testing-library/react';
@@ -34,7 +28,6 @@ describe('3. Módulo de Checkout y Pagos', () => {
   };
 
   it('Prueba 6: Aplica automáticamente 50% de descuento a clientes Senior (+50 años)', () => {
-    // Simular sesión de usuario mayor de 50 años
     const usuarioSenior = {
       id: 10,
       nombre: 'Rosa Carrasco',
@@ -45,7 +38,6 @@ describe('3. Módulo de Checkout y Pagos', () => {
     };
     localStorage.setItem('usuario_mil_sabores_activo', JSON.stringify(usuarioSenior));
 
-    // Carrito con una torta de $40.000
     const item = {
       codigo: 'TT001',
       nombre: 'Torta Circular',
@@ -64,10 +56,8 @@ describe('3. Módulo de Checkout y Pagos', () => {
     const { result } = renderHook(() => useCarrito(), { wrapper });
 
     expect(result.current.subtotal).toBe(40000);
-    // Descuento Senior: 50% = 20.000
     expect(result.current.porcentajeDescuento).toBe(50);
     expect(result.current.descuentoMonto).toBe(20000);
-    // Total = (40.000 - 20.000) + 3.500 despacho = 23.500
     expect(result.current.total).toBe(23500);
   });
 
@@ -127,7 +117,6 @@ describe('3. Módulo de Checkout y Pagos', () => {
       { initialEntries: [{ pathname: '/pago-exitoso', state: { orden: ordenPrueba } }] }
     );
 
-    // Boleta con número de folio
     expect(screen.getByTestId('folio-boleta')).toHaveTextContent('MS-501991');
     expect(screen.getByText(/Rosa Carrasco/i)).toBeInTheDocument();
     expect(screen.getByText(/Av. Concha y Toro #2500/i)).toBeInTheDocument();

@@ -1,8 +1,3 @@
-/**
- * FOOTER COMÚN 
- * 
- * Pie de página con historia, enlaces rápidos, horarios, sucursales y créditos.
- */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +6,6 @@ export function Footer() {
     <footer className="bg-dark text-light pt-5 pb-3 border-top border-warning mt-auto">
       <div className="container">
         <div className="row g-4 mb-4">
-          {/* Columna 1: Identidad */}
           <div className="col-12 col-md-4">
             <h5 className="text-warning fw-bold d-flex align-items-center">
               <i className="bi bi-cake2 me-2"></i> Pastelería Mil Sabores
@@ -27,7 +21,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Columna 2: Enlaces Rápidos */}
           <div className="col-6 col-md-2">
             <h6 className="text-warning fw-bold text-uppercase small">Navegación</h6>
             <ul className="list-unstyled small mt-2 d-flex flex-column gap-1">
@@ -40,7 +33,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Columna 3: Beneficios */}
           <div className="col-6 col-md-3">
             <h6 className="text-warning fw-bold text-uppercase small">Beneficios Activos</h6>
             <ul className="list-unstyled small mt-2 text-secondary d-flex flex-column gap-2">
@@ -56,7 +48,6 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Columna 4: Contacto */}
           <div className="col-12 col-md-3">
             <h6 className="text-warning fw-bold text-uppercase small">Casa Matriz</h6>
             <p className="text-secondary small mt-2 mb-1">

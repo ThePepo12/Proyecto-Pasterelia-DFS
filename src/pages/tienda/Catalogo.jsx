@@ -1,10 +1,3 @@
-/**
- * CATÁLOGO GENERAL DE PRODUCTOS (src/pages/tienda/Catalogo.jsx)
- * 
- * Migrada de legacy/categoria.html.
- * Ofrece listado completo de productos, buscador en tiempo real,
- * filtros por categoría y ordenamiento con maquetación responsiva en Bootstrap.
- */
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { productoService } from '../../services/productoService.js';
@@ -46,7 +39,6 @@ export function Catalogo() {
     inicializar();
   }, [searchParams]);
 
-  // Filtrado y ordenamiento en memoria
   const productosFiltrados = useMemo(() => {
     return productos
       .filter((p) => {
@@ -90,7 +82,6 @@ export function Catalogo() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Notificación Toast */}
         {mensajeToast && (
           <div className="position-fixed top-0 end-0 p-3" style={{ zIndex: 1090 }}>
             <div className="toast show bg-success text-white border-0 shadow">
@@ -102,7 +93,6 @@ export function Catalogo() {
           </div>
         )}
 
-        {/* Encabezado */}
         <div className="text-center mb-5">
           <span className="badge bg-warning text-dark px-3 py-2 text-uppercase fw-bold mb-2">
             Catálogo Completo
@@ -113,10 +103,8 @@ export function Catalogo() {
           </p>
         </div>
 
-        {/* Barra de Filtros y Búsqueda */}
         <div className="card bg-secondary bg-opacity-10 border-warning p-4 mb-5 shadow-sm">
           <div className="row g-3 align-items-center">
-            {/* Buscador */}
             <div className="col-12 col-md-5">
               <div className="input-group">
                 <span className="input-group-text bg-dark border-secondary text-warning">
@@ -133,7 +121,6 @@ export function Catalogo() {
               </div>
             </div>
 
-            {/* Selector de Categoría */}
             <div className="col-12 col-sm-6 col-md-4">
               <select
                 className="form-select bg-dark text-light border-secondary"
@@ -150,7 +137,6 @@ export function Catalogo() {
               </select>
             </div>
 
-            {/* Ordenamiento */}
             <div className="col-12 col-sm-6 col-md-3">
               <select
                 className="form-select bg-dark text-light border-secondary"
@@ -166,7 +152,6 @@ export function Catalogo() {
             </div>
           </div>
 
-          {/* Pastillas de Categorías Rápidas */}
           <div className="d-flex flex-wrap gap-2 mt-3 pt-3 border-top border-secondary border-opacity-25">
             <button
               onClick={() => setCategoriaSeleccionada('todas')}
@@ -186,7 +171,6 @@ export function Catalogo() {
           </div>
         </div>
 
-        {/* Listado de Productos */}
         {cargando ? (
           <div className="text-center py-5">
             <div className="spinner-border text-warning" role="status">

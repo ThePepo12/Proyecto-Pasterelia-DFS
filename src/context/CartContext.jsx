@@ -1,10 +1,3 @@
-/**
- * Implementa la lógica de compra:
- * - Persistencia en localStorage ('carrito_mil_sabores')
- * - Soporte para personalizaciones y tamaños
- * - Cálculo de Subtotal, Descuentos (Senior 50%, Cupones), Envío ($3.500) e IVA
- * - Sincronización automática con beneficios de AuthContext
- */
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { useAuth } from './AuthContext.jsx';
 
@@ -26,7 +19,6 @@ export function CartProvider({ children }) {
 
   const [cupon, setCupon] = useState(null); // { codigo: 'FELICES50', porcentaje: 10, motivo: '...' }
 
-  // Persistir en localStorage ante cualquier cambio
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY_CARRITO, JSON.stringify(carrito));
@@ -35,7 +27,6 @@ export function CartProvider({ children }) {
     }
   }, [carrito]);
 
-  // Agregar producto al carrito
   const agregarAlCarrito = (item) => {
     const cantidad = Number(item.cantidad) || 1;
     const personalizacion = item.personalizacion || 'Estándar';
@@ -66,7 +57,6 @@ export function CartProvider({ children }) {
     });
   };
 
-  // Actualizar cantidad de un ítem por índice
   const actualizarCantidad = (indice, nuevaCantidad) => {
     setCarrito((actuales) => {
       if (nuevaCantidad <= 0) {
@@ -78,18 +68,15 @@ export function CartProvider({ children }) {
     });
   };
 
-  // Eliminar un ítem por índice
   const eliminarDelCarrito = (indice) => {
     setCarrito((actuales) => actuales.filter((_, i) => i !== indice));
   };
 
-  // Vaciar completamente el carrito
   const limpiarCarrito = () => {
     setCarrito([]);
     setCupon(null);
   };
 
-  // Aplicar cupón de descuento
   const aplicarCupon = (codigoRaw) => {
     const codigo = (codigoRaw || '').trim().toUpperCase();
     if (!codigo) {
@@ -117,7 +104,6 @@ export function CartProvider({ children }) {
     return { success: false, mensaje: '✗ Código inválido. Puedes probar con FELICES50 o DUOCUMPLE.' };
   };
 
-  // Cálculos reactivos de montos y totales
   const calculos = useMemo(() => {
     const subtotal = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
     const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);

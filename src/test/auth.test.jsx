@@ -1,8 +1,3 @@
-/**
- * Contiene 2 pruebas clave:
- * 1. Inicio de sesión exitoso y recuperación de roles.
- * 2. Protección de rutas administrativas (bloqueo a rol CLIENTE).
- */
 import React from 'react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, renderHook, act } from '@testing-library/react';
@@ -24,7 +19,6 @@ describe('4. Módulo de Autenticación y Seguridad', () => {
 
     expect(result.current.isAuthenticated).toBe(false);
 
-    // Login con usuario administrador
     await act(async () => {
       const res = await result.current.login('admin@pasteleriamilsabores.cl', 'admin123');
       expect(res.success).toBe(true);
@@ -36,7 +30,6 @@ describe('4. Módulo de Autenticación y Seguridad', () => {
   });
 
   it('Prueba 10: Bloquea el acceso al panel administrativo a usuarios sin rol ADMIN', () => {
-    // Simular sesión de usuario con rol CLIENTE
     const usuarioCliente = {
       id: 2,
       nombre: 'Carlos Méndez',
@@ -62,7 +55,6 @@ describe('4. Módulo de Autenticación y Seguridad', () => {
       </AuthProvider>
     );
 
-    // Debe mostrar la vista de acceso restringido y no el panel
     expect(screen.queryByText('Panel Secreto Admin')).not.toBeInTheDocument();
     expect(screen.getByText('Panel Exclusivo para Administradores')).toBeInTheDocument();
   });

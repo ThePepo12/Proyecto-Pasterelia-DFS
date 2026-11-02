@@ -39,7 +39,6 @@ export function Login() {
     }
   };
 
-  // Botón rápido de prueba
   
 
   return (

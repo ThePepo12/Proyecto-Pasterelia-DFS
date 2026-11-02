@@ -1,10 +1,3 @@
-/**
- * Administración completa del catálogo de pastelería:
- * - Tabla interactiva con miniatura, código, nombre, categoría, precio, stock y estado
- * - Filtro en tiempo real por buscador y por categoría
- * - Creación y edición reactiva mediante modal accesible
- * - Eliminación de productos con confirmación
- */
 import React, { useState, useEffect, useMemo } from 'react';
 import { productoService } from '../../services/productoService.js';
 import { categoriaService } from '../../services/categoriaService.js';
@@ -30,7 +23,6 @@ export function AdminProductos() {
   const [busqueda, setBusqueda] = useState('');
   const [categoriaFiltro, setCategoriaFiltro] = useState('TODAS');
 
-  // Estado del Modal de Crear / Editar
   const [modalAbierto, setModalAbierto] = useState(false);
   const [modoEdicion, setModoEdicion] = useState(false);
   const [formData, setFormData] = useState(ESTADO_FORM_INICIAL);
@@ -38,10 +30,8 @@ export function AdminProductos() {
   const [guardando, setGuardando] = useState(false);
   const [mensajeExito, setMensajeExito] = useState('');
 
-  // Estado del Modal de Confirmación de Eliminación
   const [productoAEliminar, setProductoAEliminar] = useState(null);
 
-  // Cargar productos y categorías desde los servicios
   const cargarDatos = async () => {
     setCargando(true);
     try {
@@ -62,13 +52,11 @@ export function AdminProductos() {
     cargarDatos();
   }, []);
 
-  // Notificación de éxito temporal
   const mostrarMensaje = (msg) => {
     setMensajeExito(msg);
     setTimeout(() => setMensajeExito(''), 3500);
   };
 
-  // Filtrado reactivo en tiempo real
   const productosFiltrados = useMemo(() => {
     return productos.filter((p) => {
       const nombreCat = p.categoriaNombre || p.categoria || '';
@@ -87,7 +75,6 @@ export function AdminProductos() {
     });
   }, [productos, busqueda, categoriaFiltro]);
 
-  // Apertura de modal en modo creación
   const handleAbrirCrear = () => {
     setModoEdicion(false);
     setFormData(ESTADO_FORM_INICIAL);
@@ -95,7 +82,6 @@ export function AdminProductos() {
     setModalAbierto(true);
   };
 
-  // Apertura de modal en modo edición
   const handleAbrirEditar = (prod) => {
     setModoEdicion(true);
     setFormData({
@@ -115,14 +101,12 @@ export function AdminProductos() {
     setModalAbierto(true);
   };
 
-  // Cerrar modal
   const handleCerrarModal = () => {
     setModalAbierto(false);
     setFormData(ESTADO_FORM_INICIAL);
     setErrores({});
   };
 
-  // Validación de formulario
   const validarFormulario = () => {
     const err = {};
     if (!formData.codigo?.trim()) {
@@ -156,7 +140,6 @@ export function AdminProductos() {
     return Object.keys(err).length === 0;
   };
 
-  // Guardar (Crear o Actualizar)
   const handleGuardarProducto = async (e) => {
     e.preventDefault();
     if (!validarFormulario()) return;
@@ -198,7 +181,6 @@ export function AdminProductos() {
     }
   };
 
-  // Confirmar eliminación
   const handleEliminarProducto = async () => {
     if (!productoAEliminar) return;
 
@@ -215,7 +197,6 @@ export function AdminProductos() {
 
   return (
     <div className="container-fluid p-0" data-testid="admin-productos">
-      {/* Alerta flotante de éxito */}
       {mensajeExito && (
         <div
           className="alert alert-success bg-success bg-opacity-25 border-success text-light text-center position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg z-3"
@@ -228,7 +209,6 @@ export function AdminProductos() {
         </div>
       )}
 
-      {/* Encabezado y Botón Crear */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
         <div>
           <h1 className="h2 text-warning fw-bold font-serif mb-1">
@@ -249,10 +229,8 @@ export function AdminProductos() {
         </button>
       </div>
 
-      {/* Barra de Filtros y Búsqueda */}
       <div className="card bg-secondary bg-opacity-10 border-secondary p-3 mb-4 rounded-3 shadow-sm">
         <div className="row g-3 align-items-center">
-          {/* Buscador de Texto */}
           <div className="col-12 col-md-6 col-lg-5">
             <div className="input-group">
               <span className="input-group-text bg-dark border-secondary text-secondary">
@@ -279,7 +257,6 @@ export function AdminProductos() {
             </div>
           </div>
 
-          {/* Filtro por Categoría */}
           <div className="col-12 col-md-4 col-lg-4">
             <select
               className="form-select bg-dark text-light border-secondary"
@@ -297,14 +274,12 @@ export function AdminProductos() {
             </select>
           </div>
 
-          {/* Contador de Resultados */}
           <div className="col-12 col-md-2 col-lg-3 text-md-end text-secondary small">
             Mostrando <strong>{productosFiltrados.length}</strong> de {productos.length} productos
           </div>
         </div>
       </div>
 
-      {/* Tabla de Productos */}
       <div className="card bg-secondary bg-opacity-10 border-secondary shadow-sm rounded-3 overflow-hidden">
         {cargando ? (
           <div className="text-center py-5">
@@ -342,7 +317,6 @@ export function AdminProductos() {
 
                   return (
                     <tr key={prod.id || prod.codigo} data-testid={`fila-producto-${prod.codigo}`}>
-                      {/* Miniatura */}
                       <td>
                         <img
                           src={prod.imagen || '/img/producto_TC001.avif'}
@@ -353,14 +327,12 @@ export function AdminProductos() {
                         />
                       </td>
 
-                      {/* Código */}
                       <td>
                         <span className="badge bg-dark border border-warning text-warning font-monospace">
                           {prod.codigo}
                         </span>
                       </td>
 
-                      {/* Nombre y descripción */}
                       <td>
                         <strong className="text-light d-block">{prod.nombre}</strong>
                         <span className="small text-secondary text-truncate d-inline-block" style={{ maxWidth: '300px' }}>
@@ -368,10 +340,8 @@ export function AdminProductos() {
                         </span>
                       </td>
 
-                      {/* Categoría */}
                       <td className="small text-secondary">{prod.categoriaNombre || prod.categoria || 'General'}</td>
 
-                      {/* Precio */}
                       <td className="text-end fw-bold">
                         {prod.enOferta && prod.porcentajeDescuento > 0 ? (
                           <div>
@@ -385,7 +355,6 @@ export function AdminProductos() {
                         )}
                       </td>
 
-                      {/* Stock con alerta */}
                       <td className="text-center">
                         <span
                           className={`badge ${
@@ -401,7 +370,6 @@ export function AdminProductos() {
                         </span>
                       </td>
 
-                      {/* Estado / Oferta */}
                       <td className="text-center">
                         {prod.enOferta ? (
                           <span className="badge bg-danger text-light">
@@ -414,7 +382,6 @@ export function AdminProductos() {
                         )}
                       </td>
 
-                      {/* Botones de Acción */}
                       <td className="text-end">
                         <div className="btn-group btn-group-sm">
                           <button
@@ -446,7 +413,6 @@ export function AdminProductos() {
         )}
       </div>
 
-      {/* MODAL FORMULARIO DE PRODUCTO (CREAR / EDITAR) */}
       {modalAbierto && (
         <div
           className="modal show d-block bg-black bg-opacity-75 z-3"
@@ -479,7 +445,6 @@ export function AdminProductos() {
                   )}
 
                   <div className="row g-3">
-                    {/* Código */}
                     <div className="col-12 col-sm-4">
                       <label htmlFor="prod-codigo" className="form-label small fw-bold text-light">
                         Código Único: <span className="text-danger">*</span>
@@ -499,7 +464,6 @@ export function AdminProductos() {
                       {errores.codigo && <div className="invalid-feedback">{errores.codigo}</div>}
                     </div>
 
-                    {/* Nombre */}
                     <div className="col-12 col-sm-8">
                       <label htmlFor="prod-nombre" className="form-label small fw-bold text-light">
                         Nombre del Producto: <span className="text-danger">*</span>
@@ -518,7 +482,6 @@ export function AdminProductos() {
                       {errores.nombre && <div className="invalid-feedback">{errores.nombre}</div>}
                     </div>
 
-                    {/* Categoría */}
                     <div className="col-12 col-sm-6">
                       <label htmlFor="prod-categoria" className="form-label small fw-bold text-light">
                         Categoría: <span className="text-danger">*</span>
@@ -538,7 +501,6 @@ export function AdminProductos() {
                       </select>
                     </div>
 
-                    {/* Precio CLP */}
                     <div className="col-12 col-sm-6">
                       <label htmlFor="prod-precio" className="form-label small fw-bold text-light">
                         Precio Normal (CLP): <span className="text-danger">*</span>
@@ -561,7 +523,6 @@ export function AdminProductos() {
                       {errores.precio && <div className="text-danger small mt-1">{errores.precio}</div>}
                     </div>
 
-                    {/* Stock y Stock Crítico */}
                     <div className="col-12 col-sm-6">
                       <label htmlFor="prod-stock" className="form-label small fw-bold text-light">
                         Stock Disponible: <span className="text-danger">*</span>
@@ -600,7 +561,6 @@ export function AdminProductos() {
                       </small>
                     </div>
 
-                    {/* Descripción */}
                     <div className="col-12">
                       <label htmlFor="prod-desc" className="form-label small fw-bold text-light">
                         Descripción Artesanal:
@@ -616,7 +576,6 @@ export function AdminProductos() {
                       ></textarea>
                     </div>
 
-                    {/* URL Imagen */}
                     <div className="col-12">
                       <label htmlFor="prod-img" className="form-label small fw-bold text-light">
                         URL de la Imagen:
@@ -632,7 +591,6 @@ export function AdminProductos() {
                       />
                     </div>
 
-                    {/* En Oferta y Porcentaje */}
                     <div className="col-12">
                       <div className="card bg-secondary bg-opacity-10 border-secondary p-3 rounded-3">
                         <div className="form-check form-switch mb-2">
@@ -730,7 +688,6 @@ export function AdminProductos() {
         </div>
       )}
 
-      {/* MODAL DE CONFIRMACIÓN DE ELIMINACIÓN */}
       {productoAEliminar && (
         <div
           className="modal show d-block bg-black bg-opacity-75 z-3"

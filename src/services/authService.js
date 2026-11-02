@@ -1,9 +1,3 @@
-/**
- * SERVICIO DE AUTENTICACIÓN (src/services/authService.js)
- * 
- * Gestiona el inicio de sesión contra el backend Spring Boot (/api/auth/login),
- * validación de roles ('ADMIN' / 'CLIENTE') y fallback a db.js.
- */
 import { request } from './api.js';
 import { db } from '../data/db.js';
 
@@ -19,7 +13,6 @@ export const authService = {
       this.guardarSesion(data);
       return data;
     } catch (e) {
-      // Fallback a db.js si el backend no está disponible
       const usuarioLocal = db.usuarios.login(email, password);
       if (usuarioLocal) {
         this.guardarSesion(usuarioLocal);

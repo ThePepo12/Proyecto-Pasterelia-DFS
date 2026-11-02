@@ -1,11 +1,3 @@
-/**
- * PRUEBAS: Vista de Inicio de Sesión (Login.jsx)
- * 
- * Verifica:
- * 1. Renderiza el formulario con campos de email y contraseña.
- * 2. Muestra validación si se intenta enviar el formulario con campos vacíos.
- * 3. Permite cargar credenciales de prueba con los botones de demo.
- */
 import React from 'react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';

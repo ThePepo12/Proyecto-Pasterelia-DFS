@@ -1,10 +1,3 @@
-/**
- * CLIENTE BASE DE API (src/services/api.js)
- * 
- * Gestiona las peticiones HTTP al backend Spring Boot.
- * Incorpora detección de conectividad y fallback automático a db.js si el backend
- * no está disponible o durante la ejecución de pruebas unitarias.
- */
 import { db } from '../data/db.js';
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
@@ -46,8 +39,6 @@ export async function request(endpoint, options = {}) {
 
     return await response.json();
   } catch (error) {
-    // Si la conexión falla (backend apagado, timeout, CORS o entorno de testing), devolvemos una marca de error
-    // para que el servicio correspondiente use la fuente de respaldo db.js.
     throw error;
   }
 }

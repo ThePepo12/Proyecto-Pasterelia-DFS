@@ -1,11 +1,3 @@
-/**
- * LAYOUT DE ADMINISTRACIÓN 
- * 
- * Estructura contenedora para todas las vistas del panel administrativo:
- * - Sidebar lateral de navegación con enlaces a Dashboard, Productos, Categorías, Usuarios y Reportes
- * - Topbar con nombre de usuario, rol y botón de logout
- * - Área de contenido dinámico usando <Outlet />
- */
 import React, { useState } from 'react';
 import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -55,7 +47,6 @@ export function AdminLayout() {
 
   return (
     <div className="d-flex min-vh-100 bg-dark text-light" data-testid="admin-layout">
-      {/* Sidebar Lateral */}
       <aside
         className={`bg-black border-end border-secondary border-opacity-50 p-3 d-flex flex-column ${
           sidebarAbierto ? 'd-block position-fixed top-0 start-0 h-100 z-3' : 'd-none d-md-flex'
@@ -63,7 +54,6 @@ export function AdminLayout() {
         style={{ width: '260px', minHeight: '100vh', transition: 'all 0.3s ease' }}
         data-testid="admin-sidebar"
       >
-        {/* Cabecera del Sidebar */}
         <div className="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom border-secondary border-opacity-50">
           <Link to="/admin" className="text-decoration-none d-flex align-items-center gap-2">
             <i className="bi bi-cake2-fill text-warning fs-3"></i>
@@ -86,7 +76,6 @@ export function AdminLayout() {
           </button>
         </div>
 
-        {/* Lista de Enlaces de Navegación */}
         <nav className="nav nav-pills flex-column gap-1 flex-grow-1">
           <small className="text-secondary text-uppercase fw-bold px-3 py-1" style={{ fontSize: '0.7rem' }}>
             Gestión de Tienda
@@ -124,7 +113,6 @@ export function AdminLayout() {
           </Link>
         </nav>
 
-        {/* Pie del Sidebar: Datos del Admin y Cerrar Sesión */}
         <div className="pt-3 border-top border-secondary border-opacity-50">
           <div className="d-flex align-items-center gap-2 mb-3 px-2">
             <div
@@ -153,9 +141,7 @@ export function AdminLayout() {
         </div>
       </aside>
 
-      {/* Contenedor Principal */}
       <div className="d-flex flex-column flex-grow-1 min-vw-0">
-        {/* Topbar Superior */}
         <header className="bg-black bg-opacity-75 border-bottom border-secondary border-opacity-50 px-4 py-3 d-flex align-items-center justify-content-between sticky-top">
           <div className="d-flex align-items-center gap-3">
             <button
@@ -183,7 +169,6 @@ export function AdminLayout() {
           </div>
         </header>
 
-        {/* Área de Contenido Principal */}
         <main className="p-4 p-lg-5 flex-grow-1 overflow-auto bg-dark">
           <Outlet />
         </main>

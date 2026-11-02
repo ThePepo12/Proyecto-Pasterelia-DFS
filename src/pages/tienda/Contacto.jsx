@@ -1,9 +1,3 @@
-/**
- * CONTACTO Y SUCURSALES (src/pages/tienda/Contacto.jsx)
- * 
- * Migrada de legacy/contacto.html.
- * Formulario de contacto controlado con validación, mapa interactivo y datos de las 3 sucursales.
- */
 import React, { useState } from 'react';
 
 export function Contacto() {
@@ -29,7 +23,6 @@ export function Contacto() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Encabezado */}
         <div className="text-center mb-5">
           <span className="badge bg-warning text-dark px-3 py-2 text-uppercase fw-bold mb-2">
             Estamos para Ayudarte
@@ -42,7 +35,6 @@ export function Contacto() {
         </div>
 
         <div className="row g-5">
-          {/* Formulario */}
           <div className="col-12 col-lg-7">
             <div className="card bg-secondary bg-opacity-10 border-warning p-4 p-md-5 rounded-4 shadow-sm">
               <h3 className="text-warning fw-bold mb-3">
@@ -132,10 +124,8 @@ export function Contacto() {
             </div>
           </div>
 
-          {/* Información y Sucursales */}
           <div className="col-12 col-lg-5">
             <div className="d-flex flex-column gap-4">
-              {/* Sucursal 1 */}
               <div className="card bg-secondary bg-opacity-10 border-secondary p-3">
                 <h5 className="text-warning fw-bold mb-1">
                   <i className="bi bi-shop me-2"></i> Casa Matriz & Obrador
@@ -146,7 +136,6 @@ export function Contacto() {
                 </p>
               </div>
 
-              {/* Sucursal 2 */}
               <div className="card bg-secondary bg-opacity-10 border-secondary p-3">
                 <h5 className="text-warning fw-bold mb-1">
                   <i className="bi bi-shop me-2"></i> Sucursal Providencia
@@ -157,7 +146,6 @@ export function Contacto() {
                 </p>
               </div>
 
-              {/* Sucursal 3 */}
               <div className="card bg-secondary bg-opacity-10 border-secondary p-3">
                 <h5 className="text-warning fw-bold mb-1">
                   <i className="bi bi-shop me-2"></i> Sucursal Las Condes
@@ -168,7 +156,6 @@ export function Contacto() {
                 </p>
               </div>
 
-              {/* Canales Digitales */}
               <div className="card bg-warning text-dark p-3">
                 <h6 className="fw-bold mb-1">Atención Inmediata por WhatsApp</h6>
                 <p className="small mb-2">Para consultas sobre disponibilidad de stock el mismo día:</p>

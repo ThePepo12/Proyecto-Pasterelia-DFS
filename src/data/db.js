@@ -1,9 +1,3 @@
-/**
- * BASE DE DATOS LOCAL Y RESPALDO 
- * 
- * Implementa la persistencia en localStorage para el funcionamiento offline,
- * respaldo cuando el backend no esté disponible y soporte para pruebas unitarias con Vitest.
- */
 
 const STORAGE_KEYS = {
   PRODUCTOS: 'pasteleria_db_productos',
@@ -479,7 +473,6 @@ function guardarColeccion(key, data) {
 }
 
 export const db = {
-  // Inicialización y reinicio
   init() {
     obtenerColeccion(STORAGE_KEYS.CATEGORIAS, CATEGORIAS_INICIALES);
     obtenerColeccion(STORAGE_KEYS.PRODUCTOS, PRODUCTOS_INICIALES);
@@ -496,7 +489,6 @@ export const db = {
     localStorage.setItem(STORAGE_KEYS.BLOGS, JSON.stringify(BLOGS_INICIALES));
   },
 
-  // PRODUCTOS CRUD + CONSULTAS
   productos: {
     getAll() {
       return obtenerColeccion(STORAGE_KEYS.PRODUCTOS, PRODUCTOS_INICIALES);
@@ -548,7 +540,6 @@ export const db = {
     }
   },
 
-  // CATEGORIAS CRUD
   categorias: {
     getAll() {
       return obtenerColeccion(STORAGE_KEYS.CATEGORIAS, CATEGORIAS_INICIALES);
@@ -584,7 +575,6 @@ export const db = {
     }
   },
 
-  // USUARIOS CRUD + LOGIN
   usuarios: {
     getAll() {
       return obtenerColeccion(STORAGE_KEYS.USUARIOS, USUARIOS_INICIALES);
@@ -634,7 +624,6 @@ export const db = {
     }
   },
 
-  // ORDENES CRUD
   ordenes: {
     getAll() {
       return obtenerColeccion(STORAGE_KEYS.ORDENES, ORDENES_INICIALES);
@@ -664,7 +653,6 @@ export const db = {
         estado: data.estado || 'Confirmado'
       };
 
-      // Rebajar stock de productos comprados
       if (Array.isArray(nueva.items)) {
         nueva.items.forEach(item => {
           const prod = db.productos.getByCodigo(item.codigoProducto);
@@ -698,7 +686,6 @@ export const db = {
     }
   },
 
-  // REPORTES
   reportes: {
     getProductos() {
       const prods = db.productos.getAll();
@@ -732,7 +719,6 @@ export const db = {
     }
   },
 
-  // BLOGS
   blogs: {
     getAll() {
       return obtenerColeccion(STORAGE_KEYS.BLOGS, BLOGS_INICIALES);

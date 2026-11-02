@@ -1,10 +1,3 @@
-/**
- * PRUEBAS: Vista Obligatoria de Ofertas (Ofertas.jsx)
- * 
- * Verifica:
- * 1. Renderiza el banner de promociones conmemorativas.
- * 2. Carga y lista los productos que tienen descuento activo.
- */
 import React from 'react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
@@ -41,7 +34,6 @@ describe('6. Vista de Ofertas Especiales', () => {
   it('Prueba 13: Muestra productos con descuento y su precio con rebaja calculada', async () => {
     renderOfertas();
     await waitFor(() => {
-      // Debe existir al menos un badge de descuento en porcentaje
       const badgesDescuento = screen.getAllByText(/% OFF/i);
       expect(badgesDescuento.length).toBeGreaterThan(0);
     });

@@ -1,10 +1,3 @@
-/**
- * BLOGS Y NOTAS DE REPOSTERÍA (src/pages/tienda/Blogs.jsx)
- * 
- * Migrada de legacy/blogs.html.
- * Presenta artículos sobre técnicas culinarias, recetas históricas y formulario
- * interactivo para que la comunidad envíe sus propias recetas familiares.
- */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { db } from '../../data/db.js';
@@ -32,7 +25,6 @@ export function Blogs() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Encabezado */}
         <div className="text-center mb-5">
           <span className="badge bg-warning text-dark px-3 py-2 text-uppercase fw-bold mb-2">
             El Rincón Dulce &bull; Notas & Recetas
@@ -43,7 +35,6 @@ export function Blogs() {
           </p>
         </div>
 
-        {/* Listado de Artículos */}
         <div className="row g-4 mb-5">
           {blogs.map((b) => (
             <div key={b.id} className="col-12 col-md-6">

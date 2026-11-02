@@ -1,10 +1,3 @@
-/**
- * Administración completa de categorías de pastelería:
- * - Listado en tabla y cuadrícula con conteo de productos asociados en tiempo real
- * - Búsqueda por texto y ordenamiento
- * - Creación y edición reactiva mediante modal accesible
- * - Eliminación preventiva con control de productos asociados
- */
 import React, { useState, useEffect, useMemo } from 'react';
 import { categoriaService } from '../../services/categoriaService.js';
 import { productoService } from '../../services/productoService.js';
@@ -22,7 +15,6 @@ export function AdminCategorias() {
   const [cargando, setCargando] = useState(true);
   const [busqueda, setBusqueda] = useState('');
 
-  // Modal de Crear / Editar
   const [modalAbierto, setModalAbierto] = useState(false);
   const [modoEdicion, setModoEdicion] = useState(false);
   const [formData, setFormData] = useState(ESTADO_FORM_INICIAL);
@@ -30,7 +22,6 @@ export function AdminCategorias() {
   const [guardando, setGuardando] = useState(false);
   const [mensajeExito, setMensajeExito] = useState('');
 
-  // Modal de Confirmación de Eliminación
   const [categoriaAEliminar, setCategoriaAEliminar] = useState(null);
 
   const cargarDatos = async () => {
@@ -58,7 +49,6 @@ export function AdminCategorias() {
     setTimeout(() => setMensajeExito(''), 3500);
   };
 
-  // Contar productos asociados a cada categoría
   const conteoPorCategoria = useMemo(() => {
     const conteo = {};
     productos.forEach((p) => {
@@ -70,7 +60,6 @@ export function AdminCategorias() {
     return conteo;
   }, [productos]);
 
-  // Filtrado reactivo por texto
   const categoriasFiltradas = useMemo(() => {
     return categorias.filter((c) => {
       const texto = `${c.nombre || ''} ${c.descripcion || ''}`.toLowerCase();
@@ -163,7 +152,6 @@ export function AdminCategorias() {
 
   return (
     <div className="container-fluid p-0" data-testid="admin-categorias">
-      {/* Toast de Éxito */}
       {mensajeExito && (
         <div
           className="alert alert-success bg-success bg-opacity-25 border-success text-light text-center position-fixed top-0 start-50 translate-middle-x mt-4 shadow-lg z-3"
@@ -176,7 +164,6 @@ export function AdminCategorias() {
         </div>
       )}
 
-      {/* Encabezado y Botón Crear */}
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
         <div>
           <h1 className="h2 text-warning fw-bold font-serif mb-1">
@@ -197,7 +184,6 @@ export function AdminCategorias() {
         </button>
       </div>
 
-      {/* Filtro y Búsqueda */}
       <div className="card bg-secondary bg-opacity-10 border-secondary p-3 mb-4 rounded-3 shadow-sm">
         <div className="row g-3 align-items-center">
           <div className="col-12 col-md-6">
@@ -231,7 +217,6 @@ export function AdminCategorias() {
         </div>
       </div>
 
-      {/* Tabla de Categorías */}
       <div className="card bg-secondary bg-opacity-10 border-secondary shadow-sm rounded-3 overflow-hidden">
         {cargando ? (
           <div className="text-center py-5">
@@ -263,7 +248,6 @@ export function AdminCategorias() {
 
                   return (
                     <tr key={cat.id || cat.nombre} data-testid={`fila-categoria-${cat.id}`}>
-                      {/* Imagen */}
                       <td>
                         <img
                           src={cat.imagen || '/img/producto_TC001.avif'}
@@ -274,14 +258,12 @@ export function AdminCategorias() {
                         />
                       </td>
 
-                      {/* ID */}
                       <td>
                         <span className="badge bg-dark border border-secondary text-secondary">
                           #{cat.id}
                         </span>
                       </td>
 
-                      {/* Nombre y Descripción */}
                       <td>
                         <strong className="text-warning d-block">{cat.nombre}</strong>
                         <span className="small text-secondary text-truncate d-inline-block" style={{ maxWidth: '400px' }}>
@@ -289,7 +271,6 @@ export function AdminCategorias() {
                         </span>
                       </td>
 
-                      {/* Conteo de Productos */}
                       <td className="text-center">
                         <span className={`badge ${cantProds > 0 ? 'bg-warning text-dark' : 'bg-secondary bg-opacity-50 text-light'} fw-bold px-3 py-2`}>
                           <i className="bi bi-box-seam me-1"></i>
@@ -297,7 +278,6 @@ export function AdminCategorias() {
                         </span>
                       </td>
 
-                      {/* Acciones */}
                       <td className="text-end">
                         <div className="btn-group btn-group-sm">
                           <button
@@ -329,7 +309,6 @@ export function AdminCategorias() {
         )}
       </div>
 
-      {/* MODAL CREAR / EDITAR CATEGORÍA */}
       {modalAbierto && (
         <div
           className="modal show d-block bg-black bg-opacity-75 z-3"
@@ -444,7 +423,6 @@ export function AdminCategorias() {
         </div>
       )}
 
-      {/* MODAL DE CONFIRMACIÓN DE ELIMINACIÓN */}
       {categoriaAEliminar && (
         <div
           className="modal show d-block bg-black bg-opacity-75 z-3"

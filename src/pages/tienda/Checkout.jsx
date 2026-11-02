@@ -1,21 +1,9 @@
-/**
- * VISTA OBLIGATORIA: COMPRAR / CHECKOUT (VERDE)
- * (src/pages/tienda/Checkout.jsx)
- * 
- * Pasarela de pago y despacho:
- * - Autocompleta automáticamente los datos si el usuario inició sesión
- * - Permite elegir región, comuna y fecha de entrega
- * - Resumen detallado de productos, subtotales, descuentos e IVA
- * - Guarda la orden en el backend Spring Boot (POST /api/ordenes) o en db.js
- * - Permite simular pago aprobado o rechazado para evaluar Pago Correcto / Error
- */
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import { useCarrito } from '../../context/CartContext.jsx';
 import { ordenService } from '../../services/ordenService.js';
 
-// Comunas por Región de Chile
 const COMUNAS_POR_REGION = {
   'Región Metropolitana': [
     'Puente Alto',
@@ -61,7 +49,6 @@ export function Checkout() {
     limpiarCarrito
   } = useCarrito();
 
-  // Estados del Formulario de Cliente y Despacho
   const [nombre, setNombre] = useState('');
   const [apellidos, setApellidos] = useState('');
   const [email, setEmail] = useState('');
@@ -72,7 +59,6 @@ export function Checkout() {
   const [depto, setDepto] = useState('');
   const [indicaciones, setIndicaciones] = useState('');
   const [fechaEntrega, setFechaEntrega] = useState(() => {
-    // Por defecto mañana
     const manana = new Date();
     manana.setDate(manana.getDate() + 1);
     return manana.toISOString().split('T')[0];
@@ -80,12 +66,10 @@ export function Checkout() {
   const [horarioEntrega, setHorarioEntrega] = useState('10:00 a 14:00 hrs');
   const [metodoPago, setMetodoPago] = useState('webpay');
 
-  // Switch de simulación de pago para demostración y testing
   const [simularError, setSimularError] = useState(false);
   const [cargando, setCargando] = useState(false);
   const [errores, setErrores] = useState({});
 
-  // Autocompletar datos del usuario si ha iniciado sesión
   useEffect(() => {
     if (isAuthenticated && user) {
       if (user.nombre) {
@@ -99,7 +83,6 @@ export function Checkout() {
     }
   }, [isAuthenticated, user]);
 
-  // Actualizar comuna al cambiar de región
   const handleRegionChange = (e) => {
     const nuevaRegion = e.target.value;
     setRegion(nuevaRegion);
@@ -140,9 +123,7 @@ export function Checkout() {
     setCargando(true);
 
     try {
-      // 1. Si está activo el modo de simulación de fallo
       if (simularError) {
-        // Preservamos el carrito intacto para que no pierda sus productos
         setCargando(false);
         navigate('/pago-error', {
           state: {
@@ -165,7 +146,6 @@ export function Checkout() {
         return;
       }
 
-      // 2. Pago Exitoso: Construir objeto de orden para el backend
       const aleatorio = Math.floor(100000 + Math.random() * 900000);
       const folioOrden = `MS-${aleatorio}`;
       const fechaActual = new Date().toLocaleDateString('es-CL');
@@ -206,13 +186,10 @@ export function Checkout() {
         usuario: user && user.id ? { id: user.id } : null
       };
 
-      // Guardar orden a través de la capa de servicios (Spring Boot con fallback a db.js)
       const ordenGuardada = await ordenService.crear(payloadOrden);
 
-      // Guardar también como último pedido local para respaldo de boleta
       localStorage.setItem('ultimo_pedido_mil_sabores', JSON.stringify(ordenGuardada));
 
-      // Limpiar el carrito de compras tras compra exitosa
       limpiarCarrito();
 
       setCargando(false);
@@ -257,7 +234,6 @@ export function Checkout() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Encabezado */}
         <div className="mb-4">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
@@ -274,7 +250,6 @@ export function Checkout() {
           </p>
         </div>
 
-        {/* Notificación de Autocompletado si hay sesión */}
         {isAuthenticated ? (
           <div className="alert alert-success bg-success bg-opacity-25 border-success text-light d-flex align-items-center mb-4 p-3 rounded-3" data-testid="alerta-autocompletado">
             <i className="bi bi-person-check-fill text-success fs-3 me-3"></i>
@@ -301,10 +276,8 @@ export function Checkout() {
         )}
 
         <div className="row g-5">
-          {/* Columna Izquierda: Formulario de Despacho y Pago */}
           <div className="col-12 col-lg-7">
             <form onSubmit={handlePagar} noValidate data-testid="form-checkout">
-              {/* Sección 1: Datos Personales */}
               <div className="card bg-secondary bg-opacity-10 border-secondary p-4 mb-4 shadow-sm rounded-3">
                 <h4 className="text-warning fw-bold mb-3">
                   <i className="bi bi-person-lines-fill me-2"></i> 1. Datos del Cliente
@@ -375,7 +348,6 @@ export function Checkout() {
                 </div>
               </div>
 
-              {/* Sección 2: Dirección y Entrega */}
               <div className="card bg-secondary bg-opacity-10 border-secondary p-4 mb-4 shadow-sm rounded-3">
                 <h4 className="text-warning fw-bold mb-3">
                   <i className="bi bi-truck me-2"></i> 2. Dirección de Entrega y Despacho
@@ -495,7 +467,6 @@ export function Checkout() {
                 </div>
               </div>
 
-              {/* Sección 3: Método de Pago y Simulador */}
               <div className="card bg-secondary bg-opacity-10 border-secondary p-4 mb-4 shadow-sm rounded-3">
                 <h4 className="text-warning fw-bold mb-3">
                   <i className="bi bi-credit-card me-2"></i> 3. Método de Pago Seguro
@@ -542,7 +513,6 @@ export function Checkout() {
                   </div>
                 </div>
 
-                {/* Simulador de Fallo para Pruebas */}
                 <div className="p-3 bg-dark border border-warning border-opacity-25 rounded-3">
                   <div className="form-check form-switch mb-1">
                     <input
@@ -564,7 +534,6 @@ export function Checkout() {
                 </div>
               </div>
 
-              {/* Botón Pagar Ahora */}
               <button
                 type="submit"
                 disabled={cargando}
@@ -585,14 +554,12 @@ export function Checkout() {
             </form>
           </div>
 
-          {/* Columna Derecha: Resumen de la Orden */}
           <div className="col-12 col-lg-5">
             <div className="card bg-secondary bg-opacity-10 border-warning p-4 shadow-lg rounded-3 sticky-top" style={{ top: '90px' }}>
               <h4 className="text-warning fw-bold mb-3 border-bottom border-warning pb-2">
                 Resumen de tu Orden ({carrito.length} ítems)
               </h4>
 
-              {/* Lista de productos resumida */}
               <div className="mb-4" style={{ maxHeight: '280px', overflowY: 'auto' }}>
                 {carrito.map((item, idx) => (
                   <div key={idx} className="d-flex align-items-center gap-3 py-2 border-bottom border-secondary border-opacity-50">
@@ -616,7 +583,6 @@ export function Checkout() {
                 ))}
               </div>
 
-              {/* Desglose Financiero */}
               <div className="d-flex justify-content-between mb-2">
                 <span className="text-secondary">Subtotal Productos:</span>
                 <span className="text-light">${subtotal.toLocaleString('es-CL')} CLP</span>

@@ -1,6 +1,31 @@
 import '@testing-library/jest-dom';
 
-// Silenciar warnings informativos de React Router v7 en consola durante los tests
+const store = new Map();
+const localStorageMock = {
+  getItem: (key) => (store.has(key) ? store.get(key) : null),
+  setItem: (key, value) => store.set(key, String(value)),
+  removeItem: (key) => store.delete(key),
+  clear: () => store.clear(),
+  get length() {
+    return store.size;
+  },
+  key: (i) => Array.from(store.keys())[i] || null
+};
+
+Object.defineProperty(globalThis, 'localStorage', {
+  value: localStorageMock,
+  writable: true,
+  configurable: true
+});
+
+if (typeof window !== 'undefined') {
+  Object.defineProperty(window, 'localStorage', {
+    value: localStorageMock,
+    writable: true,
+    configurable: true
+  });
+}
+
 const originalWarn = console.warn;
 console.warn = (...args) => {
   const msg = args[0];

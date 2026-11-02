@@ -1,12 +1,3 @@
-/**
- * VISTA DEL CARRITO DE COMPRAS (src/pages/tienda/Carrito.jsx)
- * 
- * Migrada de legacy/carrito.html.
- * Muestra la tabla dinámica de productos, controles de cantidad (+/-),
- * eliminación de ítems, cupones conmemorativos (FELICES50, DUOCUMPLE),
- * desglose financiero (subtotal, descuentos, despacho $3.500, IVA 19%, total)
- * y enlace al Checkout.
- */
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCarrito } from '../../context/CartContext.jsx';
@@ -50,7 +41,6 @@ export function Carrito() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Encabezado */}
         <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
           <div>
             <h1 className="display-6 fw-bold text-warning mb-1">
@@ -68,7 +58,6 @@ export function Carrito() {
         </div>
 
         {carrito.length === 0 ? (
-          /* Carrito Vacío */
           <div className="card bg-secondary bg-opacity-10 border-secondary p-5 text-center my-4">
             <i className="bi bi-cart-x text-warning display-1 mb-3"></i>
             <h3 className="text-light">Tu carrito está actualmente vacío</h3>
@@ -82,9 +71,7 @@ export function Carrito() {
             </div>
           </div>
         ) : (
-          /* Carrito con Productos */
           <div className="row g-4">
-            {/* Tabla / Lista de Ítems */}
             <div className="col-12 col-lg-8">
               <div className="card bg-secondary bg-opacity-10 border-secondary shadow-sm">
                 <div className="card-header bg-dark border-bottom border-secondary d-flex justify-content-between align-items-center py-3">
@@ -181,7 +168,6 @@ export function Carrito() {
                   </div>
                 </div>
 
-                {/* Cupón de Descuento */}
                 <div className="card-footer bg-dark border-top border-secondary p-3">
                   <form onSubmit={handleAplicarCupon} className="row g-2 align-items-center">
                     <div className="col-12 col-sm-7">
@@ -210,7 +196,6 @@ export function Carrito() {
               </div>
             </div>
 
-            {/* Resumen de Compra (Sticky) */}
             <div className="col-12 col-lg-4">
               <div className="card bg-secondary bg-opacity-10 border-warning p-4 shadow-lg sticky-top" style={{ top: '90px' }}>
                 <h5 className="text-warning fw-bold mb-3">

@@ -17,7 +17,6 @@ export function Registro() {
   const { registro } = useAuth();
   const navigate = useNavigate();
 
-  // Cálculo reactivo de edad
   const edadCalculada = useMemo(() => {
     if (!fechaNacimiento) return 0;
     const hoy = new Date();
@@ -94,7 +93,6 @@ export function Registro() {
 
               <form onSubmit={handleSubmit} noValidate>
                 <div className="row g-3">
-                  {/* Nombre */}
                   <div className="col-12">
                     <label className="form-label text-light small fw-bold">Nombre Completo *</label>
                     <input
@@ -108,7 +106,6 @@ export function Registro() {
                     />
                   </div>
 
-                  {/* Correo */}
                   <div className="col-12 col-md-6">
                     <label className="form-label text-light small fw-bold">Correo Electrónico *</label>
                     <input
@@ -122,7 +119,6 @@ export function Registro() {
                     />
                   </div>
 
-                  {/* Contraseña */}
                   <div className="col-12 col-md-6">
                     <label className="form-label text-light small fw-bold">Contraseña *</label>
                     <input
@@ -136,7 +132,6 @@ export function Registro() {
                     />
                   </div>
 
-                  {/* Fecha de Nacimiento */}
                   <div className="col-12 col-md-6">
                     <label className="form-label text-light small fw-bold">Fecha de Nacimiento *</label>
                     <input
@@ -154,7 +149,6 @@ export function Registro() {
                     )}
                   </div>
 
-                  {/* Teléfono */}
                   <div className="col-12 col-md-6">
                     <label className="form-label text-light small fw-bold">Teléfono de Contacto</label>
                     <input
@@ -167,7 +161,6 @@ export function Registro() {
                     />
                   </div>
 
-                  {/* Dirección */}
                   <div className="col-12">
                     <label className="form-label text-light small fw-bold">Dirección de Entrega Predeterminada</label>
                     <input
@@ -181,7 +174,6 @@ export function Registro() {
                   </div>
                 </div>
 
-                {/* Banners Reactivos de Beneficios */}
                 {esSenior && (
                   <div className="alert alert-warning bg-warning bg-opacity-25 border-warning text-light my-3" data-testid="alerta-senior">
                     <i className="bi bi-award-fill text-warning fs-4 me-2"></i>

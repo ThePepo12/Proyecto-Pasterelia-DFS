@@ -1,10 +1,3 @@
-/**
- * NOSOTROS (src/pages/tienda/Nosotros.jsx)
- * 
- * Migrada de legacy/nosotros.html.
- * Expone la historia de los 50 años (1976-2026), el hito del Récord Guinness (1995),
- * la misión, visión y los cuatro pilares fundamentales de la empresa.
- */
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +5,6 @@ export function Nosotros() {
   return (
     <div className="bg-dark text-light py-5 min-vh-100">
       <div className="container">
-        {/* Hero Institucional */}
         <div className="text-center mb-5">
           <span className="badge bg-warning text-dark px-3 py-2 text-uppercase fw-bold mb-2">
             Nuestra Historia (1976 - 2026)
@@ -24,7 +16,6 @@ export function Nosotros() {
           </p>
         </div>
 
-        {/* Hito Récord Guinness 1995 */}
         <div className="card bg-warning text-dark p-4 p-md-5 rounded-4 shadow-lg mb-5 border-0">
           <div className="row align-items-center g-4">
             <div className="col-12 col-md-3 text-center">
@@ -42,7 +33,6 @@ export function Nosotros() {
           </div>
         </div>
 
-        {/* Misión y Visión */}
         <div className="row g-4 mb-5">
           <div className="col-12 col-md-6">
             <div className="card h-100 bg-secondary bg-opacity-10 border-warning p-4 shadow-sm">
@@ -72,7 +62,6 @@ export function Nosotros() {
           </div>
         </div>
 
-        {/* 4 Valores Corporativos */}
         <div className="mb-5">
           <h3 className="text-warning fw-bold text-center mb-4">Nuestros Pilares</h3>
           <div className="row g-4">
@@ -107,7 +96,6 @@ export function Nosotros() {
           </div>
         </div>
 
-        {/* Llamado a la acción */}
         <div className="text-center pt-4 border-top border-secondary border-opacity-25">
           <h4 className="text-light mb-3">Celebra con nosotros este medio siglo</h4>
           <Link to="/productos" className="btn btn-warning text-dark fw-bold btn-lg px-4 shadow">

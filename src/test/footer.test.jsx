@@ -1,10 +1,3 @@
-/**
- * PRUEBAS: Pie de Página Común (Footer.jsx)
- * 
- * Verifica:
- * 1. Muestra la historia conmemorativa de los 50 años.
- * 2. Renderiza la lista de enlaces institucionales de navegación rápida.
- */
 import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';

@@ -1,9 +1,3 @@
-/**
- * Contiene 3 pruebas clave:
- * 1. Cálculo de subtotales y cantidades al agregar productos.
- * 2. Aplicación de cupón de descuento conmemorativo (FELICES50).
- * 3. Límite reactivo por stock disponible en la vista del carrito.
- */
 import React from 'react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, fireEvent, renderHook, act } from '@testing-library/react';
@@ -70,12 +64,10 @@ describe('2. Módulo del Carrito de Compras', () => {
 
     expect(result.current.porcentajeDescuento).toBe(10);
     expect(result.current.descuentoMonto).toBe(5000);
-    // Total = (50000 - 5000) + 3500 envío = 48500
     expect(result.current.total).toBe(48500);
   });
 
   it('Prueba 5: Respeta el stock reactivo del producto bloqueando el botón de aumento', () => {
-    // Simulamos un producto en carrito que solo tiene 2 unidades en stock y ya tiene 2 en el carrito
     const itemConStockLimite = {
       codigo: 'TC001',
       nombre: 'Torta Cuadrada',
@@ -97,7 +89,6 @@ describe('2. Módulo del Carrito de Compras', () => {
       </AuthProvider>
     );
 
-    // El botón "+" debe estar deshabilitado porque cantidad (2) llegó al stock límite (2)
     const botonAumentar = screen.getByRole('button', { name: '+' });
     expect(botonAumentar).toBeDisabled();
     expect(botonAumentar).toHaveAttribute('title', 'Solo hay 2 unidades disponibles');

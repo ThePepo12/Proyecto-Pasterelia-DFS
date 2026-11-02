@@ -1,10 +1,3 @@
-/**
- * RUTA PROTEGIDA DE ADMINISTRACIÓN 
- * 
- * Verifica que el usuario tenga una sesión activa y cuente con rol 'ADMIN'.
- * Si no está autenticado o carece de permisos, muestra una pantalla de bloqueo
- * institucional con botón para iniciar sesión como Administrador.
- */
 import React from 'react';
 import { Navigate, Outlet, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
@@ -23,7 +16,6 @@ export function RutaProtegidaAdmin({ children }) {
     );
   }
 
-  // Si no está autenticado o no es rol ADMIN
   if (!isAuthenticated || !isAdmin) {
     return (
       <div className="bg-dark text-light py-5 min-vh-100 d-flex align-items-center">
@@ -61,7 +53,6 @@ export function RutaProtegidaAdmin({ children }) {
     );
   }
 
-  // Si tiene permisos de admin, renderiza las rutas hijas
   return children ? children : <Outlet />;
 }
 

@@ -1,9 +1,3 @@
-/**
- * SERVICIO DE PRODUCTOS (src/services/productoService.js)
- * 
- * Implementa CRUD completo y consultas específicas (ofertas, críticos, por categoría)
- * conectando con Spring Boot (/api/productos) y conmutando a db.js en caso de fallo.
- */
 import { request } from './api.js';
 import { db } from '../data/db.js';
 
