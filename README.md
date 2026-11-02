@@ -2,7 +2,7 @@
 
 > **Asignatura:** Desarrollo Fullstack II   
 > **Evaluación:** Evaluación Parcial 2  
-> **Arquitectura:** Frontend React (Vite + Bootstrap 5) + Backend Spring Boot (Java 17+ / H2 Database)  
+> **Arquitectura:** Frontend React (Vite + Bootstrap 5)   
 
 ---
 
