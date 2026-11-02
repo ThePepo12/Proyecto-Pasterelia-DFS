@@ -1,7 +1,6 @@
 # Cobertura y Arquitectura de Pruebas Unitarias (Testing)
 
 **Proyecto:** Pastelería Mil Sabores  
-**Asignatura:** Desarrollo Fullstack II (DSY1104) — Duoc UC  
 **Entorno de Pruebas:** Vitest + React Testing Library + jsdom  
 **Total de Archivos de Prueba:** 10 suites temáticas  
 **Total de Pruebas Unitarias:** 24 pruebas automatizadas  
