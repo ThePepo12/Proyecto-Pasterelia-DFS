@@ -3,7 +3,7 @@ import { NavLink, Outlet, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 
 export function AdminLayout() {
-  const { usuario, logout } = useAuth();
+  const { usuario, isVendedor, logout } = useAuth();
   const navigate = useNavigate();
   const [sidebarAbierto, setSidebarAbierto] = useState(false);
 
@@ -12,38 +12,49 @@ export function AdminLayout() {
     navigate('/login');
   };
 
-  const navItems = [
+  // Requisito oficial EP3 (Página 2):
+  // El Vendedor solo puede ver Productos y Órdenes. Todos los demás accesos no deben aparecer.
+  const todosLosNavItems = [
     {
       to: '/admin',
       end: true,
       label: 'Dashboard',
-      icon: 'bi-speedometer2'
+      icon: 'bi-speedometer2',
+      soloAdmin: true
     },
     {
       to: '/admin/productos',
       end: false,
       label: 'Productos',
-      icon: 'bi-box-seam'
+      icon: 'bi-box-seam',
+      soloAdmin: false // Visible para Admin y Vendedor
     },
     {
       to: '/admin/categorias',
       end: false,
       label: 'Categorías',
-      icon: 'bi-grid-3x3-gap'
+      icon: 'bi-grid-3x3-gap',
+      soloAdmin: true
     },
     {
       to: '/admin/usuarios',
       end: false,
       label: 'Usuarios',
-      icon: 'bi-people'
+      icon: 'bi-people',
+      soloAdmin: true
     },
     {
       to: '/admin/reportes',
       end: false,
-      label: 'Pedidos y Reportes',
-      icon: 'bi-graph-up-arrow'
+      label: isVendedor ? 'Órdenes de Pedido' : 'Pedidos y Reportes',
+      icon: 'bi-receipt',
+      soloAdmin: false // Visible para Admin y Vendedor
     }
   ];
+
+  const navItems = isVendedor
+    ? todosLosNavItems.filter(item => !item.soloAdmin)
+    : todosLosNavItems;
 
   return (
     <div className="d-flex min-vh-100 bg-dark text-light" data-testid="admin-layout">

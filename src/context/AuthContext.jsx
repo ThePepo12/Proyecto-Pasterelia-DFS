@@ -66,6 +66,7 @@ export function AuthProvider({ children }) {
   };
 
   const isAdmin = usuario?.rol === 'ADMIN';
+  const isVendedor = usuario?.rol === 'VENDEDOR';
   const isSenior = Boolean(usuario?.descuentoSenior || (usuario?.edad && usuario.edad >= 50));
   const isEstudiante = Boolean(usuario?.esEstudianteDuoc || usuario?.email?.endsWith('@duocuc.cl'));
 
@@ -77,6 +78,7 @@ export function AuthProvider({ children }) {
         cargando,
         isAuthenticated: Boolean(usuario),
         isAdmin,
+        isVendedor,
         isSenior,
         isEstudiante,
         login,

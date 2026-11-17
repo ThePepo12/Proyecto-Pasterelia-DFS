@@ -1,20 +1,32 @@
 import { db } from '../data/db.js';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+// URL base con versionado de API según la pauta de la EP3
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1';
 
 export async function request(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
+
+  // Recuperamos el token JWT guardado en localStorage (patrón oficial de EjemploJWTReactVite)
+  const token = localStorage.getItem('token_mil_sabores');
+
+  const headers = {
+    'Content-Type': 'application/json',
+    ...options.headers
+  };
+
+  // Si existe un token JWT, lo inyectamos automáticamente en la cabecera Authorization
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
   const config = {
-    headers: {
-      'Content-Type': 'application/json',
-      ...options.headers
-    },
-    ...options
+    ...options,
+    headers
   };
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 2500); // 2.5s timeout para conmutar rápido si el backend no corre
+    const timeoutId = setTimeout(() => controller.abort(), 4000); // 4s timeout
 
     const response = await fetch(url, {
       ...config,
