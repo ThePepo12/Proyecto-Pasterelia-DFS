@@ -29,8 +29,8 @@ export function Login() {
     setCargandoLocal(false);
 
     if (resultado.success) {
-      if (resultado.usuario?.rol === 'ADMIN') {
-        navigate('/admin');
+      if (resultado.usuario?.rol === 'ADMIN' || resultado.usuario?.rol === 'VENDEDOR') {
+        navigate('/admin/productos');
       } else {
         navigate(destino);
       }

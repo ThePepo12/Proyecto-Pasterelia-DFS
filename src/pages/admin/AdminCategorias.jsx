@@ -52,7 +52,8 @@ export function AdminCategorias() {
   const conteoPorCategoria = useMemo(() => {
     const conteo = {};
     productos.forEach((p) => {
-      const cat = (p.categoriaNombre || p.categoria || '').trim().toLowerCase();
+      const nombreCat = p.categoria?.nombre || p.categoriaNombre || (typeof p.categoria === 'string' ? p.categoria : '');
+      const cat = (nombreCat || '').trim().toLowerCase();
       if (cat) {
         conteo[cat] = (conteo[cat] || 0) + 1;
       }
@@ -244,7 +245,8 @@ export function AdminCategorias() {
               </thead>
               <tbody>
                 {categoriasFiltradas.map((cat) => {
-                  const cantProds = conteoPorCategoria[(cat.nombre || '').trim().toLowerCase()] || 0;
+                  const catNombre = (cat.nombre || '').trim().toLowerCase();
+                  const cantProds = conteoPorCategoria[catNombre] || 0;
 
                   return (
                     <tr key={cat.id || cat.nombre} data-testid={`fila-categoria-${cat.id}`}>

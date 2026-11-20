@@ -197,7 +197,7 @@ export function AdminDashboard() {
                             <span className="text-light fw-medium small">{prod.nombre}</span>
                           </div>
                         </td>
-                        <td className="small text-secondary">{prod.categoria || 'Repostería'}</td>
+                        <td className="small text-secondary">{prod.categoria?.nombre || prod.categoriaNombre || (typeof prod.categoria === 'string' ? prod.categoria : 'Repostería')}</td>
                         <td className="text-center">
                           <span className={`badge ${prod.stock === 0 ? 'bg-danger' : 'bg-warning text-dark'} fw-bold`}>
                             {prod.stock} un.

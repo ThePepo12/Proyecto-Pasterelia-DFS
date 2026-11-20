@@ -66,14 +66,14 @@ export function AdminLayout() {
         data-testid="admin-sidebar"
       >
         <div className="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom border-secondary border-opacity-50">
-          <Link to="/admin" className="text-decoration-none d-flex align-items-center gap-2">
+          <Link to={isVendedor ? '/admin/productos' : '/admin'} className="text-decoration-none d-flex align-items-center gap-2">
             <i className="bi bi-cake2-fill text-warning fs-3"></i>
             <div>
               <span className="fw-bold text-light d-block" style={{ fontSize: '1rem', lineHeight: '1.2' }}>
                 Mil Sabores
               </span>
               <span className="badge bg-warning text-dark text-uppercase" style={{ fontSize: '0.65rem' }}>
-                Panel Admin
+                {isVendedor ? 'Panel Vendedor' : 'Panel Admin'}
               </span>
             </div>
           </Link>

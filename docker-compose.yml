@@ -1,0 +1,58 @@
+name: pasteleria-mil-sabores
+
+services:
+  # 1. Base de Datos MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: pasteleria-mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: pasteleria_db
+      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - pasteleria-network
+
+  # 2. Backend Spring Boot (API REST + JWT + Swagger)
+  backend:
+    build:
+      context: ../Proyecto-Pasteleria-Backend/tienda-pasteleria-backend
+      dockerfile: Dockerfile
+    container_name: pasteleria-backend
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/pasteleria_db?useSSL=false&serverTimezone=America/Santiago&allowPublicKeyRetrieval=true&characterEncoding=UTF-8
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: ""
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+    networks:
+      - pasteleria-network
+
+  # 3. Frontend React (Vite + Nginx)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pasteleria-frontend
+    restart: always
+    depends_on:
+      - backend
+    ports:
+      - "3000:80"
+    networks:
+      - pasteleria-network
+
+volumes:
+  mysql_data:
+
+networks:
+  pasteleria-network:
+    driver: bridge

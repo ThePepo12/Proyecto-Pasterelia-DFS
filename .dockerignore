@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.gitignore
+*.docx
+*.xlsx
+*.pdf
+anexo*
+*.txt
+*.ps1
+build_*
+current_*
+extract_*

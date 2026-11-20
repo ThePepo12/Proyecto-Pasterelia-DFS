@@ -59,7 +59,7 @@ export function AdminProductos() {
 
   const productosFiltrados = useMemo(() => {
     return productos.filter((p) => {
-      const nombreCat = p.categoriaNombre || p.categoria || '';
+      const nombreCat = p.categoria?.nombre || p.categoriaNombre || (typeof p.categoria === 'string' ? p.categoria : '');
 
       const coincideTexto =
         p.nombre?.toLowerCase().includes(busqueda.toLowerCase()) ||
@@ -90,7 +90,7 @@ export function AdminProductos() {
       nombre: prod.nombre || '',
       descripcion: prod.descripcion || '',
       precio: prod.precio || '',
-      categoria: prod.categoria || (categorias[0]?.nombre || 'Tortas Cuadradas'),
+      categoria: prod.categoria?.nombre || prod.categoriaNombre || (typeof prod.categoria === 'string' ? prod.categoria : (categorias[0]?.nombre || 'Tortas Cuadradas')),
       stock: prod.stock !== undefined ? prod.stock : 10,
       stockCritico: prod.stockCritico !== undefined ? prod.stockCritico : 5,
       enOferta: Boolean(prod.enOferta),
@@ -340,7 +340,7 @@ export function AdminProductos() {
                         </span>
                       </td>
 
-                      <td className="small text-secondary">{prod.categoriaNombre || prod.categoria || 'General'}</td>
+                      <td className="small text-secondary">{prod.categoria?.nombre || prod.categoriaNombre || (typeof prod.categoria === 'string' ? prod.categoria : 'General')}</td>
 
                       <td className="text-end fw-bold">
                         {prod.enOferta && prod.porcentajeDescuento > 0 ? (
