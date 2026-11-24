@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { productoService } from '../../services/productoService.js';
 import { categoriaService } from '../../services/categoriaService.js';
+import { useAuth } from '../../context/AuthContext.jsx';
 
 const ESTADO_FORM_INICIAL = {
   id: null,
@@ -17,6 +18,7 @@ const ESTADO_FORM_INICIAL = {
 };
 
 export function AdminProductos() {
+  const { isAdmin } = useAuth();
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [cargando, setCargando] = useState(true);
@@ -393,15 +395,17 @@ export function AdminProductos() {
                           >
                             <i className="bi bi-pencil-square"></i>
                           </button>
-                          <button
-                            type="button"
-                            className="btn btn-outline-danger"
-                            onClick={() => setProductoAEliminar(prod)}
-                            title="Eliminar Producto"
-                            data-testid={`btn-eliminar-${prod.codigo}`}
-                          >
-                            <i className="bi bi-trash"></i>
-                          </button>
+                          {isAdmin && (
+                            <button
+                              type="button"
+                              className="btn btn-outline-danger"
+                              onClick={() => setProductoAEliminar(prod)}
+                              title="Eliminar Producto (Solo Admin)"
+                              data-testid={`btn-eliminar-${prod.codigo}`}
+                            >
+                              <i className="bi bi-trash"></i>
+                            </button>
+                          )}
                         </div>
                       </td>
                     </tr>

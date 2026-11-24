@@ -1,20 +1,16 @@
 import { request } from './api.js';
 import { db } from '../data/db.js';
 
+const esTest = typeof process !== 'undefined' && (process.env?.NODE_ENV === 'test' || process.env?.VITEST);
+
 export const reporteService = {
   async reporteProductos() {
-    try {
-      return await request('/reportes/productos');
-    } catch (e) {
-      return db.reportes.getProductos();
-    }
+    if (esTest) return db.reportes.getProductos();
+    return await request('/reportes/productos');
   },
 
   async reporteGenerales() {
-    try {
-      return await request('/reportes/generales');
-    } catch (e) {
-      return db.reportes.getGenerales();
-    }
+    if (esTest) return db.reportes.getGenerales();
+    return await request('/reportes/generales');
   }
 };

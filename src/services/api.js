@@ -1,12 +1,12 @@
 import { db } from '../data/db.js';
 
-// URL base con versionado de API según la pauta de la EP3
+// URL base con versionado de API 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/v1';
 
 export async function request(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
 
-  // Recuperamos el token JWT guardado en localStorage (patrón oficial de EjemploJWTReactVite)
+  // Recuperamos el token JWT guardado en localStorage 
   const token = localStorage.getItem('token_mil_sabores');
 
   const headers = {

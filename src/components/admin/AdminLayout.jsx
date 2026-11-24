@@ -12,8 +12,7 @@ export function AdminLayout() {
     navigate('/login');
   };
 
-  // Requisito oficial EP3 (Página 2):
-  // El Vendedor solo puede ver Productos y Órdenes. Todos los demás accesos no deben aparecer.
+  // El Vendedor solo puede ver Productos y Órdenes.
   const todosLosNavItems = [
     {
       to: '/admin',

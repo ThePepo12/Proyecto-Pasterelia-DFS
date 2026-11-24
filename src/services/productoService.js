@@ -1,83 +1,60 @@
 import { request } from './api.js';
 import { db } from '../data/db.js';
 
+// En entorno de test unitario (Vitest / JSDOM), usamos db.js como Mock.
+// En producción / navegador real con Docker, dependemos 100% de la API REST de Spring Boot.
+const esTest = typeof process !== 'undefined' && (process.env?.NODE_ENV === 'test' || process.env?.VITEST);
+
 export const productoService = {
   async obtenerTodos() {
-    try {
-      return await request('/productos');
-    } catch (e) {
-      return db.productos.getAll();
-    }
+    if (esTest) return db.productos.getAll();
+    return await request('/productos');
   },
 
   async obtenerPorId(id) {
-    try {
-      return await request(`/productos/${id}`);
-    } catch (e) {
-      return db.productos.getById(id);
-    }
+    if (esTest) return db.productos.getById(id);
+    return await request(`/productos/${id}`);
   },
 
   async obtenerPorCodigo(codigo) {
-    try {
-      return await request(`/productos/codigo/${codigo}`);
-    } catch (e) {
-      return db.productos.getByCodigo(codigo);
-    }
+    if (esTest) return db.productos.getByCodigo(codigo);
+    return await request(`/productos/codigo/${codigo}`);
   },
 
   async obtenerPorCategoria(categoriaId) {
-    try {
-      return await request(`/productos/categoria/${categoriaId}`);
-    } catch (e) {
-      return db.productos.getByCategoria(categoriaId);
-    }
+    if (esTest) return db.productos.getByCategoria(categoriaId);
+    return await request(`/productos/categoria/${categoriaId}`);
   },
 
   async obtenerOfertas() {
-    try {
-      return await request('/productos/ofertas');
-    } catch (e) {
-      return db.productos.getOfertas();
-    }
+    if (esTest) return db.productos.getOfertas();
+    return await request('/productos/ofertas');
   },
 
   async obtenerCriticos(limite = 5) {
-    try {
-      return await request(`/productos/criticos?limite=${limite}`);
-    } catch (e) {
-      return db.productos.getCriticos(limite);
-    }
+    if (esTest) return db.productos.getCriticos(limite);
+    return await request(`/productos/criticos?limite=${limite}`);
   },
 
   async crear(producto) {
-    try {
-      return await request('/productos', {
-        method: 'POST',
-        body: JSON.stringify(producto)
-      });
-    } catch (e) {
-      return db.productos.create(producto);
-    }
+    if (esTest) return db.productos.create(producto);
+    return await request('/productos', {
+      method: 'POST',
+      body: JSON.stringify(producto)
+    });
   },
 
   async actualizar(id, producto) {
-    try {
-      return await request(`/productos/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify(producto)
-      });
-    } catch (e) {
-      return db.productos.update(id, producto);
-    }
+    if (esTest) return db.productos.update(id, producto);
+    return await request(`/productos/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(producto)
+    });
   },
 
   async eliminar(id) {
-    try {
-      await request(`/productos/${id}`, { method: 'DELETE' });
-      return true;
-    } catch (e) {
-      return db.productos.delete(id);
-    }
+    if (esTest) return db.productos.delete(id);
+    await request(`/productos/${id}`, { method: 'DELETE' });
+    return true;
   }
 };

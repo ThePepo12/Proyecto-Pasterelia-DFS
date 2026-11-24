@@ -11,7 +11,7 @@ services:
       MYSQL_ROOT_PASSWORD: ""
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -47,6 +47,24 @@ services:
       - backend
     ports:
       - "3000:80"
+    networks:
+      - pasteleria-network
+
+  # 4. Gestor Visual de Base de Datos (phpMyAdmin)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: pasteleria-phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 0
+      PMA_USER: root
+      PMA_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "8081:80"
     networks:
       - pasteleria-network
 
